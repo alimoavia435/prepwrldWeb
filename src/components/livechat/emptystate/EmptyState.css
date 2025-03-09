@@ -1,0 +1,47 @@
+.empty-msg {
+  font-family: Urbanist-Semibold;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28.99px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: black;
+}
+.empty-msg2 {
+  font-family: Urbanist-Medium;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19.5px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #919191;
+  margin-top: 15px;
+}
+.img-bg {
+  background: #139ed526;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.empty-btn {
+  font-family: Urbanist-Semibold;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20.3px;
+  letter-spacing: 0%;
+  color: white;
+  padding: 12px 36px;
+  background: var(--Evox-Blue, #139ed5);
+  border-radius: 12px;
+  border: none;
+}
+.empty-main-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30.2px;
+}

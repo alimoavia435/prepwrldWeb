@@ -1,0 +1,148 @@
+.kyc__andprofile__step2__main__container__1 {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.kyc__andprofile__step2__main__container {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  max-width: 840px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(205, 205, 205);
+  border-image: initial;
+  padding: 32px;
+}
+.kyc__andprofile__step2__form__container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.kyc__andprofile__step2__form__container2 {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+.kyc__andprofile__step2__form {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+}
+.kyc__andprofile__step2__form_label {
+  font-family: Urbanist-Medium;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20.3px;
+  text-align: left;
+  color: #000;
+}
+.kyc__andprofile__step2__form_input {
+  padding: 12px 24px;
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid #cdcdcd;
+  font-family: Urbanist-Medium;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 23.2px;
+  text-align: left;
+  width: 376px;
+}
+.kyc__andprofile__step2__form_input::placeholder {
+  color: #919191;
+}
+.kyc__andprofile__step2__form_input:focus {
+  outline: none;
+  color: #000;
+}
+.proof__text__container__kyc {
+  display: flex;
+  border-radius: 8px;
+  padding: 13px 24px;
+  border: 1px solid #cdcdcd;
+  justify-content: space-between;
+  width: 376px;
+}
+.optional__kyc__text {
+  font-family: Urbanist-Medium;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14.5px;
+  text-align: left;
+  color: #919191;
+}
+.kyc__info__stepsprofile__button__container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.kycinfo__step2__back__button
+{
+    background-color: transparent;
+    padding: 12px 64px;
+    border-radius: 8px;
+    border: 1px solid #919191;
+    font-family: Urbanist-Semibold;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20.3px;
+    text-align: center;
+    color: #000;
+    white-space: nowrap;
+}
+.kycinfo__step2__next__button
+{
+    padding: 12px 48px;
+    border-radius: 8px;
+    background: var(--Evox-Blue, #139ED5);
+    border: transparent;
+    font-family: Urbanist-Semibold;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20.3px;
+    text-align: center;
+    color: #ffffff;
+    white-space: nowrap;
+}
+@media(min-width:1450px)
+{
+    .kyc__andprofile__step2__main__container
+    {
+        max-width: unset;
+    }
+    .kyc__andprofile__step2__form_input 
+    {
+        width: 100%;
+    }
+    .proof__text__container__kyc 
+    {
+        width: 100%;
+    }
+}
+@media (max-width: 1170px) {
+  .proof__text__container__kyc {
+    width: 100%;
+  }
+  .kyc__andprofile__step2__form_input {
+    width: 100%;
+  }
+  .kyc__andprofile__step2__form__container2 {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 400px) {
+  .kyc__andprofile__step2__main__container {
+    padding: 20px;
+  }
+  .kycinfo__step2__back__button
+  {
+    width: 100%;
+  }
+  .kycinfo__step2__next__button
+  {
+    width: 100%;
+  }
+}

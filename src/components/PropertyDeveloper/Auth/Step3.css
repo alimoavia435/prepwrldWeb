@@ -1,0 +1,178 @@
+.property__step3__main__container
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+.property__step3__main__container1
+{
+    display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 448px;
+  width: 100%;
+}
+.property__developer_step3_container
+{
+    display: flex;
+    border-radius: 8px;
+    padding: 20px 26px;
+    background: #F6F6F6;
+    border: none;
+    gap:20px;
+    width: 100%;
+    margin-top: 10px !important
+    
+   
+
+
+}
+.property__developer_step3_container-1
+{
+    display: flex;
+    gap:10px;
+    align-items: center;
+}
+.investor__step3__text
+{
+font-family: Urbanist-Medium;
+font-size: 14px;
+font-weight: 500;
+line-height: 19.6px;
+text-align: left;
+white-space: nowrap;
+}
+.step3__form__main__container
+{
+ display: flex;
+ flex-direction: column;
+ gap:24px;
+ margin-top: 10px !important
+}
+.step3__form__main__container1
+{
+    display: flex;
+    flex-direction: column;
+    gap:12px;
+
+}
+.step__3__form__label
+{
+    font-family: Urbanist-Medium;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 19.6px;
+    text-align: left;
+    color: #000000
+     
+}
+.step3__placeholder__container
+{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #CDCDCD;
+    border-radius: 8px;
+    width:100%;
+    padding: 13px 24px
+
+}
+.step-3_form_placeholder-1
+{
+    border: none;
+    width:100%;
+    font-family: Urbanist-Medium;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22.4px;
+}
+.step-3_form_placeholder-1::placeholder {
+  
+    color: #cdcdcd;
+  }
+  .step-3_form_placeholder-1:focus {
+    outline: none;
+   color: #000000;
+  }
+  .step_3_button_container {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-top: 40px !important;
+  }
+  .step_3_back_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 51px;
+    border-radius: 8px;
+    border: 1px solid #919191;
+    font-family: Urbanist-Bold;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 25.2px;
+    text-align: center;
+    color: #000000;
+    background-color: transparent;
+  }
+  .step_3_next_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 51px;
+    border-radius: 8px;
+    background: var(--Evox-Blue, #139ed5);
+  
+    border: none;
+    font-family: Urbanist-Bold;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 25.2px;
+    text-align: center;
+    color: #FFFFFF;
+  }
+  .have__account__step3_text
+{
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20.3px;
+    text-align: center;
+    color: #919191
+     
+}
+.login__step3_text
+{
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20.3px;
+    text-align: center;
+    color: #000000 ;
+    margin-left:2px !important
+}
+.phone-input-field__1
+{
+    display: none;
+}
+@media(max-width:440px)
+{
+    .image-divider-step
+    {
+        display: none !important;
+    }
+    .property__developer_step3_container-1{
+        gap:0px
+    }
+    .property__developer_step3_container
+    {
+        gap:5px;
+        padding:25px 15px;
+        justify-content: space-between;
+    }
+    .investor__step3__text{
+        font-size:12px
+    }
+}

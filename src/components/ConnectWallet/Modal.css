@@ -1,0 +1,278 @@
+.custom-modal .modal-dialog {
+  border: none;
+}
+.modal-dialog{
+  margin: 0px !important;
+  padding: 0px 20px;
+}
+.modal-dialog-centered {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.custom-modal .modal-content {
+  border-radius: 19px;
+  padding-left: 51px;
+  padding-right: 52px;
+  padding-top: 43px;
+  padding-bottom: 30px;
+  box-shadow: none;
+  border: none;
+  width: 371px;
+  height: 145px;
+}
+
+.modal-text {
+  font-family: "Poppins";
+  font-size: 12px;
+  font-weight: 400;
+
+  text-align: center;
+  color: #323232;
+  margin-bottom: 17px !important;
+}
+
+.text-center {
+  padding: 0px !important;
+}
+
+.modal-button:hover {
+  background-color: #20b66e;
+  border-color: #20b66e;
+}
+
+@media (max-width: 576px) {
+  .custom-modal .modal-dialog {
+    max-width: 80%;
+  }
+}
+
+.Metamask {
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 6px;
+  padding-right: 22px;
+  border-radius: 60px;
+  border: 1px;
+  background-color: #fafafa;
+  align-items: center;
+}
+
+.first {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.metatext {
+  padding: 0px !important;
+  margin: 0px !important;
+  font-family: Poppins;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.lineswithcontent {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 26px !important;
+}
+
+.Connecttext {
+  font-family: Poppins;
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0px !important;
+
+  color: #139ed5;
+}
+
+.modalbody {
+  padding: 28px 30px 50px 30px !important;
+  width: 100%;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.customfourth-modal .modal-dialog .modal-content {
+  /* width: 439px !important;
+  border: none;
+  border-radius: 16px;
+  padding: 0px; */
+}
+
+.btnwithpostion {
+  position: absolute;
+  top: 4%;
+  right: 4%;
+}
+
+.modal-dialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* ........ */
+.ModelValletconMain{
+  width: 100%;
+  max-width: 600px;
+/* height: 400px; */
+padding: 25px 40px 63.29px 70px;
+background: #FFFFFF;
+gap: 5px;
+display: flex;
+flex-direction: column;
+border: 0.5px solid  !important;
+border-radius: 15px !important;
+background: linear-gradient( #ffff,#ffff ) padding-box, linear-gradient(72.44deg, #0555EC 0%, #2B74FF 100%)border-box;
+
+
+}
+.ModelValletconMain_DivClose{
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+.ModelValletconMainDiv2{
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+}
+.ModelValletconMainDiv2_P1{
+  font-family: "Urbanist-SemiBold";
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32.52px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+color: #000000;
+margin: 0px !important;
+}
+.ModelValletconMainDiv2_P2{
+  font-family: Urbanist;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16.26px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #919191;
+  margin: 21px 0px 30px 0px !important;
+}
+.ModelValletconMainDiv2_P3{
+  font-family: "Urbanist-Medium";
+font-size: 12px;
+font-weight: 500;
+line-height: 16.26px;
+text-align: center;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+color: #000000;
+margin: 0px !important;
+}
+
+
+
+.ModelValletconMainDiv2_divcardtop{
+  max-width:426.44px;
+  width: 100%;
+display: flex;
+flex-direction: row;
+gap: 7.56px;
+align-items: center;
+justify-content: center;
+margin-top: 10px !important;
+}
+
+
+
+
+.ModelValletconMainDiv2_divcard{
+  width: 50%;
+height: 116.71px;
+border-radius: 8px;
+border: 0.8px solid #CDCDCD;
+display: flex;
+flex-direction: column;
+gap: 7.99px;
+align-items: center;
+justify-content: center;
+
+
+}
+.ModelValletconMainDiv2_divcard:hover{
+  border: 0.8px solid var(--Evox-Blue, #139ED5);
+}
+
+
+.ModelValletconMainDiv2_divcard1{
+  width: 50%;
+height: 116.71px;
+border-radius: 8px;
+border: 0.8px solid #CDCDCD;
+display: flex;
+flex-direction: column;
+gap: 7.99px;
+align-items: center;
+justify-content: center;
+
+
+}
+.ModelValletconMainDiv2_divcard1:hover{
+  border: 0.8px solid var(--Evox-Blue, #139ED5);
+}
+
+.ModelValletconMainDiv2_divcard_P{
+  font-family: "Urbanist-SemiBold";
+font-size: 14px;
+font-weight: 600;
+line-height: 18.97px;
+text-align: center;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+color: #000000;
+margin: 0px !important;
+
+}
+
+
+@media(max-width:400px){
+
+  .ModelValletconMain {
+      padding: 25px;
+  }
+  .ModelValletconMainDiv2_P1{
+      font-size: 14px;
+  }
+  .ModelValletconMainDiv2_P2{
+      margin: 10px 0px 10px 0px !important;
+      font-size: 11px;
+  }
+  .ModelValletconMainDiv2_divcard_P{
+      font-size: 12px;
+  }
+}
+
+@media(max-width:380px){
+
+
+
+  .ModelValletconMain {
+      padding: 18px;
+  }
+
+
+
+}

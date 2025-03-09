@@ -1,0 +1,258 @@
+.property__developer_step1_container-main {
+  display: flex;
+  /* height: 100vh; */
+  width: 100%;
+}
+.step1_bg_img {
+  width: auto;
+  padding: 20px 20px 0px 20px;
+  height: 100%;
+}
+.property__developer_step1_container-main-1 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.property__developer_step1_container-main-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 448px;
+  width: 100%;
+}
+.image-divider-step {
+  display: flex;
+}
+.property__developer_step1_heading1 {
+  font-family: Urbanist-Semibold;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 19.6px;
+  text-align: center;
+  color: #919191;
+}
+.property__developer_step1_container {
+  display: flex;
+  border-radius: 8px;
+  padding: 20px 26px;
+  background: #f6f6f6;
+  border: none;
+  gap: 20px;
+  width: 100%;
+  margin-top: 10px !important;
+}
+.property__developer_step1_container-1 {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.investor__step1__text {
+  font-family: Urbanist-Medium;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19.6px;
+  text-align: left;
+  white-space: nowrap;
+}
+.step1__form_container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 10px !important;
+}
+.step1__form_container-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.step-1_label_name {
+  font-family: Urbanist-Medium;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19.6px;
+  text-align: left;
+  color: #000000;
+}
+.step-1_placeholder_1 {
+  padding: 13px 24px;
+  border-radius: 8px;
+  border: 1px solid #cdcdcd;
+  font-family: Urbanist-Medium;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22.4px;
+}
+.step-1_placeholder_1::placeholder {
+  color: hsl(0, 0%, 57%);
+}
+.step-1_placeholder_1:focus {
+  outline: none;
+  color: #000000;
+}
+.sign__up__property__developer__container__main
+{
+  display: flex;
+  flex-direction: column;
+  gap:40px
+}
+.phone-input {
+  width: 100% !important;
+  height: 48px !important;
+  border: 1px solid #cdcdcd !important;
+  border-radius: 8px !important;
+  font-size: 16px !important;
+  padding-left: 50px !important; /* Leave space for the flag */
+  font-family: Urbanist-Medium !important;
+  color: #000000 !important;
+}
+.react-tel-input .selected-flag .flag {
+  top: 40% !important;
+}
+.flag-button {
+  border: none;
+  background-color: transparent;
+}
+.react-tel-input .form-control:focus {
+  color: black !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding-left: 50px !important;
+}
+.react-tel-input .country-list .country-name
+{
+  color: #000 !important;
+}
+.react-tel-input .form-control {
+  padding-left: 50px !important;
+}
+.phone-dropdown {
+  font-family: "Urbanist", sans-serif;
+}
+.react-tel-input .selected-flag {
+  background-color: white !important;
+}
+.passwordInput1 {
+  border: none;
+  width: 90%;
+  font-family: Urbanist-Medium;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22.4px;
+}
+
+.passwordInput1::placeholder {
+
+  color: #919191;
+}
+
+.passwordInput1:focus {
+  outline: none;
+  color: #000000;
+
+}
+
+.passwordInputContainer1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 24px;
+  border-radius: 8px;
+  border: 1px solid #cdcdcd;
+}
+
+.passwordInputContainer1:focus {
+  outline: none;
+}
+.next__steps__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 51px;
+  width: 100%;
+  border-radius: 8px;
+  background: var(--Evox-Blue, #139ed5);
+  border: none;
+  font-family: Urbanist-Bold;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25.2px;
+  text-align: center;
+  color: #ffffff !important;
+}
+.have__account_text {
+  font-family: Urbanist;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.3px;
+  text-align: center;
+  color: #919191;
+  margin-bottom: 50px !important;
+}
+.have__account_text-1 {
+  font-family: Urbanist;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.3px;
+  text-align: center;
+  color: #000000;
+  cursor: pointer;
+}
+.step_3_next_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 51px;
+  border-radius: 8px;
+  background: var(--Evox-Blue, #139ed5);
+
+  border: none;
+  font-family: Urbanist-Bold;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25.2px;
+  text-align: center;
+  color: #eff3fa;
+}
+.step_3_next_button:hover
+{
+  opacity: 0.9 !important;
+}
+@media (max-width: 1090px) {
+  .step1_bg_img {
+    max-width: 565px;
+  }
+}
+@media (max-width: 1000px) {
+  .step1_bg_img {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .investor__step1__text {
+    font-size: 12px;
+  }
+  .image-divider-step {
+    display: none;
+  }
+  .property__developer_step1_container {
+    gap: 10px;
+    padding: 20px 10px;
+  }
+  .property__developer_step1_container-1 {
+    gap: 5px;
+  }
+}
+@media(max-width:425px)
+{
+  .step-1_placeholder_1::placeholder {
+   
+    font-size: 13px;
+  
+  }
+  .passwordInput1::placeholder
+  {
+    font-size: 13px;
+  }
+}

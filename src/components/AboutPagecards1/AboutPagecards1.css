@@ -1,0 +1,165 @@
+.Pageaboutcard_main {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #323232;
+    border-radius: 50px;
+    padding: 70px 0px 100px 63px;
+
+    position: relative;
+}
+
+.logoimgae---card {
+    display: none;
+}
+
+.Pageaboutcard_inner {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.Pageaboutcard_inner1 {
+    flex: 0.8;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.Pageaboutcard_main_text1 {
+    font-family: Poppins-Bold !important;
+    font-size: 61.44px;
+    font-weight: 700;
+    line-height: 65px;
+    text-align: left;
+    color: #ffffff;
+    margin: 0px !important;
+}
+
+.Pageaboutcard_main_text2 {
+    font-family: "Poppins-Semibold" !important;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+    text-align: left;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    margin: 0px !important;
+}
+
+.Pageaboutcard_main_text3 {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: left;
+    color: #ffffff;
+    margin: 0px !important;
+    padding-right: 200px;
+}
+
+.card_logo_image {
+    position: absolute;
+    top: 8%;
+    right: 3%;
+}
+
+.Pagecard__image {
+    position: absolute;
+    bottom: 4%;
+    right: 1.5%;
+}
+
+@media(max-width:1370px) {
+    .Pageaboutcard_main_text1 {
+        font-size: 48.44px;
+        line-height: 55px;
+    }
+
+    .Pageaboutcard_main_text2 {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .Pageaboutcard_main_text3 {
+        font-size: 13px;
+        padding-right: 240px;
+    }
+}
+
+@media(max-width:1245px) {
+    .Pageaboutcard_main {
+
+        flex-direction: column;
+        padding: 47px 20px 30px 41px;
+    }
+
+    .logoimgae---card {
+        display: flex;
+    }
+
+    .card_logo_image {
+        display: none;
+    }
+    .Pagecard__image {
+
+        position: unset;
+    }
+}
+
+@media(max-width:1000px) {
+    .Pageaboutcard_main_text1 {
+        font-size: 39px;
+        line-height: 49px;
+    }
+
+    .Pageaboutcard_main_text3 {
+        font-size: 14px;
+        line-height: 22px;
+        padding: 0px;
+    }
+
+    .Pageaboutcard_main_text2 {
+        font-size: 19px;
+        line-height: 30px;
+    }
+
+    .Pageaboutcard_inner {
+        gap: 22px;
+    }
+
+    .Pagecard__image {
+
+        position: unset;
+        transform: translateX(18px) translateY(25px);
+    }
+
+    .Pageaboutcard_main {
+        flex-direction: column;
+        padding: 47px 32px 40px 41px;
+        border-radius: 23px;
+    }
+
+}
+
+@media(max-width:600px) {
+    .Pageaboutcard_main_text1 {
+        font-size: 31px;
+        line-height: 40px;
+    }
+
+    .Pageaboutcard_main_text3 {
+        font-size: 12px;
+        line-height: 18px;
+        padding: 0px;
+    }
+
+    .Pageaboutcard_main_text2 {
+        font-size: 18px;
+        line-height: 27px;
+    }
+
+
+
+}

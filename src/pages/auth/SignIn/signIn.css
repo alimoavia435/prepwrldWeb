@@ -1,0 +1,550 @@
+.SignIn {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+}
+
+.SignIn-div1 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+  align-items: center;
+  background: #323232;
+  border-radius: 30px;
+gap: 30px;
+justify-content: space-between;
+overflow:hidden;
+}
+.SignIn-div1_pppp{
+font-family: Urbanist-Bold;
+font-size: 49.99px;
+font-weight: 700;
+line-height: 53.49px;
+letter-spacing: -0.04em;
+text-align: center;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+color: #ffffff;
+margin: 92px 0px 0px 0px !important;
+}
+.qwere2
+{
+  width: 100%; 
+  height: auto; 
+  object-fit: cover;
+}
+/* .SignIn-div1 img {
+  width: 100%;
+  padding: 20px 0px 20px 20px;
+  height: 100%;
+} */
+.signIn__div__main {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 25px;
+  flex-direction: column;
+  overflow-y: auto;
+  margin-top: 33px !important;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.signIn__div__main::-webkit-scrollbar {
+  display: none;
+}
+
+.SignIn-div2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  align-items: center;
+  max-width: 448px;
+  width: 100%;
+}
+
+.SignIn-div2 img {
+  /* height: 80px; */
+  /* width:74.26px;
+    margin-bottom:40px; */
+}
+
+.welcome__sigin__text_container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.welcome__sigin__text_container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.Headline800 {
+  font-family: "Urbanist";
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.SignIn-P {
+  font-family: Urbanist-Semibold;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 19.6px;
+  text-align: center;
+  color: #919191;
+}
+
+.buttonDivs {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.form__investor__main_container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  margin-top: 10px !important;
+}
+
+.form-group-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.Investor {
+  text-align: center;
+  border-bottom: 2px solid #000000;
+  width: 30%;
+}
+
+.Investor p {
+  font-family: Urbanist-Medium;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 28px;
+  text-align: left;
+}
+
+.propertyDeveloper {
+  text-align: center;
+  border-bottom: 2px solid #000000;
+  width: 30%;
+}
+
+.propertyDeveloper p {
+  font-family: Urbanist-Medium;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 28px;
+  text-align: left;
+}
+
+.imagereal {
+  width: 100%;
+  padding: 20px 0px 20px 20px;
+  height: 100%;
+}
+
+.form-control {
+  height: 48px;
+  border-radius: 8px;
+  border: 1px solid rgba(205, 205, 205, 1);
+  padding-left: 24px !important;
+}
+
+.form-control::placeholder {
+  font-family: Urbanist;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22.4px;
+}
+
+.form-control:focus {
+  outline: none !important;
+}
+
+.input-text-password-investor {}
+
+.form-control {
+  height: 48px;
+  border-radius: 8px;
+  border: 1px solid rgba(205, 205, 205, 1);
+  padding-left: 24px !important;
+}
+
+.form-control::placeholder {
+  font-family: Urbanist;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22.4px;
+}
+
+.form-control:focus {
+  outline: none !important;
+}
+
+.passwordInput::placeholder {
+  font-family: Urbanis-Medium;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22.4px;
+  color: #919191;
+}
+
+.input-text-password-investor {}
+
+.Input {
+  font-size: 14px;
+  font-family: "Urbanist";
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 12px;
+}
+
+::placeholder {
+  color: #919191;
+  font-size: 16px;
+  font-family: "Urbanist";
+  font-weight: 500;
+}
+
+.submitButton {
+  background-color: #139ed5;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Urbanist";
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  height: 50px;
+}
+
+.forgetPassword {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-family: "Urbanist";
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+  text-decoration: none;
+  margin-bottom: 40px;
+}
+
+.forgetPassword:hover {
+  color: #000000;
+}
+
+.full-width-button {
+  width: 100%;
+  background-color: #139ed5;
+  color: white;
+  font-family: "Urbanist";
+  font-weight: 700;
+  font-size: 18px;
+  padding: 13px 24px;
+}
+
+.ordiv {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  justify-content: center;
+  width: 100%;
+}
+
+.hr {
+  flex-grow: 1;
+  border-top: 1px solid #cdcdcd;
+  margin: 0 10px;
+  /* Add margin to create space between the lines and the text */
+}
+
+.or-p {
+  font-family: "Urbanist";
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0 0px;
+  /* Space around the "OR" text */
+  white-space: nowrap;
+  /* Prevent the text from wrapping */
+}
+
+.facebook {
+  cursor: pointer;
+  display: flex;
+  border-radius: 8px;
+  border: 1px solid #cdcdcd;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.facebook img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  margin-bottom: 0;
+}
+
+.facebook p {
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 14px;
+  color: #000000;
+  margin-top: 14px;
+}
+
+.AccountSignUp {
+  margin-top: 24px !important;
+  text-align: center;
+  color: #717184;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Urbanist";
+  text-align: center;
+}
+
+.AccountSignUp p {
+  color: #717184;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Urbanist";
+  text-align: center;
+}
+
+.a {
+  text-decoration: none;
+  color: #000000 !important;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.signinEmailFormContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 10px !important;
+  width: 100%;
+}
+
+.signinEmailFormGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.emailLabelText {
+  font-family: Urbanist-Medium;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19.6px;
+  text-align: left;
+  color: #000000;
+}
+
+.passwordLabelText {
+  font-family: Urbanist-Medium;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19.6px;
+  text-align: left;
+  color: #000000;
+}
+
+.emailInput {
+  height: 48px;
+  padding-left: 24px;
+  border-radius: 8px;
+  border: 1px solid #cdcdcd;
+}
+
+.emailInput::placeholder {
+  font-family: Urbanist-Medium;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22.4px;
+  color: #919191;
+}
+
+.emailInput:focus {
+  /* outline: none; */
+  font-family: Urbanist-Medium;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22.4px;
+  border: 1px solid #cdcdcd;
+  color: #000000;
+}
+
+.passwordInput {
+  border: none;
+  width: 90%;
+
+  font-family: Urbanist-Medium;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22.4px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.passwordInput::placeholder {
+  color: #919191;
+}
+
+.passwordInput:focus {
+  outline: none;
+  color: #000000;
+}
+
+.passwordInputContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 24px;
+  border-radius: 8px;
+  border: 1px solid #cdcdcd;
+}
+
+.passwordInputContainer:focus {
+  outline: none;
+}
+
+.eyeIcon {
+  height: 24px !important;
+  width: 24px !important;
+}
+
+.forgotPasswordText {
+  margin-top: 4px !important;
+  font-family: Urbanist;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+  text-align: left;
+  color: #000000;
+}
+
+.signInButton {
+  margin-top: 16px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 51px;
+  width: 100%;
+  border-radius: 8px;
+  background: var(--Evox-Blue, #139ed5);
+  border: none;
+  font-family: Urbanist-Bold;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25.2px;
+  text-align: center;
+  color: #ffffff;
+}
+.abcextra
+{
+  display: none;
+}
+.social__button__main-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px !important;
+  gap: 16px;
+  max-width: 448px;
+  width: 100%;
+}
+
+.divider-image {
+  width: 201px !important;
+}
+.signInButton:hover
+{
+  opacity: 0.9 !important;
+}
+@media(min-width:1441px) {
+  .imagereal {
+
+    display: none;
+  }
+
+  .abcextra {
+    display: unset !important;
+    width: 100% !important;
+    padding: 20px 0px 20px 20px !important;
+    height: 100% !important;
+  }
+}
+@media(max-width:1240px)
+{
+  .SignIn-div1_pppp {
+    font-size: 40.99px;
+    line-height: 44.49px;
+}
+}
+@media (max-width: 1090px) {
+  .imagereal {
+    max-width: 550px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .imagereal {
+    display: none;
+  }
+
+  .SignIn-div1 {
+    display: none;
+  }
+
+  .signIn__div__main {
+    width: 100%;
+  }
+}
+
+@media (max-width: 530px) {
+  .divider-image {
+    width: 120px !important;
+  }
+}
+
+@media(max-width:425px) {
+  .SignIn-div2 {
+    gap: 25px
+  }
+  .emailInput::placeholder 
+  {
+    font-size: 13px;
+  }
+}
+@media(max-width:425px)
+{
+    .passwordInput::placeholder
+    {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 400px) {
+  .Investor p {
+    font-size: 15px;
+  }
+
+  .propertyDeveloper p {
+    font-size: 14px !important;
+  }
+}

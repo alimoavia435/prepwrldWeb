@@ -1,0 +1,437 @@
+.signIn__div__main {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 25px;
+  flex-direction: column;
+  overflow-y: auto;
+  margin-top: 33px !important;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.signIn__div__main::-webkit-scrollbar {
+  display: none;
+}
+
+.SignUp {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  padding: 20px;
+}
+
+.SignUp-div1 {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.SignUp-div1 img {
+  width: 100%;
+  padding: 20px 0px 20px 20px;
+  height: 100%;
+}
+
+.signUp__div__main {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 25px;
+  flex-direction: column;
+  overflow-y: scroll;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+  margin-top: 33px !important;
+}
+
+.signUp__div__main::-webkit-scrollbar {  
+  display: none;
+}
+
+.SignUp-div2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  align-items: center;
+  max-width: 448px;
+  width: 100%;
+}
+
+.SignUp-div2 img {
+  /* height: 80px;
+    width:74.26px;
+    margin-bottom:40px; */
+}
+
+.welcome__signup__text_container-1 {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  /* Ensure gap is applied */
+}
+
+.Headline800 {
+  font-family: "Urbanist-Bold";
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.SignUp-P {
+  margin-top: 0;
+  font-family: "Urbanist";
+  font-size: 14px;
+  font-weight: 600;
+  color: #919191;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.buttonDivs {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.ordiv {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  justify-content: center;
+  width: 100%;
+  gap: 16px;
+}
+
+.hr {
+  flex-grow: 1;
+  border-top: 1px solid #cdcdcd;
+  margin: 0 10px;
+  /* Add margin to create space between the lines and the text */
+}
+
+.or-p {
+  font-family: Urbanist-Medium;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0 0px;
+  /* Space around the "OR" text */
+  white-space: nowrap;
+  /* Prevent the text from wrapping */
+}
+
+.social__button__main-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  gap: 16px;
+  max-width: 448px;
+  width: 100%;
+}
+
+.facebook {
+  height: 48px;
+  display: flex;
+  border-radius: 8px;
+  border: 1px solid #cdcdcd;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.facebook img {
+  padding-top: 0 !important;
+  width: 24px !important;
+  height: 24px !important;
+  margin-right: 10px !important;
+}
+
+.facebook p {
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 14px;
+  color: #000000;
+  margin-top: 14px;
+}
+
+.AccountSignUp {
+  margin-top: 40px;
+}
+
+.AccountSignUp p {
+  color: #919191;
+  font-family: Urbanist;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.3px;
+  text-align: center;
+}
+
+.a {
+  text-decoration: none;
+  color: #000000 !important;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.form-check-label {
+  font-family: "Urbanist";
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.submitButton {
+  background-color: #139ed5;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Urbanist";
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  height: 50px;
+}
+
+.custom-select {
+  font-family: "Urbanist";
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.custom-select:focus {
+  border-color: #007bff;
+  /* Change border color on focus */
+  outline: none;
+  /* Remove default outline */
+}
+
+.signinEmailFormContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 10px !important;
+  width: 100%;
+}
+
+.signinEmailFormGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.emailLabelText {
+  font-family: Urbanist-Medium;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19.6px;
+  text-align: left;
+  color: #000000;
+}
+
+.passwordLabelText {
+  font-family: Urbanist-Medium;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19.6px;
+  text-align: left;
+  color: #000000;
+  margin-top: 12px !important;
+}
+
+.emailInput {
+  height: 48px;
+  padding-left: 24px;
+  border-radius: 8px;
+  border: 1px solid #cdcdcd;
+  font-family: Urbanist-Medium;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22.4px;
+}
+
+.emailInput::placeholder {
+
+  color: #919191;
+}
+
+.Origin option {
+  width: 90% !important;
+  color: #919191;
+  /* This controls the width of each option */
+}
+
+.emailInput:focus {
+  outline: none;
+   color: #000;
+}
+
+.Origin:focus {
+  outline: none;
+  color:#000
+}
+
+.originContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 4px 13px 24px;
+  border-radius: 8px;
+  border: 1px solid #cdcdcd;
+}
+
+.passwordInput {
+  border: none;
+  width: 90%;
+  font-family: Urbanist-Medium;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22.4px;
+  appearance: none; /* Hides default password icon in modern browsers */
+  -webkit-appearance: none; /* Hides in WebKit browsers (e.g., Safari) */
+  -moz-appearance: none; 
+}
+
+.passwordInput::placeholder {
+ color: #919191;
+}
+
+.passwordInput:focus {
+  
+  outline: none !important;
+  color: #000 !important;
+
+}
+
+.passwordInputContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 24px;
+  border-radius: 8px;
+  border: 1px solid #cdcdcd;
+}
+
+.passwordInputContainer:focus {
+  outline: none;
+  color: #000;
+}
+
+.eyeIcon {
+  height: 24px !important;
+  width: 24px !important;
+}
+
+.originContainer {
+  position: relative;
+  width: 100%;
+}
+
+.selectWrapper {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+}
+
+.Origin.selected {
+  color: black;
+  /* White text for better contrast */
+}
+
+.Origin {
+  width: 100%;
+  color: #919191;
+  -webkit-appearance: none;
+  /* Remove default arrow */
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  font-size: 16px;
+  background-color: transparent;
+}
+
+.OriginIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 24px !important;
+  height: 8px !important;
+  pointer-events: none;
+}
+
+.termsConditionsContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.termsCheckbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  padding: 5px;
+  accent-color: #139ed5;
+  /* Change the checkbox color to match the image */
+  color: white;
+}
+
+.termsLabel {
+  font-size: 14px;
+  color: #000;
+  font-family: "Urbanist";
+  font-weight: 400;
+}
+
+.Origin option[value=""][disabled] {
+  color: #919191;
+  /* Set the color to gray for the disabled option */
+}
+
+
+
+
+
+
+@media (max-width: 1090px) {
+  .SignUp-div1 img {
+    max-width: 550px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .SignUp-div1 img {
+    display: none;
+  }
+
+  .SignUp-div1 {
+    display: none;
+  }
+
+  .signUp__div__main {
+    width: 100%;
+  }
+  .signIn__div__main
+  {
+    width: 100%;
+  }
+
+}
+@media(max-width:425px)
+{
+    .passwordInput::placeholder
+    {
+        font-size: 13px;
+    }
+}
+@media (max-width: 400px) {
+  .Investor p {
+    font-size: 15px;
+  }
+
+  .propertyDeveloper p {
+    font-size: 13px !important;
+  }
+}

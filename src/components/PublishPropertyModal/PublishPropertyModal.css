@@ -1,0 +1,200 @@
+.modal-content {
+    top: 35%;
+    background-color: #fff !important;
+    padding: 20px;
+    /* width:fit-content !important; */
+    /* height: 336px !important; */
+    text-align: center;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    /* gap: 20px; */
+    /* padding: 80px 50px; */
+}
+.pUBLISHmODALdIV{
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    width: 400px;
+}
+.PublisModalMain-Content{
+    padding-left: 26px;
+    padding-right: 26px;
+    padding-bottom: 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+}
+.Property-Modal-Detail-S{
+    border: 1px solid #D8D8D8;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 8px;
+}
+.Image-Publish-modal-Image{
+    width: 300px;
+    height: 217px;
+    border-radius: 9.31px;
+}
+.Publish-Modal-Main-Conetn-Div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Serenity-Name-Publish-Modal{
+    font-family: Urbanist-SemiBold;
+font-weight: 600;
+font-size: 18.63px;
+line-height: 150%;
+letter-spacing: 0%;
+color: #000000;
+}
+.Price-Publish-Modal-Property{
+    font-family: Urbanist;
+font-weight: 500;
+font-size: 16px;
+line-height: 100%;
+letter-spacing: 0%;
+color:  var(--Evox-Blue, #139ED5);
+}
+.Publish-Property-Details-Lines-Desc{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.Property-DEtail-Modal-Side-Title{
+    font-family: Urbanist;
+font-weight: 400;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 0%;
+color: #919191;
+}
+.Property-Detail-Modal-Valuess{
+    font-family: Urbanist-Medium;
+font-weight: 500;
+font-size: 16px;
+line-height: 100%;
+letter-spacing: 0%;
+color: #000000;
+}
+.Publish-property-ParaMain{
+    font-family: Urbanist;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+letter-spacing: 0%;
+text-align: center;
+color: #535353;
+}
+.Publish-ModaL-Buttons-Divs{
+    display: flex;
+    gap: 10px;
+}
+.Publish-Modal-Cancel-ModalBlackWhite{
+    border: 1px solid #919191;
+    background-color: transparent;
+    width: 165px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Urbanist-SemiBold;
+font-weight: 600;
+font-size: 14px;
+line-height: 145%;
+letter-spacing: 0%;
+color: #000000;
+border-radius: 8px;
+}
+.Publish-Modal-Publish-BlueButton{
+    width: 165px;
+    background: var(--Evox-Blue, #139ED5);
+    border-radius: 8px;
+    font-family: Urbanist-SemiBold;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 145%;
+    letter-spacing: 0%;
+color: #FFFFFF;
+height: 44px;
+border: none;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+
+
+@media (max-width:768px){
+    .modal-content{
+        width: 100% !important;
+    }
+    .pUBLISHmODALdIV {
+        width: 100% ;
+    }
+    .Image-Publish-modal-Image {
+        width: 100%;
+    }
+    .Publish-Modal-Publish-BlueButton {
+        width: 100%;
+    }
+    .Publish-Modal-Cancel-ModalBlackWhite {
+        width: 100%;
+    }
+}
+@media(max-width:500px){
+    .pUBLISHmODALdIV {
+        gap: 24px;
+    }
+.PublisModalMain-Content {
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 20px;
+}
+.Property-Modal-Detail-S {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.Serenity-Name-Publish-Modal {
+    font-size: 16px;
+    line-height: unset;
+}
+.Price-Publish-Modal-Property {
+    font-size: 14px;
+    line-height: unset;
+}
+.Publish-property-ParaMain {
+    font-size: 16px;
+    line-height: unset;
+}
+.Property-DEtail-Modal-Side-Title {
+    font-size: 12px;
+    list-style: unset;
+}
+.Property-Detail-Modal-Valuess {
+    font-size: 14px;
+    line-height: unset;
+}
+}
+@media(max-width:360px){
+    .Serenity-Name-Publish-Modal {
+        font-size: 14px;
+        line-height: unset;
+    }
+    .Price-Publish-Modal-Property {
+        font-size: 12px;
+        line-height: unset;
+    }
+    .Image-Publish-modal-Image {
+        height: 182px;
+    }
+}

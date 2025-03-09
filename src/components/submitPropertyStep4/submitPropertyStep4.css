@@ -1,0 +1,101 @@
+.submit__property__step4__main__container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.submit__property__step4__main__container_1 {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  max-width: 840px;
+  border: 1px solid #cdcdcd;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.submit__property__step4__main__container_2 {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+  .kyc__info__profile__submit__button {
+    padding: 12px 48px;
+    border-radius: 8px;
+    background: var(--Evox-Blue, #139ed5);
+    border: transparent;
+    font-family: Urbanist-Semibold;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20.3px;
+    text-align: center;
+    color: #ffffff;
+    white-space: nowrap;
+    width: 182px !important;
+}
+
+.underline-text {
+  font-family: Urbanist-Medium;
+  color: #000000;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20.3px;
+  letter-spacing: 0px;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-offset: Auto;
+  text-decoration-thickness: Auto;
+cursor: pointer;
+  text-decoration: underline;
+}
+.submit__property__step4__form__container_2 {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+.submit__property__step4__form__container_1 {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+}
+.submit__property__step4__form__label {
+  font-family: Urbanist-Medium;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20.3px;
+  text-align: left;
+  color: #000;
+}
+.checkbox__text__heading__step4_container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.checkbox__text__heading__step4 {
+  font-family: Urbanist-Medium;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20.3px;
+  text-align: left;
+  color: #919191;
+}
+@media (min-width: 1450px) {
+  .submit__property__step4__main__container_1 {
+    max-width: unset;
+  }
+}
+@media (max-width: 1000px) {
+  .submit__property__step4__form__container_2 {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 425px) {
+  .submit__property__step4__main__container_1 {
+    padding: 20px;
+  }
+}
+@media (max-width: 350px) {
+  .checkbox__text__heading__step4 {
+    font-size: 12px;
+    line-height: 17px;
+  }
+}

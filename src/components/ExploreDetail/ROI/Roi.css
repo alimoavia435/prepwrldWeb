@@ -1,0 +1,87 @@
+.RoiContainer{
+    background-color: #F1F1F1;
+    border-radius: 50px;
+    padding:80px 82px 80px 82px;
+    display: flex;
+    flex-direction: column;
+    gap: 92px;
+    align-items: center;
+}
+.headingandbutton {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+.RoiHeading {
+  font-family: "Urbanist-Bold";
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 46px;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #000000;
+}
+.Roi__Buttons,
+.Roi__Buttons_weekly,
+.Roi__Buttons_weekly2 {
+  font-family: "Urbanist-Medium";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  color: #000000;
+  padding: 12px 28.5px !important;
+  border-radius: 8px;
+  border: 1px solid #d0d0d0;
+  background-color: transparent;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 128px;
+}
+.Roi__Buttons_weekly {
+    padding: 12px 33px !important;
+  }
+  .Roi__Buttons_weekly2{
+    padding: 12px 28px !important;
+  }
+
+  .active {
+    background-color: #139ED5 !important; /* Sky blue background when clicked */
+    color: #FFFFFF !important;              /* White text when clicked */
+  }
+  @media (max-width:700px){
+    .Roi__Buttons{
+        padding: 8px 20px !important;
+
+    }
+    .Roi__Buttons_weekly{
+        padding: 8px 22px !important;
+
+    }
+    .Roi__Buttons_weekly2{
+        padding: 8px 22px !important;
+    }
+}
+@media (max-width: 768px) {
+  .RoiContainer {
+    border-radius: 0px;
+    padding: 40px;
+  }
+}
+@media (max-width:600px){
+    .RoiContainer{
+        padding: 20px;
+    }
+    .RoiHeading{
+        font-size: 31px;
+        white-space:nowrap ;
+    }
+    /* .Buttons__ContainerEStimate {
+        display: flex
+    ;
+        justify-content: flex-start !important;
+        align-items: center;
+        gap: 12px;
+    } */
+}

@@ -1,0 +1,95 @@
+
+.BuyNowModel{
+    width: 600px;
+height: 242px;
+border-radius: 15px;
+background: #FFFFFF;
+border: 0.5px solid;
+border-image-source: linear-gradient(72.44deg, #0555EC 0%, #2B74FF 100%);
+}
+
+.ModelValletconMain_DivCloseee {
+    display: flex
+;
+    flex-direction: row;
+    justify-content: end;
+}
+.ModelValletconMainDiiv222 {
+    display: flex
+;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.ModelValletconMainDiv2_Pp33 {
+    font-family: "Urbanist-Medium";
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16.26px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
+    margin: 0px !important;
+}
+.ModelValletconMainDiv2_divcardtoppp {
+    max-width: 426.44px;
+    width: 100%;
+    display: flex
+;
+    flex-direction: row;
+    gap: 7.56px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px !important;
+}
+.ModelValletconMainDiv2_divcarrd {
+    width: 50%;
+    height: 116.71px;
+    border-radius: 8px;
+    border: 0.8px solid #CDCDCD;
+    display: flex
+;
+    flex-direction: column;
+    gap: 7.99px;
+    align-items: center;
+    justify-content: center;
+}
+.ModelValletconMainDiv2_divcarrd:hover{
+    border: 0.8px solid var(--Evox-Blue, #139ED5);
+}
+
+
+.ModelValletconMainDiv2_divcarrd1 {
+    width: 50%;
+    height: 116.71px;
+    border-radius: 8px;
+    border: 0.8px solid #CDCDCD;
+    display: flex
+;
+    flex-direction: column;
+    gap: 7.99px;
+    align-items: center;
+    justify-content: center;
+}
+.ModelValletconMainDiv2_divcarrd1:hover{
+    border: 0.8px solid var(--Evox-Blue, #139ED5);
+}
+
+.ModelValletconMainDiv2_divcarrd_P {
+    font-family: "Urbanist-SemiBold";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18.97px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
+    text-transform: uppercase;
+    margin: 0px !important;
+}
+@media (max-width: 400px) {
+    .ModelValletconMainDiv2_divcarrd_P {
+        font-size: 12px;
+    }
+}

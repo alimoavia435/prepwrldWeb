@@ -1,0 +1,128 @@
+.over-view-outer-box {
+  width: 664px;
+  padding: 60px 60px 30px 60px;
+  gap: 10px;
+  border-radius: 20px;
+  background-color: #ebeaea;
+}
+.p-over-view {
+  color: #000000;
+  font-family: "Urbanist-Bold";
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 42px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-bottom: 40px;
+  /* padding: 60px; */
+}
+.sea__side__main__container
+{
+margin-bottom: 30px !important;
+}
+.sea-side-text {
+  font-family: "Urbanist-Bold";
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 36px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: black;
+  padding-bottom: 10px;
+
+}
+
+.eth-num {
+  font-family: "Urbanist-SemiBold";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16.6px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-bottom: 5px;
+}
+.eth-price {
+  font-family: "Urbanist";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16.6px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #919191;
+  padding-bottom: 5px;
+}
+.Fraction {
+  color: #919191;
+  font-family: "Urbanist";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16.6px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-bottom: 30px;
+  border-bottom: 1px dashed #CDCDCD;
+}
+.hr-stlying {
+  padding: 30px 0px;
+  border-top: 1px dashed #cdcdcd !important;
+}
+.amenities-outer-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.Amenities {
+  border: 1px solid #cdcdcd;
+  width: fit-content;
+  height: 44px;
+  padding: 10px 25px 10px 25px;
+  gap: 10px;
+  border-radius: 8px;
+  display: flex;
+  margin-bottom: 30px !important;
+}
+.Amenities p {
+  font-family: "Urbanist-Medium";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #000000;
+}
+.Amenities img{
+  width: 18px !important;
+  height: 18px !important;
+}
+@media (max-width: 786px) {
+  .over-view-outer-box {
+    width: 100% !important;
+  }
+  .over-view-outer-box {
+    padding: 20px !important;
+}
+}
+@media (max-width: 430px) {
+
+  .Amenities p {
+    font-size: 13px;
+  }
+
+  .p-over-view{
+    font-size: 24px !important;
+  }
+}
+@media (max-width: 375px) {
+  .over-view-outer-box {
+    width: 100% !important;
+  }
+}

@@ -1,0 +1,284 @@
+.test{
+  width: 100%;
+}
+.Explore_Images {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  padding: 0px 32px 0px 41px;
+}
+.Explore_Images_1 {
+  border-radius: 53.29px;
+  background: #323232;
+  padding: 149px 68px 118px 69px;
+  display: flex;
+  flex-direction: column;
+  gap: 33px;
+}
+.Explore_Images_1_P1 {
+  font-family: Urbanist-Semibold;
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 41.8px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #ffffff;
+  margin: 0px !important;
+}
+.Explore_Images_1_P2 {
+  font-family: Urbanist;
+  font-size: 16.43px;
+  font-weight: 400;
+  line-height: 27.2px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #ffffff;
+  margin: 0px !important;
+}
+
+.Explore_Images_1_Btn {
+  margin-top: 26px !important;
+  width: 189.37px;
+  height: 62px;
+  /* padding: 27.65px 20.11px 27.65px 20.11px; */
+  border-radius: 21.79px;
+  background: var(--Evox-Blue, #139ed5);
+  font-family: Satoshi;
+  font-size: 15.08px;
+  font-weight: 700;
+  line-height: 20.11px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #ffffff;
+  border: none;
+}
+
+.Explore_Images_1_Btn:hover{
+  opacity: 0.9;
+}
+
+
+/* ..... */
+
+.Explore_ImagesDiv1_iimg {
+  margin-top: -20px !important;
+
+  margin-left: -36px !important;
+}
+.cvbn {
+  /* height: 623px; */
+}
+
+.Explore_ImagesDiv1 {
+  margin-top: 64px !important;
+  /* margin: 64px 0px 0px 70px !important; */
+  /* height: 757px; */
+  border-radius: 57.42px;
+  background: #f7f8f8;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.Explore_ImagesDiv1_1 {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+  padding: 0px 126px 0px 0px;
+}
+
+.Explore_ImagesDiv1_1_p1 {
+  font-family: Urbanist;
+  font-size: 19.41px;
+  font-weight: 400;
+  line-height: 20.5px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: var(--Black, #323232);
+  margin: 0px 0px 4px 0px !important;
+}
+.Explore_ImagesDiv1_1_p2 {
+  font-family: Urbanist-Semibold;
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 42.56px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: var(--Black, #323232);
+  margin: 0px !important;
+}
+.Explore_ImagesDiv1_1_p3 {
+  font-family: Urbanist;
+  font-size: 13.85px;
+  font-weight: 400;
+  line-height: 21.64px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: var(--Black, #323232);
+  margin: 0px !important;
+}
+.Explore_ImagesDiv1_1_btn {
+  width: 193.06px;
+  height: 63.21px;
+  /* padding: 28.19px 20.5px 28.19px 20.5px; */
+  border-radius: 22.21px;
+  background: var(--Evox-Blue, #139ed5);
+  border: none;
+  font-family: Urbanist-Bold;
+  font-size: 15.38px;
+  font-weight: 700;
+  line-height: 20.5px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: var(--Evox-White, #fbfafa);
+}
+
+.Explore_ImagesDiv1_1_btn:hover{
+  opacity: 0.9;
+}
+
+
+
+.middle_img
+{
+    display: none;
+    width: 100%;
+    border-radius: 29px;
+    margin-top: 30px !important;
+    height: 360px;
+}
+
+
+@media (max-width: 1230px) {
+  .Explore_Images_1 {
+    padding: 80px 50px 75px 50px;
+  }
+  .Explore_Images_1_P1 {
+    font-size: 35px;
+  }
+  .Explore_ImagesDiv1_1 {
+    padding: 0px 50px 0px 0px;
+  }
+  .Explore_ImagesDiv1_1_p2 {
+    font-size: 33px;
+  }
+  .Explore_ImagesDiv1_iimg {
+    height: 620px;
+  }}
+  @media (max-width: 1080px) {
+    .Explore_Images {
+      padding: 0px 0px 0px 0px ;
+    }
+    .Explore_ImagesDiv1 {
+        flex-direction: column;
+    }
+    .Explore_ImagesDiv1_iimg {
+        width: 70%;
+        align-self: center;
+        margin-left: 0px !important;
+    }
+    .Explore_ImagesDiv1_1 {
+        padding: 20px 75px 50px 75px;
+    }
+    .middle_img
+{
+    display: unset;
+}
+.cvbn {
+    display: none;
+}
+  }
+
+  @media(max-width: 770px) {
+    .Explore_ImagesDiv1_iimg {
+        height: 550px;
+    }
+    .Explore_ImagesDiv1_1 {
+        padding: 20px 40px 40px 40px;
+    }
+
+    .Explore_Images_1_P1 {
+        font-size: 28px;
+            }
+    .Explore_Images_1_P2 {
+font-size: 14px;
+    }
+    .Explore_ImagesDiv1_1_p2 {
+        font-size: 28px;
+    }
+    .Explore_ImagesDiv1_1_p3 {
+        font-size: 12px;
+    }
+    .Explore_Images_1 {
+        padding: 55px 40px 55px 40px;
+    }
+    .middle_img {
+height: 280px;
+    }
+  
+  }
+
+
+  @media(max-width: 530px) {
+
+    .Explore_ImagesDiv1_iimg {
+
+height: 300px;
+width: 87%;
+
+    }
+
+    .Explore_Images_1_P1{
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    .Explore_Images_1_P2{
+      font-size: 14px;
+      line-height: 20px;
+    }
+   
+    .Explore_ImagesDiv1_1_p2 {
+        font-size: 23px;
+        line-height: 30px;
+    }
+
+    .Explore_Images_1{
+      padding: 35px 30px;
+      border-radius: 30px;
+      gap:24px;
+    }
+
+    .Explore_Images_1_Btn{
+      width: 100%;
+      margin-top: 0 !important;
+      font-family: "Urbanist-Medium";
+      height: 45px;
+      border-radius: 12px;
+    }
+
+    .Explore_ImagesDiv1_1{
+      padding: 20px;
+    }
+
+    .Explore_ImagesDiv1{
+      border-radius: 42px;
+    }
+
+    .Explore_ImagesDiv1_1_btn{
+      height: 50px;
+      font-family: "Urbanist";
+    }
+
+  }

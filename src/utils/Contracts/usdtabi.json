@@ -1,0 +1,552 @@
+[
+  {
+    "inputs": [],
+    "name": "InvalidInitialization",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotInitializing",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnableInvalidOwner",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "OwnableUnauthorizedAccount",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "version",
+        "type": "uint64"
+      }
+    ],
+    "name": "Initialized",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "PropertyID",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "PropertyURI",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "availableFractions",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "purchaseFractions",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "totalFractions",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "claimAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "claimer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "claimTime",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "purchasingTime",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "PropertyInfo",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "buyer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "PropertyAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "PropertyID",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "PurchasingTime",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "PropertyURI",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "investmentAmountInNative",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "investmentAmountInEVOX",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "purchaseFractions",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "availableFractions",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "totalFractions",
+        "type": "uint256"
+      }
+    ],
+    "name": "UserBuyProperty",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "PropertyName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "PropertyDeveloper",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "Property",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "perFractionPriceInNative",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "perFractionPriceInEVOX",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "PropertyUri",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "PropertyFractions",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "PropertyID",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_ROIPercentage",
+        "type": "uint256"
+      }
+    ],
+    "name": "deployedProperty",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "contractCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_propertyName",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_perFractionPriceInNative",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_perFractionPriceInEVOX",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_propertyUri",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "fractions",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_ROIPercentage",
+        "type": "uint256"
+      },
+      {
+        "internalType": "contract IERC20",
+        "name": "_EVOXToken",
+        "type": "address"
+      },
+      {
+        "internalType": "contract IERC20",
+        "name": "_usdtTokenAddress",
+        "type": "address"
+      }
+    ],
+    "name": "deployNewProperty",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "deployedContractAddresses",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "initialize",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "propertyID",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "propertyURI",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "availableFractions",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "purchaseFractions",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "totalFractions",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "claimAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "claimer",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "claimTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "purchasingTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "propertyInfo",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "propertyAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "propertyID",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "propertyUri",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "purchasingTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "investmentAmountInEVOX",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "investmentAmountInNative",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "purchaseFractions",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "availableFractions",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "totalFractions",
+        "type": "uint256"
+      }
+    ],
+    "name": "updateUserPortfolio",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "userPortfolios",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "propertyAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "PropertyID",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "propertyUri",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "purchasingTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "investmentAmountInEVOX",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "investmentAmountInNative",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "purchaseFractions",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

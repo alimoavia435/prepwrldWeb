@@ -1,0 +1,120 @@
+.kyc__investor__profile__step3__main_container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.kyc__investor__profile__step3__main_container__1 {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  max-width: 840px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(205, 205, 205);
+  border-image: initial;
+  padding: 32px;
+}
+.kyc__investor__profile__step3__form_container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.kyc__investor__profile__step3__form_container1 {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+}
+.kyc__investor__profile__step3__form_container__main {
+  display: flex;
+  gap: 24px;
+}
+.kyc__investor__profile__step3__input_container1 {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+}
+.kyc__investor__profile__step3__input-label {
+  font-family: Urbanist-Medium;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20.3px;
+  text-align: left;
+  color: #000;
+}
+.kyc__investor__profilestep3__input__field {
+  padding: 14px 24px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #cdcdcd;
+  width: 100%;
+  font-family: Urbanist;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.3px;
+  width: 378px;
+}
+.kyc__investor__profilestep3__input__field::placeholder {
+  font-family: Urbanist-Medium;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 23.2px;
+  text-align: left;
+  color: #919191;
+}
+.kyc__investor__profilestep3__input__field:focus {
+  color: #000;
+  outline: none;
+}
+.kyc__investor__profile__step3__input__span {
+  font-family: Urbanist-Medium;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 17.4px;
+  text-align: left;
+  color: #919191;
+}
+.kyc__info__stepsprofile3__button__container_investor {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.extrdivforinputInvestor {
+  font-family: Urbanist-Medium;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.3px;
+  text-align: left;
+  border: none;
+  width: 100%;
+}
+.extrdivforinputInvestor:focus
+{
+  outline: none !important;
+
+}
+@media (min-width: 1450px) {
+  .kyc__investor__profile__step3__main_container__1 {
+    max-width: unset;
+  }
+  .kyc__investor__profilestep3__input__field {
+    width: 100%;
+  }
+}
+@media (max-width: 1100px) {
+  .kyc__investor__profile__step3__form_container__main {
+    flex-wrap: wrap;
+  }
+  .kyc__investor__profilestep3__input__field {
+    width: 49%;
+  }
+}
+
+@media (max-width: 410px) {
+  .kyc__investor__profile__step3__main_container__1 {
+    padding: 20px;
+  }
+  
+}
+

@@ -1,0 +1,317 @@
+.DEV_updates_main_div{
+    /* width: 1284px; */
+    width: 100%;
+/* height: 1581px; */
+padding: 80px;
+border-radius: 50px;
+
+display: flex;
+flex-direction: column;
+/* gap: 70px; */
+gap: 55px;
+background: #F1F1F1;
+
+}
+
+
+.DEV_updates_main_div_first_p{
+font-family: "Urbanist-Bold";
+font-size: 36px;
+font-weight: 700;
+line-height: 46px;
+letter-spacing: 0.01em;
+text-align: center;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+color: #000000;
+margin: 0px !important;
+
+}
+
+.DEV_updates_main_div_first_div{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.DEV_updates_main_div_first_div_first{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}
+
+.DEV_updates_main_div_first_div_first_Ptag{
+font-family: "Urbanist-Bold";
+font-size: 36px;
+font-weight: 700;
+line-height: 46px;
+letter-spacing: 0.01em;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+color: #000000;
+margin: 0px !important;
+}
+.DEV_updates_main_div_first_div_first_Ptag1{
+    font-family: Urbanist;
+font-size: 14px;
+font-weight: 400;
+line-height: 22px;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+color: #919191;
+margin: 0px !important;
+}
+.DEV_updates_main_div_first_div_first_div{
+    margin-top: 15px !important;
+display: flex;
+flex-direction: row;
+align-items: center;
+gap: 10px;
+}
+
+.DEV_updates_main_div_first_div_first_div1{
+    width: 182px;
+    height: 46px;
+    /* padding: 0px 10px 0px 10px; */
+
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+
+
+    border-radius: 8px;
+    background: #CDCDCD80;
+    border: 1px solid #CDCDCCDD;    
+
+    font-family: "Urbanist-Medium";
+font-size: 16px;
+font-weight: 500;
+line-height: 46px;
+letter-spacing: 0.01em;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+color: #000000;
+white-space: nowrap;
+
+}
+
+.DEV_updates_main_div_first_div_first_div2{
+    width: 103px;
+height: 46px;
+/* padding: 0px 26.5px 0px 26.5px; */
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+border-radius: 8px;
+background: #CDCDCD80;
+border: 1px solid #CDCDCCDD;
+
+font-family: "Urbanist-Medium";
+font-size: 16px;
+font-weight: 500;
+line-height: 46px;
+letter-spacing: 0.01em;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+color: #000000;
+white-space: nowrap;
+
+}
+
+.DEV_updates_main_div_firsttt{
+    display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+
+}
+.DEV_updates_main_div_firsttt_1{
+    display: flex;
+    flex-direction: column;
+    /* gap: 15px; */
+    gap: 5px;
+
+}
+.DEV_updates_main_div_firsttt_1_p1{
+    font-family: "Urbanist-SemiBold";
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: 0%;
+    color: #000000;
+margin: 0px !important;
+
+    
+}
+.DEV_updates_main_div_firsttt_1_p2{
+    font-family: "Urbanist-Medium";
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19.2px;
+    letter-spacing: 0%;
+    color: #919191;
+    margin: 0px !important;
+}
+.DEV_updates_main_div_firsttt_1_btn{
+    width: 133.61428833007812px;
+height: 42.630001068115234px;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+background: var(--Evox-Blue, #139ED5);
+margin: 0px !important;
+font-family: "Urbanist-Medium";
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: 0%;
+color: #FFFFFF;
+border: none;
+
+}
+
+
+@media(max-width:800px){
+    .DEV_updates_main_div{
+        padding: 40px;
+        gap: 45px;
+    }
+    .DEV_updates_main_div{
+        gap: 35px;
+    }
+
+}
+@media(max-width:550px){
+    .DEV_updates_main_div_firsttt{
+        display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+    justify-content: space-between;
+    
+    }
+    .DEV_updates_main_div_firsttt_1_btn {
+        width: 100%;
+        height: 42.630001068115234px;
+    }
+    .DEV_updates_main_div_firsttt_1_p1 {
+        font-family: "Urbanist-SemiBold";
+        font-weight: 600;
+        font-size: 22px;
+    }
+    .DEV_updates_main_div_firsttt_1_p2 {
+        font-family: "Urbanist-Medium";
+        font-weight: 500;
+        font-size: 15px;
+    }
+}
+
+
+
+
+@media(max-width:500px){
+
+
+
+
+
+    .DEV_updates_main_div {
+        padding: 30px;
+        gap: 17px;
+        border-radius: 30px;
+    }
+
+    .DEV_updates_main_div_first_p{
+        font-size: 28px;
+    }
+  
+    .DEV_updates_main_div_first_div_first{
+       gap: 10px;
+    }
+    .DEV_updates_main_div_first_div_first_Ptag{
+        font-size: 22px;
+    }
+    .DEV_updates_main_div_first_div_first_Ptag1{
+        font-size: 12px;
+    }
+
+    .DEV_updates_main_div_first_div_first_div2,
+    .DEV_updates_main_div_first_div_first_div1{
+        font-size: 14px;
+    }
+
+
+
+}
+
+
+
+
+@media(max-width:400px){
+    .DEV_updates_main_div {
+        padding: 22px;
+        gap: 15px;
+    }
+
+    .DEV_updates_main_div_first_p{
+        font-size: 22px;
+        margin-bottom: -18px !important;
+    }
+  
+    .DEV_updates_main_div_first_div_first{
+       gap: 1px;
+    }
+    .DEV_updates_main_div_first_div_first_Ptag{
+        font-size: 18px;
+    }
+    .DEV_updates_main_div_first_div_first_Ptag1{
+        font-size: 12px;
+    }
+
+    .DEV_updates_main_div_first_div_first_div1{
+width: 145px;
+height: 40px;
+font-size: 13px;
+    }
+
+ .DEV_updates_main_div_first_div_first_div2{
+    width: 94px;
+    height: 40px;
+    font-size: 13px;
+    }
+
+    .DEV_updates_main_div_first_div_first_Ptag1 {
+        font-size: 11px;
+    }
+    
+}
+
+
+@media(max-width:350px){
+    .DEV_updates_main_div {
+        padding: 22px;
+        gap: 12px;
+    }
+.DEV_updates_main_div_first_div_first_div{
+gap: 5px;
+}
+.DEV_updates_main_div_first_div_first_div1 {
+    width: 140px;
+    height: 40px;
+    font-size: 12px;
+}
+.DEV_updates_main_div_first_div_first_div2 {
+    width: 89px;
+    height: 40px;
+    font-size: 12px;
+}
+
+}

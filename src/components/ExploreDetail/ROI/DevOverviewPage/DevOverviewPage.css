@@ -1,0 +1,94 @@
+.DevOverviewPage_div{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+}
+.DevOverviewPage_div_1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    padding-bottom: 30px;
+    border-bottom: 1px dashed #CDCDCD;
+
+}
+
+.DevOverviewPage_div_11{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+
+.DevOverviewPage_div_1_p1{
+    font-family: Urbanist;
+font-weight: 400;
+font-size: 20px;
+line-height: 16.6px;
+letter-spacing: 0%;
+color: #737373;
+margin: 0px !important;
+
+}
+.DevOverviewPage_div_1_p2{
+
+    font-family: "Urbanist-SemiBold";
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 16.6px;
+    letter-spacing: -3%;
+    color: #000000;
+    margin: 0px !important;
+  
+}
+
+.DevOverviewPage_div_1_p11{
+    font-family: Urbanist;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 16.6px;
+    letter-spacing: 0%;
+    color: #000000;
+margin: 0px !important;
+}
+
+.DevOverviewPage_div_1_p21{
+    font-family: "Urbanist-SemiBold";
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 16.6px;
+    letter-spacing: -3%;
+    color: #000000;
+margin: 0px !important;
+    
+}
+
+@media(max-width:500px){
+    .DevOverviewPage_div_1 {
+        padding-bottom: 20px;
+        border-bottom: 2px dashed #CDCDCD;
+    }
+    .DevOverviewPage_div {
+        gap: 20px;
+    }
+    .DevOverviewPage_div_1_p11{
+        font-size: 14px;
+        line-height: 16.6px;
+    }
+.DevOverviewPage_div_1_p1 {
+    font-family: Urbanist;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16.6px;
+}
+.DevOverviewPage_div_1_p21,
+.DevOverviewPage_div_1_p2 {
+    font-family: "Urbanist-Medium";
+    font-weight: 500;
+    font-size: 15px;
+}
+}

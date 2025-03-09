@@ -1,0 +1,176 @@
+.ClientWord__TextH{
+
+font-family:"Urbanist-Bold";
+font-size: 36px;
+font-weight: 700;
+line-height: 46px;
+letter-spacing: 0.01em;
+text-align: center;
+color: #000000;
+
+
+}
+.ClientWordContainer{
+    background: #F1F1F1;
+
+padding:61px 80px;
+
+border-radius: 50px ;
+
+
+
+}
+.ContainerimgAndText__ALl{
+    display: flex;
+   justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.overAllContainer__clintWord_ANDIMgTExt{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.VerfiedContainertext{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(205, 205, 205, 0.5);
+    border: 1px solid rgba(205, 205, 204, 0.87);
+    padding: 0px 21px;
+    
+   
+    border-radius: 8px ;
+   width: 182px;
+    
+    
+}
+.verified__Text_P{
+    font-family: "Urbanist-Medium";
+font-size: 16px;
+font-weight: 500;
+line-height: 46px;
+letter-spacing: 0.01em;
+text-align: left;
+color: #000000;
+white-space: nowrap;
+
+
+}
+.JohnWilliam__TExtH{
+   
+font-family:"Urbanist-Bold";
+font-size: 36px;
+font-weight: 700;
+line-height: 46px;
+letter-spacing: 0.01em;
+text-align: left;
+color: #000000;
+
+
+}
+.TextContainer__ClientWords{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.PropertyDevlpor__Text{
+    font-family:"Urbanist-SemiBold";
+font-size: 20px;
+font-weight: 600;
+line-height: 46px;
+letter-spacing: 0.01em;
+text-align: left;
+color: #919191;
+
+
+}
+.ptext_clintword_dorem{
+    font-family: "Urbanist";
+font-size: 14px;
+font-weight: 400;
+line-height: 22px;
+text-align: left;
+color: #919191;
+max-width: 794px;
+
+
+}
+.ClientWord_TExtAndVerifiedContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.ccclientimgg
+{
+    height: 260px;
+    width: 260px;
+    border-radius: 20px;
+
+}
+@media(min-width:1450px)
+{
+    .ContainerimgAndText__ALl
+    {
+        gap:70px;
+        justify-content: unset;
+    }
+}
+@media (max-width:1280px) {
+    .ContainerimgAndText__ALl {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+ 
+    
+}
+@media (max-width:768px) {
+
+    /* .ContainerimgAndText__ALl{
+        align-items: center;
+    } */
+
+    .ClientWordContainer{
+        border-radius: 0px;
+    }
+    .ccclientimgg
+    {
+        object-fit: cover;
+    }
+
+    
+}
+@media (max-width:480px) {
+    .ClientWordContainer{
+        padding: 20px 30px;
+        
+    }
+    .JohnWilliam__TExtH {
+        font-size: 34px;
+    }
+    .TextContainer__ClientWords{
+        gap: 0px;
+    }
+    .ClientWord_TExtAndVerifiedContainer {
+        gap: 15px;
+    } 
+    .ContainerimgAndText__ALl 
+    {
+     align-items: center;
+    }
+    .TextContainer__ClientWords 
+    {
+        align-items: center;
+    }
+
+    
+}
+
+@media (max-width:380px) {
+.ccclientimgg{
+width: 240px;
+height: 240px;
+}
+
+}

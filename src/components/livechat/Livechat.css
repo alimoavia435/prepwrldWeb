@@ -1,0 +1,469 @@
+.msgs-tag {
+  font-family: Urbanist-Semibold;
+  font-weight: 600;
+  font-size: 24px;
+  leading-trim: Cap height;
+  line-height: 26px;
+  color: #1e1e24;
+  margin-bottom: 10px;
+  letter-spacing: 0px;
+}
+.msgs-tag-view {
+  font-family: Urbanist-Medium;
+  font-weight: 500;
+  font-size: 14px;
+  leading-trim: Cap height;
+  line-height: 16.8px;
+  letter-spacing: 0%;
+  color: #919191;
+}
+.top-main-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.searchbar {
+  display: flex;
+  gap: 3px;
+}
+.chatbox-main-outer-div {
+  border: 1px solid #cdcdcd;
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+  /* gap: 50px; */
+}
+.chatbox-main-outer-displaying {
+  border: 1px solid #cdcdcd;
+  border-radius: 8px;
+  padding: 32px;
+  display: none;
+}
+.divider {
+  /* border: none; 
+  height: 2px;
+  width: 32px;
+  border-top: 1px solid transparent; 
+  border-image-source: linear-gradient(
+    90deg,
+    rgba(188, 191, 204, 0) 0%,
+    #bcbfcc 50%,
+    rgba(188, 191, 204, 0) 100%
+  );
+  border-image-slice: 1; 
+  rotate: -90deg; */
+  border: 1px solid transparent;
+
+  border-image-source: linear-gradient(
+    270deg,
+    rgba(205, 205, 205, 0) 0%,
+    #cdcdcd 50%,
+    rgba(205, 205, 205, 0) 100%
+  );
+  border-image-width: 1px;
+  border-image-slice: 1;
+  border: none;
+}
+
+.SocialProfile-Main {
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20px;
+  width: 100%;
+  /* width: 1019px; */
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Hide Chat by default on small screens */
+@media (max-width: 880px) {
+  .chat-container {
+    display: none;
+  }
+  .inbox-container.hidden {
+    display: none;
+  }
+  .chat-container:not(.hidden) {
+    display: block;
+  }
+
+  /* Back Button Styling */
+  .back-btn-container {
+    display: block;
+    width: fit-content;
+    padding: 10px;
+    cursor: pointer;
+  }
+}
+
+/* Hide Back Button on larger screens */
+@media (min-width: 769px) {
+  .back-btn-container {
+    display: none;
+  }
+}
+
+.Top-Header {
+  height: 70px;
+  /* padding-top: 25px; */
+  padding-bottom: 20px;
+  /* padding-left: 50px; */
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border-bottom: 1px solid rgba(241, 241, 241, 1);
+}
+
+.Image-Details {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.ProfileChat {
+  width: 50px;
+  height: 50px;
+}
+
+.Details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.Namee {
+  font-family: Urbanist-Medium;
+  font-weight: 500;
+  font-size: 16px;
+  color: rgba(30, 30, 36, 1);
+}
+
+.SubName {
+  color: rgba(188, 191, 204, 1);
+  font-family: Urbanist-Medium;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.Chat-Container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 29px;
+  padding-bottom: 30px;
+  gap: 25px;
+  border-bottom: 1px solid rgba(241, 241, 241, 1);
+  flex-grow: 1; /* Allow to grow */
+  overflow-x: scroll; /* Hide horizontal overflow */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.Chat-Container::-webkit-scrollbar {
+  display: none;
+}
+.Chat-Container {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+.TopTime {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.Timee {
+  font-family: Urbanist-Medium;
+  font-weight: 500;
+  font-size: 16px;
+  color: rgba(188, 191, 204, 1);
+}
+.live-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Messages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  width: 100%;
+}
+
+.message {
+  max-width: 70%;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+  word-break: break-word;
+}
+
+.my-div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.my-message {
+  width: max-content;
+  border-radius: 8px;
+  background: black;
+  color: white;
+  align-self: flex-end;
+  padding: 10px 16px 10px 16px;
+  max-width: 400px;
+}
+
+.other-message {
+  max-width: 400px;
+  background: rgba(187, 207, 204, 0.2);
+  padding: 10px 16px 10px 16px;
+  width: max-content;
+  border-radius: 8px;
+  height: fit-content;
+}
+
+.other-video {
+  max-width: 400px;
+  background: rgba(187, 207, 204, 0.2);
+  padding: 8px;
+  width: max-content;
+  border-radius: 8px;
+  height: fit-content;
+}
+
+.Add {
+  height: 24px;
+  width: 24px;
+}
+
+.my-text {
+  font-family: Urbanist;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 1);
+  padding-bottom: 5px;
+}
+
+.my-time {
+  font-family: Urbanist;
+  font-weight: 400;
+  font-size: 10px;
+  color: rgba(188, 191, 204, 1);
+  text-align: end;
+}
+
+.other-text {
+  font-family: Urbanist;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(30, 30, 36, 1);
+  padding-bottom: 5px;
+}
+
+.other-time {
+  font-family: Urbanist;
+  font-weight: 400;
+  font-size: 10px;
+  color: rgba(188, 191, 204, 1);
+}
+
+.message-time {
+  font-size: 10px;
+  color: gray;
+  position: absolute;
+  bottom: -15px;
+  right: 10px;
+}
+
+.video-message video {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+.LastContainer {
+  /* height: 46px; */
+  padding-top: 25px;
+  /* padding-bottom: 25px; */
+  /* padding-left: 50px;
+    padding-right: 50px; */
+}
+
+.InnerConatiner {
+  display: flex;
+  border: 1px solid rgba(188, 191, 204, 0.2);
+  /* background: rgba(249, 249, 249, 1); */
+  border-radius: 12px;
+  padding: 11px 30.58px 11px 30.58px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.InnerInputadd {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.InputField {
+  padding: 0;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  color: #000000;
+  font-size: 16px;
+  font-family: Urbanist-Medium;
+  font-weight: 500;
+}
+
+.InputField::placeholder {
+  color: rgba(188, 191, 204, 1);
+  font-size: 16px;
+  font-family: Urbanist-Medium;
+  font-weight: 500;
+}
+
+.InputField:focus {
+  outline: none;
+  /* Removes default outline */
+  border: none;
+  /* Removes border */
+  box-shadow: none;
+  /* Removes any shadow effect */
+}
+
+.other-Div {
+  display: flex;
+  gap: 12px;
+  align-items: end;
+}
+
+.ProfilePicturesmall {
+  width: 30px;
+  height: 30px;
+}
+
+.Chat_MAIN_SECTION {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  /* .chatbox-main-outer-div{
+    display: none !important;
+  }
+
+  .chatbox-main-outer-displaying{
+    display: block !important;
+  } */
+}
+
+@media (max-width: 800px) {
+  .my-text {
+    font-size: 12px;
+  }
+
+  .other-text {
+    font-size: 12px;
+  }
+
+  /* .Chat-Container {
+      padding-left: 24px !important;
+      padding-right: 24px !important;
+    } */
+
+  .InputField {
+    font-size: 12px;
+  }
+
+  .InputField::placeholder {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 620px) {
+  .my-div {
+    margin-left: 20% !important;
+  }
+
+  .other-Div {
+    margin-right: 20% !important;
+    gap: 6px !important;
+  }
+  .Timee {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 500px) {
+  /* .Top-Header {
+      padding-left: 24px !important;
+    } */
+
+  .LastContainer {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+  .Top-Header {
+    gap: 15px;
+  }
+  .ProfileChat {
+    width: 40px;
+    height: 40px;
+  }
+  .Namee {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 450px) {
+  .other-message {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .my-message {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .my-text {
+    font-size: 10px;
+  }
+
+  .my-time {
+    font-size: 8px;
+  }
+
+  .other-text {
+    font-size: 10px;
+  }
+
+  .other-time {
+    font-size: 8px;
+  }
+
+  .sendArrow {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .InnerInputadd {
+    gap: 8px;
+  }
+
+  .InnerConatiner {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .InputField {
+    width: 60%;
+  }
+}

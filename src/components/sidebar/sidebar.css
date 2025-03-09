@@ -1,0 +1,646 @@
+/* .body .css-1lwhjos-MuiPaper-root-MuiDrawer-paper {
+    font-family: Urbanist !important;
+    background-color: #323232 !important;
+}
+.css-qqhq8w-MuiModal-root-MuiDrawer-root .MuiDrawer-paper
+{
+    background-color: #323232 !important;
+} */
+.PiqsolLogo {
+  width: 74px;
+  height: 80px;
+  display: flex;
+  gap: 40px;
+}
+
+.PiqsolImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ListItemDivs {
+  display: flex;
+}
+
+.SideBarIcon {
+  display: flex;
+  margin-top: 60px !important;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* .ListItems .css-rizt0-MuiTypography-root{
+    display: flex;
+    flex-direction: column;
+    gap: 23px !important;
+    font-family: Urbanist !important;
+    font-size: 14px;
+    line-height: 22.4px !important;
+    
+    
+} */
+.ListItems {
+  color: #e2e2e2 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.css-cokf1l-MuiListItemIcon-root {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+.ListPicture {
+  display: flex;
+  gap: 10px !important;
+  width: 24px;
+  height: 24px;
+}
+
+.css-18edjl8-MuiButtonBase-root-MuiListItemButton-root {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+.MuiPaper-root .MuiPaper-elevation .MuiPaper-elevation4 .MuiAppBar-root {
+  height: 80px !important;
+}
+
+.css-5lnhk4-MuiTypography-root {
+  font-family: "Urbanist" !important;
+  font-weight: 600 !important;
+  font-size: 24px !important;
+}
+
+.RightCornerHeader {
+  display: flex;
+  gap: 24px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 8px;
+}
+
+.Notification {
+  width: 24px;
+  height: 24px;
+}
+
+.Avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.MuiToolbar-root
+  .MuiToolbar-gutters
+  .MuiToolbar-regular
+  .css-1ygil4i-MuiToolbar-root {
+  padding-left: 32px !important;
+}
+
+.css-1ai1q4z {
+  background-color: white !important;
+  padding-top: 40px !important;
+  padding-left: 32px !important;
+}
+
+.upperheading {
+  display: flex;
+  flex-direction: column;
+  /* gap: 10px; */
+  padding-bottom: 15px;
+}
+
+.ContactInfo {
+  font-family: "Urbanist";
+  font-weight: 600;
+  font-size: 20px;
+  color: #000000 !important;
+}
+
+.manageInfo {
+  font-family: "Urbanist";
+  font-weight: 500;
+  font-size: 14px;
+  color: #919191;
+}
+.ProfileForm {
+  border: 1px solid #cdcdcd;
+  max-width: 840px;
+  padding: 32px;
+  border-bottom: transparent;
+}
+.FormContainer {
+}
+
+.UploadPhoto {
+  /* padding-top: 32px;
+  padding-bottom: 32px;
+  padding-left: 32px; */
+  display: flex;
+  align-items: center;
+  /* border-bottom: 1px solid #CDCDCD; */
+}
+
+.emailname {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 16px !important;
+  padding-top: 12.5px;
+  padding-bottom: 12.5px;
+  margin-right: 97px !important;
+}
+
+.Name {
+  font-family: "Urbanist";
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  color: #000000;
+}
+
+.email {
+  font-family: "Urbanist";
+  font-weight: 400;
+  font-size: 16px;
+  color: #919191;
+}
+
+.UploadButton {
+  background-color: #139ed5;
+  font-family: Urbanist-Semibold;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 25.6px;
+  color: #ffffff;
+  white-space: nowrap;
+  border: none;
+  line-height: 25.6px;
+  border-radius: 8px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  padding-left: 24px;
+  padding-right: 24px;
+  height: 48px;
+  width: 146px;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  cursor: pointer;
+}
+
+.InputFields {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.inputmailName {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border: 1px solid #cdcdcd;
+  max-width: 840px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.input__name__second__container {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+
+  flex-wrap: wrap;
+  width: 100%;
+}
+.NameLabel {
+  font-family: "Urbanist";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20.3px;
+  text-align: left;
+  color: #000000;
+  width: 50%;
+  white-space: nowrap;
+}
+
+.EmailLabel {
+  font-family: "Urbanist";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20.3px;
+  text-align: left;
+  color: #000000;
+  width: 50%;
+  white-space: nowrap;
+}
+
+.OriginLabel {
+  font-family: "Urbanist";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20.3px;
+  text-align: left;
+  color: #000000;
+  width: 50%;
+}
+
+.nameInputProfile {
+  height: 48px;
+  width: 100%;
+  padding-left: 24px;
+  border-radius: 8px;
+  border: 1px solid #cdcdcd;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 24px;
+}
+.nameInputProfile::placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.3px;
+  color: #919191;
+  font-family: "Urbanist";
+}
+.EmailInput {
+  height: 48px;
+  width: 100%;
+  padding-left: 24px;
+  border-radius: 8px;
+  border: 1px solid #cdcdcd;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 24px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.3px;
+  color: #000000;
+  font-family: "Urbanist";
+}
+
+.OriginInput {
+  height: 48px;
+  width: 46%;
+  padding-left: 24px;
+  border-radius: 8px;
+  border: 1px solid #cdcdcd;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 24px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.3px;
+  color: #000000;
+  font-family: "Urbanist";
+}
+
+.OriginInput:focus {
+  outline: none;
+}
+
+.Namediv {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  /* padding-left: 32px;
+    padding-top: 32px; */
+}
+
+.Emaildiv {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.Origindiv {
+  flex: 1;
+  display: flex;
+  gap: 7px;
+  flex-direction: column;
+  padding-left: 32px;
+  padding-bottom: 32px;
+}
+
+.nameInputProfile:focus {
+  outline: none;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.3px;
+  color: #000000;
+}
+
+.EmailInput:focus {
+  outline: none;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.3px;
+  color: #000000;
+}
+
+.Crypto {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px !important;
+  gap: 15px;
+}
+
+.CryptoHeading {
+  display: flex;
+  flex-direction: column;
+  /* gap: 10px; */
+}
+
+.CryptoAddress {
+  font-family: "Urbanist";
+  font-weight: 600;
+  font-size: 20px;
+  color: #000000 !important;
+}
+
+.cryptoSub {
+  font-family: "Urbanist";
+  font-weight: 500;
+  font-size: 14px;
+  color: #919191;
+}
+
+.wallet {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border-radius: 8px;
+  border: 1px solid #cdcdcd;
+  width: 100%;
+  max-width: 840px;
+}
+
+.walletPara {
+  padding-top: 32px;
+  padding-left: 32px;
+  font-family: "Urbanist";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23.2px;
+  color: #000000;
+}
+
+.LinkButton {
+  background-color: #139ed5;
+  font-family: Urbanist-Semibold;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20.3px;
+  color: #ffffff;
+  white-space: nowrap;
+  border: none;
+  line-height: 20.6px;
+  border-radius: 8px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 95.5px;
+  padding-right: 95.5px;
+  height: 44px;
+  width: 259px;
+  /* margin-top: 20px !important; */
+  margin-bottom: 32px !important;
+  margin-left: 32px !important;
+}
+.next__step__kyc__profile {
+  height: 44px;
+  width: 259px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--Evox-Blue, #139ed5);
+  border: none;
+  border-radius: 8px;
+  font-family: Urbanist-Semibold;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20.3px;
+  color: #ffffff;
+  margin-top: 40px !important;
+}
+@media (min-width: 1450px) {
+  .ProfileForm {
+    max-width: unset;
+  }
+  .inputmailName {
+    max-width: unset;
+  }
+  .wallet {
+    max-width: unset;
+  }
+}
+/* For screens between 789px and 1050px */
+@media (min-width: 789px) and (max-width: 1050px) {
+  .UploadPhoto {
+    display: flex;
+    gap: 10px;
+  }
+
+  .emailname {
+    margin-right: 0px !important;
+  }
+
+  .LinkButton {
+    padding-left: 50.5px;
+    padding-right: 50.5px;
+    width: 80%;
+  }
+}
+@media (max-width: 600px) {
+  .input__name__second__container {
+    flex-direction: column;
+    gap:10px
+  }
+}
+/* For screens between 500px and 786px */
+@media (min-width: 500px) and (max-width: 786px) {
+  .FormContainer {
+    width: 100%;
+  }
+
+  .wallet {
+    width: 100%;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .UploadPhoto {
+    display: flex;
+    padding-left: 0;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .emailname {
+    margin-right: 0px !important;
+    align-items: center;
+  }
+
+  .LinkButton {
+    padding-left: 50.5px;
+    padding-right: 50.5px;
+    width: 80%;
+  }
+
+  /* .inputmailName {
+    flex-direction: column;
+    width: 100%;
+    gap: 0px;
+  } */
+
+  /* .Namediv {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 32px;
+  } */
+
+  .Emaildiv {
+    /* padding-left: 20px;
+    padding-right: 20px !important; */
+  }
+
+  .Origindiv {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 32px;
+  }
+
+  .walletPara {
+    padding-left: 0 !important;
+  }
+
+  .OriginInput {
+    width: 100%;
+  }
+}
+
+/* For screens below 499px */
+@media (max-width: 499px) {
+  .FormContainer {
+    width: 100%;
+  }
+
+  .css-1ai1q4z {
+    padding-left: 2px !important;
+  }
+
+  .wallet {
+    width: 100%;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .UploadPhoto {
+    display: flex;
+    padding-left: 0;
+    gap: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .emailname {
+    margin-right: 0px !important;
+  }
+
+  .LinkButton {
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 12px;
+
+    margin-bottom: 32px !important;
+    margin-left: 0px !important;
+  }
+
+  .inputmailName {
+    flex-direction: column;
+    width: 100%;
+    gap: 0px;
+    padding: 10px;
+  }
+
+  .Namediv {
+    /* padding-left: 20px;
+    padding-right: 20px; */
+    padding-top: 32px;
+  }
+
+  .Emaildiv {
+    padding-top: 12px;
+    /* padding-left: 20px;
+    padding-right: 20px !important; */
+  }
+
+  .Origindiv {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 32px;
+  }
+
+  .OriginInput {
+    width: 100%;
+  }
+
+  .walletPara {
+    padding-left: 0 !important;
+  }
+  .UploadPhoto {
+    padding-bottom: 12px;
+  }
+  .UploadButton {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+  }
+  .Crypto {
+    margin-top: 20px !important;
+    gap: 10px;
+  }
+  .CryptoAddress {
+    font-size: 18px;
+  }
+  .walletPara {
+    padding-top: 20px;
+  }
+  .UploadPhoto {
+    padding-top: 20px;
+  }
+  .next__step__kyc__profile {
+    width: 100%;
+  }
+}
+
+@media (min-width: 600px) {
+  .css-1ygil4i-MuiToolbar-root {
+    padding-left: 32px !important;
+  }
+}
+
+.after-q-a-investor-margin {
+  margin-top: 50px !important;
+}
+.nameInputProfile {
+  width: unset !important;
+}
+.inputmailName {
+  padding: 32px;
+}
+@media (max-width: 350px) {
+  .inputmailName {
+    padding: 20px;
+  }
+}

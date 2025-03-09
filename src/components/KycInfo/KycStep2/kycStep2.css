@@ -1,0 +1,126 @@
+.kyc__step__2__maon__container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  max-width: 840px;
+  border: 1px solid #cdcdcd;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.kyc__step__2__input__container {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-width: 376px;
+}
+
+.kyc__step__2__input__label {
+  font-family: Urbanist-Medium;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20.3px;
+  text-align: left;
+  color: #000;
+}
+
+.input__kycstep__2__placeholder {
+  padding: 12px 24px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #cdcdcd;
+  font-family: Urbanist;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.3px;
+  text-align: left;
+}
+
+.extrdivforinput {
+  font-family: Urbanist-Medium;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.3px;
+  text-align: left;
+  border: none;
+  width: 90%;
+}
+.extrdivforinput:focus
+{
+  outline: none;
+}
+.input__kycstep__2__placeholder::placeholder {
+  color: #919191;
+}
+
+.input__kycstep__2__placeholder:focus {
+  outline: none;
+  color: #000;
+}
+
+.kyc__step_2__buttons_container {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px !important;
+}
+
+.kyc__step2__back__button {
+  background-color: transparent;
+  padding: 12px 64px;
+  border-radius: 8px;
+  border: 1px solid #919191;
+  font-family: Urbanist-Semibold;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20.3px;
+  text-align: center;
+  color: #000;
+  white-space: nowrap;
+}
+
+.kyc__step2__next__button {
+  padding: 12px 48px;
+  border-radius: 8px;
+  background: var(--Evox-Blue, #139ED5);
+  border: transparent;
+  font-family: Urbanist-Semibold;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20.3px;
+  text-align: center;
+  color: #ffffff;
+  white-space: nowrap;
+
+
+
+}
+
+.kyc__step2__next__button:hover
+{
+  opacity: 0.9;
+}
+
+@media (min-width:1450px) {
+  .kyc__step__2__maon__container {
+    max-width: unset;
+  }
+
+  .kyc__step__2__input__container {
+    max-width: unset;
+  }
+}
+
+@media(max-width:425px) {
+  .kyc__step4__submit__button {
+    width: 100%;
+  }
+
+  .kyc__step__2__maon__container {
+    padding: 20px;
+  }
+
+  .kyc__step_2__buttons_container {
+    flex-direction: column;
+  }
+}

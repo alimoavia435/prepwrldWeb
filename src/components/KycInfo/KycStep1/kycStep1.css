@@ -1,0 +1,90 @@
+.kyc__step__1_main__container {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  max-width: 840px;
+  border: 1px solid #cdcdcd;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  gap: 24px;
+}
+.kyc__step__1__input_container {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-width: 376px;
+}
+.kyc__step__1__input {
+  font-family: Urbanist-Medium;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20.3px;
+  text-align: left;
+  color: #000;
+}
+.input__kyc__placeholder {
+  padding: 12px 24px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #cdcdcd;
+  font-family: Urbanist;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.3px;
+  text-align: left;
+}
+.input__kyc__placeholder::placeholder {
+  color: #919191;
+}
+.input__kyc__placeholder:focus {
+  outline: none;
+  color: #000;
+}
+.kyc__step_1_next_step1_button {
+  padding: 12px 98px;
+  border-radius: 8px;
+  background: var(--Evox-Blue, #139ed5);
+  border: none;
+  font-family: Urbanist-Semibold;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20.3px;
+  text-align: left;
+  color: #ffffff;
+  max-width: 259px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.kyc__step_1_next_step1_button:hover
+{
+  opacity: 0.9;
+}
+@media (min-width:1450px) {
+  .kyc__step__1_main__container {
+    max-width: unset;
+  }
+
+  .kyc__step__1__input_container {
+    max-width: unset;
+  }
+}
+
+
+@media(max-width:425px) {
+  .kyc__step__1_main__container {
+    padding: 20px;
+  }
+
+  .kyc__step_1_next_step1_button,
+  .kyc__step4__submit__button {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .kyc__step4__submit__button {
+    width: 100%;
+  }
+
+}

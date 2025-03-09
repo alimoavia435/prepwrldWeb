@@ -1,0 +1,422 @@
+.Evox-card1
+{
+   
+padding: 40px ;
+border-radius: 10px ;
+
+border: 1px solid , #323232;
+width: 390.67px;
+height:297px;
+
+}
+.evox-card-top
+{
+    gap: 10px;
+    margin-bottom: 30px !important;
+}
+.card-bottom-div
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+.evox-heading-slider
+{
+    font-family: 'Urbanist-semibold';
+font-size: 38px;
+font-weight: 600;
+line-height: 57px;
+text-align: left;
+color:  #323232;
+
+
+
+}
+.evox-headind-sbtext
+{
+    font-family: 'Urbanist';
+font-size: 16.43px;
+font-weight: 400;
+line-height: 24.65px;
+text-align: left;
+color: #999999;
+
+
+}
+.Evox-slider-wrape
+{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-start;
+}
+.top-heading-div
+{
+    margin-bottom: 60px !important;
+}
+.Evox-slider-container
+{
+    padding: 0px 23px 0px 44px;
+    margin-top: 191px !important;
+}
+.evox-h
+{
+    font-family: 'urbanist-semibold';
+font-size: 20px;
+font-weight: 600;
+line-height: 30px;
+text-align: left;
+color: #323232;
+
+
+}
+.evox-sbtext
+{
+    font-family: 'urbanist-medium';
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+text-align: left;
+color: #323232 ;
+
+
+}
+.id-name
+{
+    font-family: 'urbanist-medium';
+font-size: 18px;
+font-weight: 500;
+line-height: 27px;
+text-align: left;
+color: #323232 ;
+
+
+}
+.id-place
+{
+    font-family:'urbanist-medium';
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+text-align: left;
+color: #999999;
+
+}
+.Evox-slider-wrape
+{
+    margin-bottom: 40px !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.arrows-container
+{
+    display: flex;
+    flex-direction: row;
+    padding-top: 16px;
+   align-items: center;
+   justify-content: flex-end;
+   
+}
+.arrows-wrape-evox
+{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+@media(max-width:1390px)
+{
+    .Evox-card1
+    {
+       
+    padding: 30px ;
+    border-radius: 10px ;
+    
+    border: 1px solid , #323232;
+    width: 390.67px;
+    height:275px;
+    
+    }   
+}
+@media(max-width:1320px)
+{
+    .Evox-card1 {
+        padding: 26px;
+        border-radius: 10px;
+        border: 1px solid, #323232;
+        width: 390.67px;
+        height: 256px;
+        width: 389.67px;
+    }
+    .evox-card-top {
+        gap: 10px;
+        margin-bottom: 26px !important;
+    }
+    .evox-sbtext {
+        font-family: 'urbanist-medium';
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 23px;
+        
+    }
+    .id-name {
+        font-family: 'urbanist-medium';
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        
+    }
+    .id-place {
+        font-family: 'urbanist-medium';
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 23px;
+        
+    }
+    .evox-h {
+        font-family: 'urbanist-semibold';
+        font-size: 19px;
+        font-weight: 600;
+        line-height: 29px;
+        
+    }
+    .Evox-slider-container {
+        /* padding: 0px 100px; */
+        margin-top: 150px !important;
+    }
+}
+@media(max-width:1235px)
+{
+    .Evox-slider-wrape {
+        margin-bottom: 40px !important;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        /* flex-wrap: wrap; */
+    }
+    .Evox-card1 {
+        padding: 24px;
+        border-radius: 10px;
+        border: 1px solid, #323232;
+        height: 218px;
+        width: 389.67px;
+    } 
+    .evox-card-top {
+        gap: 10px;
+        margin-bottom: 21px !important;
+    }
+    .evox-h {
+        font-family: 'urbanist-semibold';
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 28px;
+    }
+    .evox-sbtext {
+        font-family: 'urbanist-medium';
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 18px;
+    } 
+    .id-name {
+        font-family: 'urbanist-medium';
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 23px;
+    }
+    .id-place {
+        font-family: 'urbanist-medium';
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+    }
+    .evox-headind-sbtext {
+        font-family: 'Urbanist';
+        font-size: 11.43px;
+        font-weight: 400;
+        line-height: 18.65px;
+        text-align: left;
+        color: #999999;
+    }
+    .evox-heading-slider {
+        font-family: 'Urbanist-Semibold';
+        font-size: 33px;
+        font-weight: 600;
+        line-height: 55px;
+        text-align: left;
+        color: #323232;
+    }
+    .Evox-slider-container {
+        
+        margin-top: 100px !important;
+    }
+}
+@media(max-width:1135px)
+{
+    .Evox-card1 {
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid, #323232;
+        height: 205px;
+        width: 389.67px;
+    }    
+}
+@media(max-width:1115px)
+{
+    .Evox-card1 {
+        padding: 18px;
+        border-radius: 10px;
+        border: 1px solid, #323232;
+        height: 205px;
+        width:290px;
+    }    
+}
+@media(max-width:1107px)
+{
+    .Evox-slider-wrape {
+        margin-bottom: 40px !important;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        /* flex-wrap: wrap; */
+    }
+
+    .img-id{
+        height: 40px;
+        width: 40px;
+    }
+
+    .evox-card-top{
+        margin-bottom: 8px !important;
+    }
+}
+@media(max-width:500px)
+{
+    .Evox-slider-container {
+        padding: 0px 30px;
+        margin-top: 50px !important;
+    }
+    .Evox-card1 {
+        padding: 22px;
+        border-radius: 10px;
+        border: 1px solid #323232;
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .top-heading-div{
+        margin-bottom: 40px !important;
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    .evox-heading-slider {
+        font-family: 'Urbanist';
+        font-size: 26px;
+        line-height: 30px;
+        text-align: left;
+        color: #323232;
+    }
+    .evox-headind-sbtext {
+        font-family: 'Urbanist';
+        font-size: 12.43px;
+        font-weight: 400;
+        line-height: 14.65px;
+        text-align: left;
+        color: #999999;
+    }
+    .evox-sbtext {
+        font-family: 'urbanist-medium';
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 14px;
+    }
+    .evox-h {
+        font-family: 'urbanist-semibold';
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+    }
+    .id-name {
+        font-family: 'urbanist-medium';
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 20px;
+    }
+    .id-place {
+        font-family: 'urbanist-medium';
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 18px;
+    }
+
+    .evox-heading-slider{
+        font-family: "Urbanist";
+    }
+}
+@media(max-width:350px)
+{
+    .Evox-card1 {
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid, #323232;
+        width: 100%;
+        height: 100%;
+    } 
+    .evox-card-top {
+        gap: 10px;
+        margin-bottom: 15px !important;
+    }
+    .top-heading-div {
+        margin-bottom: 30px !important;
+    }
+    .evox-headind-sbtext {
+        font-size: 8.43px;
+        line-height: 10.65px;
+        
+    }
+    .evox-sbtext {
+        font-family: 'urbanist-medium';
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 12px;
+    }
+    .evox-h {
+        font-family: 'urbanist-semibold';
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 23px;
+    }
+    .id-name {
+        font-family: 'urbanist-medium';
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 18px;
+    }
+    .id-place {
+        font-family: 'urbanist-medium';
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 17px;
+    }
+    .evox-heading-slider {
+        font-family: 'Urbanist';
+        font-size: 20px;
+        line-height: 24px;
+        text-align: left;
+        color: #323232;
+    }
+}
+
+
+
+
+
+

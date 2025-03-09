@@ -1,0 +1,127 @@
+.navbar__header___main__div {
+  padding: 0px !important;
+  max-width: unset !important;
+}
+
+.navbar__main__div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px !important;
+  z-index: 100;
+  align-items: flex-start;
+}
+
+.buttons__navbar_container {
+  display: flex;
+  gap: 33px;
+  align-items: center;
+}
+
+.navactive {
+  color: #ffffff !important;
+}
+
+.activebtn {
+
+  color: white !important;
+
+  font-weight: 700 !important;
+  font-family: Urbanist-Semibold;
+
+}
+
+.register__navbar__button {
+  height: 38px !important;
+  /* width:100% !important; */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 5px !important;
+  background: var(--Evox-Blue, #139ed5) !important;
+  border: none !important;
+  width: 129px !important;
+  font-family: Urbanist-Medium !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 21px !important;
+  color: white !important;
+}
+
+.signin__navbar__button {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  background-color: transparent !important;
+  border: none !important;
+  font-family: Urbanist-Medium !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 21px !important;
+  text-align: left !important;
+  color: var(--Evox-White, #fbfafa) !important;
+  white-space: nowrap !important;
+}
+
+.navbar__items__container {
+  display: flex !important;
+  max-width: 427px !important;
+  justify-content: space-between !important;
+  width: 427px;
+}
+
+.items__navbar__text {
+  font-family: Urbanist !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 21px !important;
+  color: var(--Grey, #c4c4c4) !important;
+  text-transform: capitalize !important;
+  /* padding-left: 0px !important;
+  padding-right: 0px !important */
+  padding: 0px !important;
+}
+
+.items__navbar__text:hover {
+  background: transparent !important;
+  color: #ffffff !important;
+}
+
+.logo__image__header {
+  margin-top: 11px !important;
+}
+
+.ProfileButton {
+  border: none;
+  background: #139ed515;
+  border: 2px solid #139ed515;
+  padding: 9.32px 13.3px;
+  border-radius: 8px;
+  border-radius: 50%;
+}
+
+.dropdown__nav__main__div {
+  margin-top: 9px !important;
+}
+
+@media (max-width: 900px) {
+  .navbar__items__container {
+    display: none !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .logo__image__header {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+.register__navbar__button:hover {
+  opacity: 0.9;
+}
+
+.signin__navbar__button:hover {
+  opacity: 0.9;
+}

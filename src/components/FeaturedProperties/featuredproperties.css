@@ -1,0 +1,242 @@
+.featuredProperties {
+  display: flex;
+  flex-direction: column;
+  /* margin-left: 80px !important;
+    margin-right: 110px !important;    */
+  padding: 35px 32px 35px 10px;
+}
+.Featured {
+  color: rgba(50, 50, 50, 1);
+  font-family: Urbanist-Bold;
+  font-size: 39.42px;
+  font-weight: 700;
+  line-height: 59.13px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+}
+
+.new-design{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  flex-direction: row;
+}
+.secondDiv {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  /* padding-bottom: 22px; */
+  padding: 0PX  30PX 22px 30px;
+  align-items: center;
+}
+.explorehandpicked {
+  color: rgba(153, 153, 153, 1);
+  font-family: "Urbanist";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  width: 80%;
+}
+.viewProp {
+  background-color: rgba(50, 50, 50, 1);
+  border: none;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 1);
+  font-family: "Urbanist";
+  padding: 14px 20px;
+}
+.viewProp:hover{
+  opacity: 0.9;
+}
+
+.featuredBoxesdiv {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 5px;
+}
+.card {
+  border: none;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 413.33px;
+  height: 549x;
+}
+.card-content {
+  font-family: "Urbanist";
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+  color: rgba(50, 50, 50, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.card-description {
+  font-family: "Urbanist";
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  color: rgba(153, 153, 153, 1);
+}
+.bed {
+  font-family: "Urbanist";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: rgba(50, 50, 50, 1);
+}
+.card-features {
+  display: flex;
+  gap: 6px;
+}
+.bed {
+  display: flex;
+  padding: 6px 14px;
+  gap: 4px;
+  align-items: center;
+}
+
+.main__page__view__button__container
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-price {
+  display: flex;
+  flex-direction: column;
+}
+.price {
+  color: rgba(153, 153, 153, 1);
+  font-family: "Urbanist";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}
+.priceamount {
+  color: rgba(50, 50, 50, 1);
+  font-family: "Urbanist";
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+}
+.ViewPropDetails {
+  background-color: rgba(50, 50, 50, 1);
+  padding: 14px 20px;
+  border-radius: 8px;
+  border: none;
+  font-family: "Urbanist";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.ViewPropDetails:hover{
+  opacity: 0.9;
+}
+
+.card-content-header{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+@media (max-width: 1368px) {
+  .bed {
+    font-size: 12px;
+  }
+  .bed {
+    padding: 5px 5px;
+  }
+}
+@media (max-width: 1157px) {
+  .footer {
+    flex-direction: column;
+  }
+}
+@media (max-width: 1050px) {
+  /* .featuredBoxesdiv{
+        flex-direction: column;
+    } */
+  .footer {
+    flex-direction: row;
+  }
+}
+@media (max-width: 1040px) {
+  .secondDiv {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+@media (max-width: 545px) {
+
+  .footer{
+    flex-direction: column;
+    gap: 10px
+  }
+  .featuredProperties {
+    margin: 0 !important;
+  }
+  .Featured {
+    padding-left: 5%;
+    font-family: "Urbanist-Medium";
+    font-size: 24px;
+  }
+
+  .explorehandpicked{
+    width: 100%;
+  }
+
+  .secondDiv {
+    padding-left: 5%;
+  }
+  .viewProp {
+    width: 100%;
+  }
+  .featuredProperties {
+    padding: 0px 5px 0px 5px;
+    margin-bottom: 20px !important;
+  }
+  .card {
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .card-content{
+    gap: 16px;
+  }
+  .ViewPropDetails {
+    padding: 12px 12px;
+    font-size: 12px;
+  }
+  .bed {
+    font-size: 9px;
+  }
+
+  .card-title{
+    font-size: 18px;
+  }
+
+  .card-description{
+    font-size: 14px;
+  }
+}
+@media(max-width:450px)
+{
+  .ViewPropDetails 
+  {
+    height: 42px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 350px) {
+  .footer {
+    gap: 8px
+  }
+}
