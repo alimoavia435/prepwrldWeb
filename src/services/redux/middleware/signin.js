@@ -8,7 +8,7 @@ export const signup = createAsyncThunk("signin", async (data) => {
     console.log("middle to be sent:", data);
 
     console.log("Signup");
-    const res = await api.post(`${API_URL}/developer/register-property-developer`, data);
+    const res = await api.post(`${API_URL}/users/register`, data);
     console.log(res, "middlewre");
     return {
       status: res?.status,
@@ -24,7 +24,7 @@ export const signup = createAsyncThunk("signin", async (data) => {
 });
 export const signin = createAsyncThunk("signin", async (data) => {
   try {
-    const res = await api.post(`${API_URL}/auth/login`, data);
+    const res = await api.post(`${API_URL}/users/login`, data);
     console.log("response", res.data);
     return res.data;
   } catch (error) {

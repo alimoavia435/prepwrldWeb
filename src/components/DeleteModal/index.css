@@ -1,0 +1,137 @@
+.modal-box-style
+{
+    /* position: absolute;
+  top: 50%;
+  left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  position: relative;
+  width: 392px;
+  background-color: rgba(140,140,149,0.1);
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 46px;
+}
+.delete-modal-footer .MuiButtonBase-root{
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 42px;
+    height:42px;
+    width: 189px;
+   
+}
+
+.delete-modal-footer .MuiButton-containedSizeMedium{
+    border-radius: 30px;
+    font-size: 10px;
+    padding: 10px 26px;
+    background-color: red;
+}
+/* MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorError MuiButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorError css-1sszw6i-MuiButtonBase-root-MuiButton-root */
+
+.delete-modal-footer{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    
+    gap:10px;
+    justify-content: center;
+    margin-bottom:10px
+}
+
+.cancel-button {
+    height: 60px;
+    width: 148px;
+    border-radius: 60px;
+    background: linear-gradient( #090909, #090909) padding-box, 
+linear-gradient(92.23deg, #FF00D9 -19.69%, #6C4EFE 100%) border-box;
+    border: 1px solid transparent;
+    color: white;
+    font-family: Inter;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: center;
+
+   
+}
+.cancel-button1 {
+    height: 60px;
+    width: 148px;
+    border-radius: 60px;
+    background: linear-gradient(92.23deg, #FF00D9 -19.69%, #6C4EFE 100%);
+
+    color: white;
+    border:0.1px solid transparent;
+    font-family: Inter;
+font-size: 18px;
+font-weight: 600;
+line-height: 24pxpx;
+text-align: center;
+
+}
+
+
+.delete-modal-body p{
+    color: #094813;
+    font-weight: 600;
+    font-size:20px;
+    margin: 0px;
+}
+.delete-modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-weight: bold;
+    gap: 25px;
+}
+
+.delete-modal-body img{
+    width: 130px;
+    margin-bottom: 20px;
+}
+.delete-modal-header{
+    display: flex;
+    flex-direction: row;
+}
+.delete-modal-header div{
+    width: 95%;
+    color: #094813;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    margin-left: 35px;
+}
+.delete-modal-header h1{
+font-size: 22px;
+font-weight: 900;
+line-height: 24.2px;
+text-align: left;
+
+}
+
+.delete-modal-body-img{
+    background-image: url("../../assets/bindelete.svg");
+    width: 100px;
+    height: 100px;
+    background-size: 100% 100%;
+    position: relative;
+    left:'150px'
+}
+@media (max-width:538px)
+{
+    .modal-box-style
+    {
+        width:100%
+    }
+    
+}
+@media (max-width:435px)
+{
+    .modal-box-style
+    {
+        padding: 20px;
+    }
+    
+}

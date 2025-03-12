@@ -18,7 +18,6 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { useWeb3React } from "@web3-react/core";
-import ConnectWallet from "../ConnectWallet/ConnectWallet";
 import NotificationInvestorComponent from "../../components/NotificationInvestor/notificationInvestor";
 import { toast, ToastContainer } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,7 +32,7 @@ import { Menu, MenuItem, makeStyles } from "@mui/material";
 import { useMediaQuery } from "react-responsive";
 import { borderBottom, borderRight, display, minHeight } from "@mui/system";
 import HeaderInvestor from "../Header Investor/HeaderInvestor";
-import useAuth from "../../hooks/Web3Connection/useAuth";
+// import useAuth from "../../hooks/Web3Connection/useAuth";
 
 const drawerWidth = 280;
 
@@ -198,7 +197,7 @@ export default function SidedrawerInvestor({
 
 
 
-  const { login } = useAuth();
+  // const { login } = useAuth();
   const modalRef = React.useRef(null);
 
   const handle_accordian = (abc) => {
@@ -420,13 +419,7 @@ export default function SidedrawerInvestor({
   }, [open]);
 
   async function connect() {
-    const connectorID =
-      typeof window !== "undefined"
-        ? localStorage.getItem("connectorId")
-        : null;
-    if (connectorID) {
-      await login("injected", 97);
-    }
+    
   }
 
   useEffect(() => {
@@ -984,11 +977,6 @@ export default function SidedrawerInvestor({
           </Box>
         )}
       </ThemeProvider>
-      <ConnectWallet
-        showWallet={openWalletModal}
-        onHide={handleWalletClose}
-        type={"investor"}
-      />
     </>
   );
 }

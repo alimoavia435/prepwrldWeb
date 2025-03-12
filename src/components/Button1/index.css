@@ -1,0 +1,56 @@
+/* .linear-gradient-button {
+    border-width: 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 60px;
+    height:45px;
+    width:145px
+  }
+  
+  .linear-gradient-button > span {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .linear-gradient-button::before {
+    content: '';
+    background: linear-gradient(90deg, #0B6719 0%, #2AD72D 100%);
+    position: absolute;
+    inset: 0;
+    opacity: 1;
+    transition: all 0.3s;
+    border-radius: inherit;
+    z-index: 0;
+  } */
+
+/* .linear-gradient-button:hover::before {
+    opacity: 0;
+  } */
+
+.topbutton-header {
+  width: 145px;
+  height: 45px;
+  /* padding: 13px 38px 15px 20px; */
+  border-radius: 60px;
+  background: #1657FF;
+
+  gap: 12px !important;
+  border: none;
+}
+.topbutton-header:hover {
+  background: #1657FF !important;
+}
+.button-text {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 17.07px;
+  text-align: left;
+  margin: 0px !important;
+}
+
+@media (max-width: 430px) {
+  .topbutton-header {
+    width: 127px;
+  }
+}

@@ -20,33 +20,13 @@ function PropertyAuthStep1() {
   const [password, setPassword] = useState();
   const [confirmpassword, setconfirmPassword] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    fullName: "",
-    legalId: "",
-    phoneNumber: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+  const [phone, setPhone] = useState()
 
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
   const toggleConfirmPasswordVisibility = () =>
     setShowConfirmPassword(!showConfirmPassword);
 
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [name]: name === "email" ? value.toLowerCase() : value,
-  //   }));
-  // };
 
-  // const handlePhoneChange = (phone) => {
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     phoneNumber: phone,
-  //   }));
-  // };
 
   const handleSubmit = () => {
     const passwordPattern =
@@ -78,18 +58,19 @@ function PropertyAuthStep1() {
     setIsLoading(true);
     const data = {
       fullName,
-      email,
+      email: email.toLowerCase(),
       password,
+      confirmPassword: confirmpassword,
+      phone,
+      userType: "student"
     };
     dispatch(signup(data))
       .then((res) => {
         console.log(res, "response");
         if (res?.payload?.status === 201) {
-          toast.success("Account created.Verification code Sent to your email");
-          // localStorage.removeItem("proofOfIncorporation");
-          // localStorage.removeItem("businessLicenseCertificate");
-          // localStorage.removeItem("ultimateBeneficalOwner");
-          navigate(`/verifyaccountdeveloper/${email}`);
+          toast.success("Account created Successfully");
+          setIsLoading(false);
+          navigate(`/SignIn`);
         } else if (res?.payload?.status === 400) {
           setIsLoading(false);
           toast.error("User Already Exists");
@@ -112,11 +93,11 @@ function PropertyAuthStep1() {
           <div className="property__developer_step1_container-main-2">
             <div className="sign__up__property__developer__container__main">
               <div className="step1__form_container">
-              <div className="step1__form_container-2">
+                <div className="step1__form_container-2">
                   <p className="step-1_label_name">Full Name</p>
                   <input
                     className="step-1_placeholder_1"
-              
+
                     name="fullName"
                     placeholder="Enter Full Name"
                     value={fullName}
@@ -133,6 +114,18 @@ function PropertyAuthStep1() {
                     placeholder="Enter Email Address"
                     value={email}
                     onChange={(e) => setemail(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="step1__form_container-2">
+                  <p className="step-1_label_name">Phone</p>
+                  <input
+                    className="step-1_placeholder_1"
+                    type="phone"
+                    name="phone"
+                    placeholder="Enter phone number"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                     required
                   />
                 </div>

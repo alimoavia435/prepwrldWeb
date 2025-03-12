@@ -33,7 +33,7 @@ import whiteProfile from "../../assets/whiteProfile.svg";
 import blueOwnership from "../../assets/blueOwnership.svg";
 import bluePortfolio from "../../assets/bluePortfolio.svg";
 import { useNavigate } from "react-router-dom";
-import Investorprofile from "../../pages/Investor-Profile/profile";
+// import Investorprofile from "../../pages/Investor-Profile/profile";
 import blurProfile from "../../assets/blueProfile.svg"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";

@@ -18,7 +18,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import ConnectWallet from "../ConnectWallet/ConnectWallet";
 import { toast, ToastContainer } from "react-toastify";
 import { useWeb3React } from "@web3-react/core";
 import NotificationComponent from "../Notifications/notificationComponent";
@@ -33,7 +32,6 @@ import { Menu, MenuItem, makeStyles } from "@mui/material";
 import { useMediaQuery } from "react-responsive";
 import { borderBottom, borderRight, display, minHeight } from "@mui/system";
 import Header from "../Header/Header";
-import useAuth from "../../hooks/Web3Connection/useAuth";
 import { getkyc } from "../../services/redux/middleware/getkyc";
 const drawerWidth = 280;
 
@@ -140,31 +138,13 @@ const themeMui = createTheme({
 
 function getHeaderName(pathname) {
   switch (true) {
-    case pathname === "/kyc-info":
-      return "KYC";
-    case pathname === "/ViewAllMyProperties":
-      return "My Properties";
 
-    case pathname === "/kyc-preview":
-      return "KYC & Profile";
-    case pathname === "/property-developer-profile":
-      return "KYC & Profile";
-    case pathname === "/Project":
-      return "Properties";
 
-    case pathname === "/LiveProjects":
-      return "Live Projects";
-    case pathname === "/submit-property":
-      return "Create Property";
-    case pathname === "/property-updates":
-    case pathname === "/submit-property-updates":
-      return "Updates";
-    case pathname === "/Support-Chat":
-      return "Support Chat";
-    case pathname === "/support-requests":
-      return "Support";
+
     case pathname === "/notifications":
       return "Notifications";
+    case pathname === "/subjects":
+      return "Subjects";
 
     default:
       return "";
@@ -180,8 +160,7 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
   const [active, setactive] = useState("");
   const [selectedItem, setSelectedItem] = useState(0);
   const modalRef = React.useRef(null);
-  const { account, chainId } = useWeb3React();
-  const { login } = useAuth();
+  // const { login } = useAuth();
 
   const [profileImage, setProfileImage] = useState(
     localStorage.getItem("profileImage")
@@ -350,8 +329,8 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
     //   disabled: false,
     // },
     {
-      text: "Properties",
-      path: "/Project",
+      text: "Subjects",
+      path: "/subjects",
       disabled: false,
     },
     // {
@@ -359,49 +338,49 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
     //   path: "/LiveProjects",
     //   disabled: false,
     // },
-    {
-      text: "KYC & Profile",
-      path: "/property-developer-profile",
-      disabled: false,
-    },
+    // {
+    //   text: "KYC & Profile",
+    //   path: "/property-developer-profile",
+    //   disabled: false,
+    // },
     // {
     //   text: "Updates",
     //   path: "/property-updates",
     //   disabled: false,
     // },
-    {
-      text: "Support",
-      path: "/support-requests",
-      disabled: false,
-    },
+    // {
+    //   text: "Support",
+    //   path: "/support-requests",
+    //   disabled: false,
+    // },
   ];
 
   const dashicons = [
     // "/Images/Dashboard/PropertySubmission.svg",
     "/Images/Dashboard/ProjectIcon.svg",
-    "Images/Dashboard/profileIcon.svg",
-    "Images/Dashboard/updates.svg",
-    "/Images/Dashboard/support.svg",
+    // "Images/Dashboard/profileIcon.svg",
+    // "Images/Dashboard/updates.svg",
+    // "/Images/Dashboard/support.svg",
 
 
-    "/Images/Dashboard/ProjectIcon.svg",
-    "/Images/Dashboard/PropertySubmission.svg",
+    // "/Images/Dashboard/ProjectIcon.svg",
+    // "/Images/Dashboard/PropertySubmission.svg",
 
 
   ];
   const activeDashicons = [
     // "/Images/Dashboard/UserIconBlue.svg",
     "/Images/Dashboard/ProjectIconBlue.svg",
-    "/Images/Dashboard/blueProfile.svg",
-    "/Images/Dashboard/blueUpdates.svg",
-    "/Images/Dashboard/blue-Support.svg",
+    // "/Images/Dashboard/blueProfile.svg",
+    // "/Images/Dashboard/blueUpdates.svg",
+    // "/Images/Dashboard/blue-Support.svg",
 
 
 
-    "/Images/Dashboard/ProjectIconBlue.svg",
-    "/Images/Dashboard/ProjectIconBlue.svg",
-    "/Images/Dashboard/blueProfile.svg",
-    "/Images/Dashboard/UserIconBlue.svg",
+    // "/Images/Dashboard/ProjectIconBlue.svg",
+    // "/Images/Dashboard/ProjectIconBlue.svg",
+    // "/Images/Dashboard/blueProfile.svg",
+    // "/Images/Dashboard/UserIconBlue.svg",
 
 
   ];
@@ -488,13 +467,7 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
   };
 
   async function connect() {
-    const connectorID =
-      typeof window !== "undefined"
-        ? localStorage.getItem("connectorId")
-        : null;
-    if (connectorID) {
-      await login("injected", 97);
-    }
+
   }
 
   useEffect(() => {
@@ -644,18 +617,6 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
                           />
                           {/* <img src={profileImage ? profileImage : '/Images/Dashboard/Profile.svg'} className={profileImage ? 'Navbar-Profile' : ''} alt="" /> */}
                         </div>
-                        <button
-                          className="connect__header__button"
-                          onClick={() => {
-                            account ? handleClose() : handleOpen();
-                          }}
-                        >
-                          {account
-                            ? `${account.substring(0, 6)}...${account.substring(
-                              account.length - 4
-                            )}`
-                            : "Connect Wallet"}
-                        </button>
                       </div>
 
                       <Menu
@@ -983,127 +944,14 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
             >
               <DrawerHeader />
 
-              {(() => {
-                if (currentPath === "/notifications") {
-                  return children;
-                }
-                if (status === "pending") {
-                  return (
-                    currentPath === "/kyc-preview" ? (
-                      children
-                    ) : (
-                      <div className="kyc__pending__main__container">
-                        <div className="kyc__pending__main__container_1">
-                          <img
-                            src="/Images/notification/kycIcon.svg"
-                            alt="KYC Icon"
-                          />
-                          <div className="kyc__pending__text__container">
-                            <p className="kyc__approval__heading">
-                              KYC Approval Pending
-                            </p>
-                            {/* <p className="kyc__approval__descrption">
-                            Your KYC has been pending for approval.
-                          </p> */}
-                          </div>
-                          <button
-                            class="connect__header__button"
-                            onClick={() => handleChangeSubmission(false)}
-                          >
-                            See Your Submission
-                          </button>
-                        </div>
-                      </div>)
-                  );
-                } else if (status === "rejected") {
-                  return currentPath !== "/property-developer-profile" ? (
-                    <div className="kyc__pending__main__container">
-                      <div className="kyc__pending__main__container_1">
-                        <img
-                          src="/Images/investorKyc/rejected.svg"
-                          alt="KYC Icon"
-                        />
-                        <div className="kyc__pending__text__container">
-                          <p className="kyc__approval__heading">KYC Rejected</p>
-                          <p className="kyc__approval__descrption">
-                            {/* KYC is rejected. Please resubmit your documents. */}
-                            Your KYC has been rejected. Please submit your KYC
-                            again.
-                          </p>
-                        </div>
-                        <button
-                          class="connect__header__button"
-                          onClick={() => handleChangeRejected(false)}
-                        >
-                          Submit KYC Again
-                        </button>
-                      </div>
-                    </div>
-                  ) : (
-                    children // Allow access to KYC page if path matches
-                  );
-                } else if (status === "accepted") {
-                  return currentPath === "/property-developer-profile" ? (
-                    <div className="kyc__pending__main__container">
 
-                      <div className="kyc__pending__main__container_1">
-                        <img
-                          src="/Images/investorKyc/acceptkyc.svg"
-                          alt="KYC Icon"
-                        />
-                        <div className="kyc__pending__text__container">
-                          <p className="kyc__approval__heading">KYC Aproved</p>
-                          <p className="kyc__approval__descrption">
-                            Your KYC has been approved successfully.
-                          </p>
-                        </div>
-                        <button
-                          class="connect__header__button"
-                          onClick={() => handleChangeSubmission(false)}
-                        >
-                          See Your Submission
-                        </button>
-                      </div>
-                    </div>
-                  ) : (
-                    children // Allow all routes except KYC page
-                  );
-                }
+              {children}
 
-                else {
-                  // No KYC status
-                  return currentPath === "/property-developer-profile" ? (
-                    children // Allow KYC submission
-                  ) : (
-                    <div className="kyc__pending__main__container">
-                      <div className="kyc__pending__main__container_1">
-                        <img
-                          src="/Images/notification/kycIcon.svg"
-                          alt="KYC Icon"
-                        />
-                        <div className="kyc__pending__text__container">
-                          <p className="kyc__approval__heading">
-                            Submit your KYC First
-                          </p>
-                          <p className="kyc__approval__descrption">
-                            Submit your KYC first, then you can access this
-                            page.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                }
-              })()}
             </Main>
           </Box>
         )}
       </ThemeProvider>
-      <ConnectWallet
-        showWallet={openWalletModal}
-        onHide={handleWalletClose}
-        type={"developer"}
-      />
+
     </>
   );
 }
