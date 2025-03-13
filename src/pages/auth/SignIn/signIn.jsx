@@ -64,11 +64,9 @@ const SignIn = () => {
         localStorage.setItem("Id", res?.payload?.user?._id);
         const profileImageDeveloper = res?.payload?.user?.profileImage;
         console.log("pasha bharosay vala", profileImageDeveloper);
-        if (profileImageDeveloper) {
-          localStorage.setItem("profileImageDeveloper", profileImageDeveloper);
-        }
+        navigate('/subjects');
         setIsLoading(false);
-        toast.success(res?.payload?.msg);
+
 
       } else if (res?.payload?.status === 404) {
         setTimeout(() => {
@@ -81,14 +79,7 @@ const SignIn = () => {
         }, 100);
         setIsLoading(false);
       }
-      else if (res?.payload?.status === 403) {
-        setTimeout(() => {
-          toast.success("please Verify ,Code sent to email");
-        }, 100);
-        const logintype = "inlogin";
-        navigate(`/verifyaccount/${email}`, { state: { logintype } });
-        setIsLoading(false);
-      }
+
       else {
         setIsLoading(false);
         setTimeout(() => {
@@ -123,9 +114,9 @@ const SignIn = () => {
       if (res?.payload?.msg === "Login Successfully") {
         localStorage.setItem("tokendev", res?.payload?.token);
         localStorage.setItem("Id", res?.payload?.user?._id);
-     
+
         toast.success(res?.payload?.msg);
-   
+
         setIsLoading(false);
       } else if (res?.payload?.status === 404) {
         setTimeout(() => {
@@ -155,7 +146,7 @@ const SignIn = () => {
       <div className="SignIn">
         <div className="SignIn-div1">
           <p className="SignIn-div1_pppp">
-            PrepWrld 
+            PrepWrld
             <br />
             The Future
           </p>
@@ -343,7 +334,7 @@ const SignIn = () => {
                     <img src={facebook} alt="facebook" />
                     <p>Sign in with Facebook</p>
                   </div> */}
-                  
+
                   <p className="AccountSignUp">
                     Don't have an account already?{" "}
                     <Link className="a" to="/signup">
@@ -354,8 +345,8 @@ const SignIn = () => {
               </>
             )}
           </div>
-         
-         
+
+
         </div>
       </div>
     </>

@@ -670,10 +670,10 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
               >
                 <div className="drawer__main__container1">
                   <div>
-                    <DrawerHeader>
-                      {/* <a href="https://skainet.academy/"> */}
+                  <DrawerHeader style={{background:"aliceblue"}}>
+                      
                       <img
-                        src="/Images/Dashboard/logo.svg"
+                        src="/Images/auth/preplog.png"
                         className="logo__container1"
                         alt="Logo"
                       />
@@ -809,9 +809,9 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
                 onClose={() => handleDrawerToggle}
               >
                 <div>
-                  <DrawerHeader>
+                  <DrawerHeader style={{background:"aliceblue"}}>
                     <img
-                      src="/Images/Dashboard/logo.svg"
+                      src="/Images/auth/preplog.png"
                       className="logo__container1"
                       alt="Logo"
                     />

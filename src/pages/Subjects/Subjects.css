@@ -1,0 +1,45 @@
+.predefinedtop{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 20px !important;
+    padding: 20px;
+}
+.predefinedtop_inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 150px;
+    border-radius: 12px;
+    border: 1px solid #000000;
+    gap: 20px;
+}
+.toptext{
+    font-family: Urbanist-Bold;
+    font-size: 30px;
+    line-height: 30px;
+    font-weight: 700;
+    text-align: left;
+    color: #000000;
+    margin: 0px !important;
+}
+.toptext_innner{
+    font-family: Urbanist;
+    font-size: 17px;
+    line-height: 17px;
+    font-weight: 400;
+    text-align: left;
+    color: #000000;
+    margin: 0px !important;
+}
+.fdgshasjf{
+    margin-top: 20px !important;
+    display: flex;
+    justify-content: flex-end;
+}
+.modal{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}

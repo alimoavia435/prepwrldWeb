@@ -1,57 +1,76 @@
 import React, { useState } from "react";
 import { Button, Modal, Dropdown, Form } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import './Subjects.css'
 
 const RoomPage = () => {
-  // State to track which tab is active
   const [activeTab, setActiveTab] = useState("predefined");
 
-  // State for modal visibility
   const [showModal, setShowModal] = useState(false);
 
-  // State to track room names and created rooms
-  const [predefinedRooms, setPredefinedRooms] = useState([]);
-  const [customRooms, setCustomRooms] = useState([]);
+  const [predefinedRooms, setPredefinedRooms] = useState([
+    {
+      name: "ali"
+    },
+    {
+      name: "haseeb"
+    },
+    {
+      name: "umair"
+    }
 
-  // Dropdown options for Predefined
+  ]);
+  const [customRooms, setCustomRooms] = useState([
+    {
+      name: "imran khan"
+    },
+    {
+      name: "afridi"
+    },
+    {
+      name: "yasir"
+    }
+  ]);
+
   const predefinedOptions = ["Option 1", "Option 2", "Option 3"];
   const [selectedOption, setSelectedOption] = useState(predefinedOptions[0]);
 
-  // Input for custom room name
   const [customRoomName, setCustomRoomName] = useState("");
 
-  // Handle opening and closing modal
   const handleOpenModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
 
-  // Handle room creation
   const handleCreateRoom = () => {
     if (activeTab === "predefined") {
-      // Add room with selected option in Predefined tab
       setPredefinedRooms([...predefinedRooms, selectedOption]);
     } else {
-      // Add custom room in Custom tab
       if (customRoomName.trim() !== "") {
         setCustomRooms([...customRooms, customRoomName]);
-        setCustomRoomName(""); // Reset input after creating room
+        setCustomRoomName("");
       }
     }
-    handleCloseModal(); // Close modal after creation
+    handleCloseModal();
   };
 
   return (
     <div className="container mt-4">
       {/* Tab buttons */}
-      <div className="mb-4">
+      <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
         <Button
-          variant={activeTab === "predefined" ? "primary" : "secondary"}
+          style={{
+            background: activeTab === "predefined" ? "#395bab" : "lightgrey",
+            color: activeTab === "predefined" ? "#ffffff" : "#000000"
+
+          }}
           onClick={() => setActiveTab("predefined")}
-          className="me-2"
+
         >
           Predefined
         </Button>
         <Button
-          variant={activeTab === "custom" ? "primary" : "secondary"}
+          style={{
+            background: activeTab === "custom" ? "#395bab" : "lightgrey",
+            color: activeTab === "custom" ? "#ffffff" : "#000000"
+          }}
           onClick={() => setActiveTab("custom")}
         >
           Custom
@@ -59,49 +78,59 @@ const RoomPage = () => {
       </div>
 
       {/* Create Room button */}
-      <div className="text-end">
+      <div className="fdgshasjf">
         <Button variant="success" onClick={handleOpenModal}>
           Create Room
         </Button>
       </div>
 
       {/* Room list */}
-      <div className="mt-4">
+      <div style={{ paddingTop: "20px" }}>
         {activeTab === "predefined" && (
           <>
-            <h5>Predefined Rooms</h5>
+            <p className="toptext">Predefined Subjects</p>
             {predefinedRooms.length === 0 ? (
-              <p>No rooms created yet.</p>
+              <p className="toptext">No rooms created yet.</p>
             ) : (
-              <ul>
+              <div className="predefinedtop">
                 {predefinedRooms.map((room, index) => (
-                  <li key={index}>{room}</li>
+                  <div key={index} className="predefinedtop_inner">
+                    <img src="/Images/home/profile.svg" alt="" />
+                    <p className="toptext_innner">{room.name}</p>
+                  </div>
                 ))}
-              </ul>
+              </div>
             )}
           </>
         )}
 
         {activeTab === "custom" && (
           <>
-            <h5>Custom Rooms</h5>
+            <p className="toptext">Custom Subjects</p>
             {customRooms.length === 0 ? (
-              <p>No rooms created yet.</p>
+              <p className="toptext">No rooms created yet.</p>
             ) : (
-              <ul>
+              <div className="predefinedtop">
                 {customRooms.map((room, index) => (
-                  <li key={index}>{room}</li>
+                  <div key={index} className="predefinedtop_inner">
+                    <img src="/Images/home/profile.svg" alt="" />
+                    <p className="toptext_innner">{room.name}</p>
+                  </div>
                 ))}
-              </ul>
+              </div>
             )}
           </>
         )}
       </div>
 
-      {/* Modal */}
+
       <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>{activeTab === "predefined" ? "Create Predefined Room" : "Create Custom Room"}</Modal.Title>
+        <Modal.Header style={{
+          position: "absolute",
+          top: "0px",
+          right: "0px"
+        }} closeButton>
+
         </Modal.Header>
         <Modal.Body>
           {activeTab === "predefined" ? (
@@ -130,12 +159,11 @@ const RoomPage = () => {
           ) : (
             <>
               <img
-                src="https://via.placeholder.com/100"
+                src="/public"
                 alt="Placeholder"
                 className="mb-3"
               />
               <Form.Group controlId="customRoomName">
-                <Form.Label>Room Name</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Enter room name"

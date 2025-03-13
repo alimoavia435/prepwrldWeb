@@ -27,9 +27,9 @@ p {
 }
 
 .logo__container1 {
-  width: 74.26px;
+  width: 200px;
   height: 80px;
-  margin-left: 65px !important;
+  /* margin-left: 65px !important; */
 }
 
 .menu-items {
@@ -902,10 +902,7 @@ p {
 }
 
 @media (max-width: 768px) {
-  .logo__container1 {
-    width: 60px;
-    margin-left: 80px !important;
-  }
+ 
 
   .OtherMenu-Div {
     margin-top: 20px;
@@ -926,12 +923,6 @@ p {
 @media (max-width: 500px) {
   .css-3x305n-MuiDrawer-docked .MuiDrawer-paper {
     width: 305px !important;
-  }
-
-  .logo__container1 {
-    width: 55px;
-    height: auto;
-    margin-left: 90px !important;
   }
 
   .css-kwdo0-MuiTypography-root,

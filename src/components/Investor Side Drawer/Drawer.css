@@ -26,11 +26,7 @@ p {
   transition: border-radius 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0s !important;
 }
 
-.logo__container1 {
-  width: 74.26px;
-  height: 80px;
-  margin-left: 65px !important;
-}
+
 
 .menu-items {
   color: var(--Grey-500---Primary, #667085) !important;
@@ -872,10 +868,7 @@ p {
 }
 
 @media (max-width: 768px) {
-  .logo__container1 {
-    width: 60px;
-    margin-left: 80px !important;
-  }
+
 
   .OtherMenu-Div {
     margin-top: 20px;
@@ -898,11 +891,7 @@ p {
     width: 305px !important;
   }
 
-  .logo__container1 {
-    width: 55px;
-    height: auto;
-    margin-left: 90px !important;
-  }
+
 
   .css-kwdo0-MuiTypography-root,
   .css-1bm4pxe,
