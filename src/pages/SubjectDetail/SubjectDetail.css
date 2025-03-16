@@ -20,23 +20,23 @@
 }
 
 /* .dropdown-menu{
-    display: flex;
-    flex-direction: column;
-    gap: 5px !important;
-    padding: 10px !important;
-    background-color: #F1F1F1 !important;
-    border-radius: 8px !important;
-}
-.dropdown-item {
-  color: #000000 !important;
-  font-family: Urbanist;
-  font-size: 14px !important;
-  font-weight: 500 !important;
-  line-height: 21px !important;
-  text-align: left !important;
-  text-underline-position: from-font !important;
-  text-decoration-skip-ink: none !important;
-} */
+      display: flex;
+      flex-direction: column;
+      gap: 5px !important;
+      padding: 10px !important;
+      background-color: #F1F1F1 !important;
+      border-radius: 8px !important;
+  }
+  .dropdown-item {
+    color: #000000 !important;
+    font-family: Urbanist;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 21px !important;
+    text-align: left !important;
+    text-underline-position: from-font !important;
+    text-decoration-skip-ink: none !important;
+  } */
 .Search-Div {
   display: flex;
   flex-direction: row;
@@ -246,23 +246,23 @@
 }
 
 /* .css-36jua1-MuiTableCell-root{
-  border-bottom: none !important;
-  padding: 12px 0px 12px 20px !important;
-}
-.css-18jawa8-MuiTableCell-root {
-  padding: 22px 20px !important;
-}
-
-
-
-@media (max-width: 1440px) and (min-width: 1439px) {
-  .main-div {
-    width: 972px !important;
+    border-bottom: none !important;
+    padding: 12px 0px 12px 20px !important;
   }
-}
-
-
-} */
+  .css-18jawa8-MuiTableCell-root {
+    padding: 22px 20px !important;
+  }
+  
+  
+  
+  @media (max-width: 1440px) and (min-width: 1439px) {
+    .main-div {
+      width: 972px !important;
+    }
+  }
+  
+  
+  } */
 .SubmitPropertytableBodyRowCell2 {
   /* border-bottom: none !important; */
   font-family: "Urbanist-Medium" !important;
@@ -302,7 +302,12 @@
   color: #00000099 !important;
 }
 
-.addadminuser {}
+.fghgjhk {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+}
 
 .SubmitPropertytableHeadRowCell {
   border-bottom: none !important;
@@ -316,6 +321,7 @@
   text-decoration-skip-ink: none !important;
   color: #00000099 !important;
 }
+
 .addqbttn {
   background: #135bab;
   border: none;

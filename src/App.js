@@ -23,11 +23,11 @@ import SidedrawerInvestor from "./components/Investor Side Drawer/SidedrawerInve
 import NotificationDetail from "./pages/NotificationDetail/notificationDetail";
 import NotificationInvestorDetail from "./pages/NotificationInvestor/notificationInvestor";
 import RoomPage from "./pages/Subjects/Subjects";
-
-
-
-
-
+import User from "./pages/User/User";
+import SubjectDetail from "./pages/SubjectDetail/SubjectDetail";
+import AddStudent from "./pages/AddStudent/AddStudent";
+import Exams from "./pages/Exams/Exams";
+import GenerateTest from "./pages/GenerateTest/GenerateTest";
 
 const App = () => {
   const DashboardLayout = () => (
@@ -73,12 +73,43 @@ const App = () => {
           <Route
             path="/subjects"
             element={
-
               <RoomPage />
+            }
+          />
+          {/* <Route
+            path="/users"
+            element={
+
+              <User />
+
+            }
+          /> */}
+          <Route
+            path="/Exams"
+            element={
+              <Exams />
+            }
+          />
+          <Route
+            path="/GenerateTest"
+            element={
+              <GenerateTest/>
+            }
+          />
+          <Route
+            path="/AddStudent/:id"
+            element={
+              <AddStudent />
+            }
+          />
+          <Route
+            path="/SubjectDetail/:id"
+            element={
+
+              <SubjectDetail />
 
             }
           />
-
 
 
 

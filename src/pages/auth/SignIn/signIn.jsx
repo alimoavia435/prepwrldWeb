@@ -62,12 +62,8 @@ const SignIn = () => {
       if (res?.payload?.msg === "Login Successfully") {
         localStorage.setItem("token", res?.payload?.token);
         localStorage.setItem("Id", res?.payload?.user?._id);
-        const profileImageDeveloper = res?.payload?.user?.profileImage;
-        console.log("pasha bharosay vala", profileImageDeveloper);
         navigate('/subjects');
         setIsLoading(false);
-
-
       } else if (res?.payload?.status === 404) {
         setTimeout(() => {
           toast.error("User Not Found");

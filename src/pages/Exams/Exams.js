@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Modal, Dropdown, Form } from "react-bootstrap";
-import './Subjects.css'
+import './Exams.css'
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateSubject } from "../../services/redux/middleware/CreateSubject";
@@ -8,7 +8,10 @@ import { getAllrooms } from "../../services/redux/middleware/getAllrooms";
 import ScreenLoader from "../../components/loader/ScreenLoader";
 import { Trash } from 'react-bootstrap-icons';
 import { deleteroom } from "../../services/redux/middleware/deleteroom";
-const RoomPage = () => {
+import { creareexamfolder } from "../../services/redux/middleware/creareexamfolder";
+import { getexams } from "../../services/redux/middleware/getexams";
+import { deleteExam } from "../../services/redux/middleware/deleteExam";
+const Exams = () => {
   const [activeTab, setActiveTab] = useState("predefined");
 
   const [showModal, setShowModal] = useState(false);
@@ -18,19 +21,19 @@ const RoomPage = () => {
   const [predefinedRooms, setPredefinedRooms] = useState([]);
 
 
-  const roomData = useSelector(
-    (state) => state?.getAllrooms?.profile?.data?.rooms
+  const getexaDatams = useSelector(
+    (state) => state?.getexams?.profile?.data?.exams
   )
   useEffect(() => {
-    if (roomData) {
-      setPredefinedRooms(roomData)
+    if (getexaDatams) {
+      setPredefinedRooms(getexaDatams)
     }
-  }, [roomData])
+  }, [getexaDatams])
 
 
 
 
-  console.log("roomData", roomData);
+  console.log("getexams", getexaDatams);
   const subjects = [
     'Adult Health',
     'Child Health',
@@ -52,11 +55,13 @@ const RoomPage = () => {
     setLoading(true)
     if (activeTab === "predefined") {
       const data = {
-        roomName: subject
+        examName: subject
       }
-      dispatch(CreateSubject(data)).then((res) => {
+      dispatch(creareexamfolder(data)).then((res) => {
         console.log(res, "resopnse of create")
-        dispatch(getAllrooms())
+        dispatch(getexams()).then((res) => {
+          setLoading(false)
+        })
         setLoading(false)
         handleCloseModal();
         setSubject('')
@@ -67,9 +72,9 @@ const RoomPage = () => {
   };
   const handleDelete = (id) => {
     setLoading(true)
-    dispatch(deleteroom(id)).then((res) => {
+    dispatch(deleteExam(id)).then((res) => {
       console.log(res, "delete response");
-      dispatch(getAllrooms()).then((res) => {
+      dispatch(getexams()).then((res) => {
         setLoading(false)
       })
     })
@@ -77,7 +82,7 @@ const RoomPage = () => {
 
   useEffect(() => {
     setLoading(true)
-    dispatch(getAllrooms()).then((res) => {
+    dispatch(getexams()).then((res) => {
       setLoading(false)
     })
   }, [])
@@ -87,7 +92,7 @@ const RoomPage = () => {
     <>
       {loading && <ScreenLoader />}
       <div >
-        {/* Tab buttons */}
+
         {/* <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
         <Button
           style={{
@@ -114,7 +119,7 @@ const RoomPage = () => {
         {/* Create Room button */}
         <div className="fdgshasjf">
           <Button variant="success" onClick={handleOpenModal}>
-            Create Room
+            create Exam folder
           </Button>
         </div>
 
@@ -122,12 +127,12 @@ const RoomPage = () => {
         <div >
           {activeTab === "predefined" && (
             <>
-              <p className="toptext">Classes</p>
-              {predefinedRooms.length === 0 ? (
-                <p className="toptext">No Classes  created yet.</p>
+              <p className="toptext">Exams</p>
+              {predefinedRooms?.length === 0 ? (
+                <p className="toptext">No Exams created yet.</p>
               ) : (
                 <div className="predefinedtop">
-                  {predefinedRooms.map((room, index) => (
+                  {predefinedRooms?.map((room, index) => (
                     <div key={index} className="predefinedtop_inner" >
                       <Dropdown style={{ position: 'relative' }}>
                         <Dropdown.Toggle
@@ -143,9 +148,15 @@ const RoomPage = () => {
                           </Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
-                      <img src="/Images/Dashboard/open-folder.png" alt="" onClick={() => navigate(`/SubjectDetail/${room?._id}`)} />
-                      <p className="toptext_innner" style={{ textAlign: "center" }} onClick={() => navigate(`/SubjectDetail/${room?._id}`)}>{room?.roomName}</p>
-                      <p className="toptext_innner" style={{ textAlign: "center" }} onClick={() => navigate(`/SubjectDetail/${room?._id}`)}>{room?.students?.length}</p>
+                      <img src="/Images/exam1.png" alt=""
+                       onClick={() => navigate(`/GenerateTest`, { state: { roomId: room?._id } })}
+                       />
+                      <p className="toptext_innner" style={{ textAlign: "center" }} 
+                      onClick={() => navigate(`/GenerateTest`, { state: { roomId: room?._id } })}
+                      >{room?.examName}</p>
+                      <p className="toptext_innner" style={{ textAlign: "center" }} 
+                        onClick={() => navigate(`/GenerateTest`, { state: { roomId: room?._id } })}
+                      >{room?.status}</p>
 
                     </div>
                   ))}
@@ -194,7 +205,7 @@ const RoomPage = () => {
               <Form.Group controlId="customRoomName">
                 <Form.Control
                   type="text"
-                  placeholder="Enter room name"
+                  placeholder="Enter name"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
                 />
@@ -216,4 +227,4 @@ const RoomPage = () => {
   );
 };
 
-export default RoomPage;
+export default Exams;

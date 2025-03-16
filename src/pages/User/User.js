@@ -10,11 +10,10 @@ import {
   IconButton,
 } from "@mui/material";
 import "./User.css";
-import DeleteModal from "../../Components/DeleteModal";
+
 import { Dropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 // import getAllUsers from "../../services/redux/middleware/getAllUsers";
-import ScreenLoader from "../../Components/loader/ScreenLoader";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import Stack from "@mui/material/Stack";
@@ -27,10 +26,12 @@ import {
 
 import { Tabs, Tab, Box, Typography } from "@mui/material";
 import { use } from "react";
-import { getteachers } from "../../services/redux/middleware/getteachers";
-import { deleteUserById } from "../../services/redux/middleware/deleteUserById";
+// import { getteachers } from "../../services/redux/middleware/getteachers";
+// import { deleteUserById } from "../../services/redux/middleware/deleteUserById";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import ScreenLoader from "../../components/loader/ScreenLoader";
+// import DeleteModal from "../../components/DeleteModal/index";
 
 const User = () => {
   const [loading, setLoading] = useState(true);
@@ -102,14 +103,14 @@ const User = () => {
     setTabIndex(newValue);
     console.log("tabs clicked", newValue)
     if (newValue === 0) {
-      dispatch(getteachers("teacher")).then(() => {
-        setLoading(false)
-      });
+      // dispatch(getteachers("teacher")).then(() => {
+      //   setLoading(false)
+      // });
     }
     else if (newValue === 1) {
-      dispatch(getteachers("student")).then(() => {
-        setLoading(false)
-      });;
+      // dispatch(getteachers("student")).then(() => {
+      //   setLoading(false)
+      // });;
     }
     else {
       setLoading(false)
@@ -124,13 +125,14 @@ const User = () => {
       default:
         setFilter("Teacher");
     }
-    // setLoading(false);
+    setLoading(false);
   };
   useEffect(() => {
     setLoading(true)
-    dispatch(getteachers("teacher")).then(() => {
-      setLoading(false)
-    });
+    // dispatch(getteachers("teacher")).then(() => {
+    //   setLoading(false)
+    // });
+    setLoading(false)
   }, [])
 
   const handleOpenModal = (id) => {
@@ -142,22 +144,22 @@ const User = () => {
   const deleteCurrentItem = async (id) => {
     setLoading(true)
     console.log("goda", id);
-    dispatch(deleteUserById(id)).then((res) => {
-      console.log("delete response", res);
-      if (res?.payload?.status === 200) {
-        toast.success("User Deleted Successfully")
-      }
-      if (filter === "Students") {
-        dispatch(getteachers("student")).then(() => {
-          setLoading(false)
-        });
-      }
-      else {
-        dispatch(getteachers("teacher")).then(() => {
-          setLoading(false)
-        });
-      }
-    })
+    // dispatch(deleteUserById(id)).then((res) => {
+    //   console.log("delete response", res);
+    //   if (res?.payload?.status === 200) {
+    //     toast.success("User Deleted Successfully")
+    //   }
+    //   if (filter === "Students") {
+    //     dispatch(getteachers("student")).then(() => {
+    //       setLoading(false)
+    //     });
+    //   }
+    //   else {
+    //     dispatch(getteachers("teacher")).then(() => {
+    //       setLoading(false)
+    //     });
+    //   }
+    // })
   }
   return (
     <>
@@ -165,159 +167,131 @@ const User = () => {
 
       <div className="main-div">
         <div className="Main-Search-Filter" >
-          <Box sx={{ width: "fit-content", typography: "body1", display: "flex", justifyContent: "flex-start", background: "#F6F6F6", borderRadius: "8px" }}>
-            <Tabs
-              value={tabIndex}
-              onChange={handleTabChange}
-              centered
-              color="#000 !important"
-              indicatorColor="transparent"
-              sx={{
-                "& .MuiTab-root": {
-                  textTransform: "none",
-                  fontWeight: "500",
-                  whiteSpace: "nowrap",
-                  width: "155px",
-                  height: "48px",
-                  "@media (max-width: 430px)": {
-                    width: "138px",
-                  },
-                },
-                "& .Mui-selected": {
-                  backgroundColor: "#139de5 !important",
-                  color: "#fff !important",
-                },
 
-              }}
-            >
-              <Tab label="Teacher" />
-              <Tab label="Students" />
-            </Tabs>
-          </Box>
-          <button class="addqbttn" onClick={() => navigate('/AddUser')} style={{ background: "seagreen" }}>Add Teacher</button>
+          {/* <button class="addqbttn" onClick={() => navigate('/AddStudent')} >Add New Student</button> */}
         </div>
-          <TableContainer
-            className="SubmitPropertyTablemaiiiiin"
-            sx={{
-              boxShadow: "none",
-            }}
-            component={Paper}
-          >
-            <Table sx={{ minWidth: 650 }} aria-label="table">
-              <TableHead >
-                <TableRow
-                  sx={{
-                    borderTopLeftRadius: "9px",
-                    borderBottomLightRadius: "9px",
-                    background: "rgb(241, 241, 241)",
-
-                  }}
-                  className="SubmitPropertytableHeadRow"
-                >
-                  <TableCell
-                    sx={{ borderRadius: "7.66px 0 0 7.66px", border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    #
-                  </TableCell>
-                  <TableCell
-                    sx={{ border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    Name
-                  </TableCell>
-                  <TableCell
-                    sx={{ border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    Email
-                  </TableCell>
-                  <TableCell
-                    sx={{ border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    Date of registration
-                  </TableCell>
-                  <TableCell
-                    sx={{ border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    Contact number
-                  </TableCell>
-                  <TableCell
-                    sx={{ border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    Password
-                  </TableCell>
-                  <TableCell
-                    sx={{ borderRadius: "0px 7.66px 7.66px 0px", border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    Action
-                  </TableCell>
-                </TableRow>
-              </TableHead>
+        <TableContainer
+          className="SubmitPropertyTablemaiiiiin"
+          sx={{
+            boxShadow: "none",
+          }}
+          component={Paper}
+        >
+          <Table sx={{ minWidth: 650 }} aria-label="table">
+            <TableHead >
               <TableRow
                 sx={{
-                  marginTop: "17px",
-                  height: "17px",
+                  borderTopLeftRadius: "9px",
+                  borderBottomLightRadius: "9px",
+                  background: "rgb(241, 241, 241)",
+
                 }}
-              ></TableRow>
-              <TableBody >
-                {Teacherinfo?.map((row, index) => (
-                  <TableRow key={row.id}>
-                    <TableCell
-                      align="center"
-                      className="SubmitPropertytableBodyRowCell"
-                    >
-                      {index + 1}
-                    </TableCell>
-                    <TableCell
-                      align="left"
-                      className="SubmitPropertytableBodyRowCell1"
-                    >
-                      {row?.fullName}
-                    </TableCell>
-                    <TableCell
-                      align="left"
-                      className="SubmitPropertytableBodyRowCell2"
-                    >
-                      {row?.email}
-                    </TableCell>
-                    <TableCell
-                      align="center"
-                      className="SubmitPropertytableBodyRowCell2"
-                    >
-                      {new Date(row?.createdAt).toLocaleDateString()}
-                    </TableCell>
-                    <TableCell
-                      align="center"
-                      className="SubmitPropertytableBodyRowCell2"
-                    >
-                      {row?.phone}
-                    </TableCell>
-                    <TableCell
-                      align="center"
-                      className="SubmitPropertytableBodyRowCell2"
-                    >
-                      *********
-                    </TableCell>
-                    <TableCell
-                      align="center"
-                      className="SubmitPropertytableBodyRowCell2"
-                    >
-                      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                        <img src="/Images/Admin/delete.png" alt="" style={{ height: "40px", width: "40px", cursor: "pointer" }}
-                          onClick={() => handleOpenModal(row._id)} />
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        
+                className="SubmitPropertytableHeadRow"
+              >
+                <TableCell
+                  sx={{ borderRadius: "7.66px 0 0 7.66px", border: "none" }}
+                  className="SubmitPropertytableHeadRowCell"
+                >
+                  #
+                </TableCell>
+                <TableCell
+                  sx={{ border: "none" }}
+                  className="SubmitPropertytableHeadRowCell"
+                >
+                  Name
+                </TableCell>
+                <TableCell
+                  sx={{ border: "none" }}
+                  className="SubmitPropertytableHeadRowCell"
+                >
+                  Email
+                </TableCell>
+                <TableCell
+                  sx={{ border: "none" }}
+                  className="SubmitPropertytableHeadRowCell"
+                >
+                  Date of registration
+                </TableCell>
+                <TableCell
+                  sx={{ border: "none" }}
+                  className="SubmitPropertytableHeadRowCell"
+                >
+                  Contact number
+                </TableCell>
+                <TableCell
+                  sx={{ border: "none" }}
+                  className="SubmitPropertytableHeadRowCell"
+                >
+                  Password
+                </TableCell>
+                <TableCell
+                  sx={{ borderRadius: "0px 7.66px 7.66px 0px", border: "none" }}
+                  className="SubmitPropertytableHeadRowCell"
+                >
+                  Action
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableRow
+              sx={{
+                marginTop: "17px",
+                height: "17px",
+              }}
+            ></TableRow>
+            <TableBody >
+              {Teacherinfo?.map((row, index) => (
+                <TableRow key={row.id}>
+                  <TableCell
+                    align="center"
+                    className="SubmitPropertytableBodyRowCell"
+                  >
+                    {index + 1}
+                  </TableCell>
+                  <TableCell
+                    align="left"
+                    className="SubmitPropertytableBodyRowCell1"
+                  >
+                    {row?.fullName}
+                  </TableCell>
+                  <TableCell
+                    align="left"
+                    className="SubmitPropertytableBodyRowCell2"
+                  >
+                    {row?.email}
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    className="SubmitPropertytableBodyRowCell2"
+                  >
+                    {new Date(row?.createdAt).toLocaleDateString()}
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    className="SubmitPropertytableBodyRowCell2"
+                  >
+                    {row?.phone}
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    className="SubmitPropertytableBodyRowCell2"
+                  >
+                    *********
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    className="SubmitPropertytableBodyRowCell2"
+                  >
+                    <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                      <img src="/Images/Admin/delete.png" alt="" style={{ height: "40px", width: "40px", cursor: "pointer" }}
+                        onClick={() => handleOpenModal(row._id)} />
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+
         {data?.totalPages > 1 && (
           <>
             <Stack
@@ -374,12 +348,12 @@ const User = () => {
         )}
 
       </div>
-      <DeleteModal
+      {/* <DeleteModal
         open={openDeleteModal}
         setOpen={setOpenDeleteModal}
         deleteCurrentItem={deleteCurrentItem}
-        itemId={selectedItemId} // Pass the selected item ID to the modal
-      />
+        itemId={selectedItemId} 
+      /> */}
     </>
   );
 };

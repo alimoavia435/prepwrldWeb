@@ -23,8 +23,11 @@ import readallNotification from "./reducer/readallNotification"
 // import getCourseWithType from "./reducer/getCourseWithType";
 import readallnotifyDev from "./reducer/readallnotifyDev"
 import kycDataDev from "./reducer/kycDataDev"
-import getDevPropertyDetailById  from "./reducer/getDevPropertyDetailById";
-
+import getDevPropertyDetailById from "./reducer/getDevPropertyDetailById";
+import getAllrooms from "./reducer/getAllrooms"
+import getroomByid from "./reducer/getroomByid"
+import getAlldata from "./reducer/getAlldata"
+import getexams from "./reducer/getexams"
 export const store = configureStore({
   reducer: {
     getFolder: getFolder,
@@ -46,12 +49,16 @@ export const store = configureStore({
     getinvesnotification: getinvesnotification,
     getdevnotification: getdevnotification,
     // getROI:getROI,
-    getCMS:getCMS,
+    getCMS: getCMS,
     // getinvesnotification:getinvesnotification,
     // getdevnotification:getdevnotification,
-    readallNotification:readallNotification,
-    readallnotifyDev:readallnotifyDev,
-    kycDataDev:kycDataDev,
-    DevPropertyDetail: getDevPropertyDetailById
+    readallNotification: readallNotification,
+    readallnotifyDev: readallnotifyDev,
+    kycDataDev: kycDataDev,
+    DevPropertyDetail: getDevPropertyDetailById,
+    getAllrooms: getAllrooms,
+    getroomByid: getroomByid,
+    getAlldata: getAlldata,
+    getexams: getexams
   },
 });

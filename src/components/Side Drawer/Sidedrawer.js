@@ -144,7 +144,11 @@ function getHeaderName(pathname) {
     case pathname === "/notifications":
       return "Notifications";
     case pathname === "/subjects":
-      return "Subjects";
+      return "Class Rooms";
+    case pathname === "/users":
+      return "Students";
+    case pathname === "/Exams":
+      return "Exams";
 
     default:
       return "";
@@ -302,16 +306,6 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
     }, 500);
   };
 
-  const handleChangeSubmission = () => {
-    navigate("/kyc-preview");
-  };
-  const handleChangeRejected = () => {
-    navigate("/property-developer-profile");
-  };
-  const handleSignIn = () => {
-    localStorage.clear();
-    navigate("/");
-  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -329,7 +323,7 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
     //   disabled: false,
     // },
     {
-      text: "Subjects",
+      text: "Class Rooms",
       path: "/subjects",
       disabled: false,
     },
@@ -339,15 +333,15 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
     //   disabled: false,
     // },
     // {
-    //   text: "KYC & Profile",
-    //   path: "/property-developer-profile",
+    //   text: "Students",
+    //   path: "/users",
     //   disabled: false,
     // },
-    // {
-    //   text: "Updates",
-    //   path: "/property-updates",
-    //   disabled: false,
-    // },
+    {
+      text: "Exams",
+      path: "/Exams",
+      disabled: false,
+    },
     // {
     //   text: "Support",
     //   path: "/support-requests",
@@ -365,21 +359,25 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
 
     // "/Images/Dashboard/ProjectIcon.svg",
     // "/Images/Dashboard/PropertySubmission.svg",
-
+    // "/Images/Dashboard/profile-2user (1).svg",
+    "/Images/exam1.png",
+    // "Images/Dashboard/updates.svg"
 
   ];
   const activeDashicons = [
     // "/Images/Dashboard/UserIconBlue.svg",
     "/Images/Dashboard/ProjectIconBlue.svg",
     // "/Images/Dashboard/blueProfile.svg",
-    // "/Images/Dashboard/blueUpdates.svg",
+
     // "/Images/Dashboard/blue-Support.svg",
 
 
 
     // "/Images/Dashboard/ProjectIconBlue.svg",
     // "/Images/Dashboard/ProjectIconBlue.svg",
-    // "/Images/Dashboard/blueProfile.svg",
+    "/Images/Dashboard/profile-2user.svg",
+    "/Images/exam1.png",
+    // "/Images/Dashboard/blueUpdates.svg",
     // "/Images/Dashboard/UserIconBlue.svg",
 
 
@@ -670,8 +668,8 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
               >
                 <div className="drawer__main__container1">
                   <div>
-                  <DrawerHeader style={{background:"aliceblue"}}>
-                      
+                    <DrawerHeader style={{ background: "aliceblue" }}>
+
                       <img
                         src="/Images/auth/preplog.png"
                         className="logo__container1"
@@ -809,7 +807,7 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
                 onClose={() => handleDrawerToggle}
               >
                 <div>
-                  <DrawerHeader style={{background:"aliceblue"}}>
+                  <DrawerHeader style={{ background: "aliceblue" }}>
                     <img
                       src="/Images/auth/preplog.png"
                       className="logo__container1"

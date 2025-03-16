@@ -6,11 +6,10 @@ if (typeof window !== "undefined") {
   api.interceptors.request.use(
     (config) => {
       const token = localStorage.getItem("token");
-      const tokendev = localStorage.getItem("tokendev");
+      console.log(token, "interceptors");
+
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
-      } else if (tokendev) {
-        config.headers.Authorization = `Bearer ${tokendev}`;
       }
 
 
@@ -27,6 +26,7 @@ if (typeof window !== "undefined") {
 
   api.interceptors.response.use(
     (response) => {
+      
       return response;
     },
     (error) => {
@@ -34,7 +34,7 @@ if (typeof window !== "undefined") {
         error.response &&
         (error.response.status === 401 || error.response.status === 403)
       ) {
-        console.error("Unauthorized or Forbidden request - Token issue");
+        console.error("Unauthorized or Forbidden request - Token issue",error);
         // You can handle redirect logic here, e.g., redirect to login
         // window.location.href = "/login";
       }
