@@ -375,7 +375,7 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
 
     // "/Images/Dashboard/ProjectIconBlue.svg",
     // "/Images/Dashboard/ProjectIconBlue.svg",
-    "/Images/Dashboard/profile-2user.svg",
+    // "/Images/Dashboard/profile-2user.svg",
     "/Images/exam1.png",
     // "/Images/Dashboard/blueUpdates.svg",
     // "/Images/Dashboard/UserIconBlue.svg",

@@ -13,7 +13,8 @@ import { getexams } from "../../services/redux/middleware/getexams";
 import { deleteExam } from "../../services/redux/middleware/deleteExam";
 import { changeStatus } from "../../services/redux/middleware/changeStatus";
 import { toast } from "react-toastify";
-const Exams = () => {
+import { getStudentExams } from "../../services/redux/middleware/getStudentExams";
+const StudentExams = () => {
   const [activeTab, setActiveTab] = useState("predefined");
 
   const [showModal, setShowModal] = useState(false);
@@ -24,7 +25,7 @@ const Exams = () => {
 
 
   const getexaDatams = useSelector(
-    (state) => state?.getexams?.profile?.data?.exams
+    (state) => state?.getStudentExams?.profile?.data?.exams
   )
   useEffect(() => {
     if (getexaDatams) {
@@ -53,62 +54,13 @@ const Exams = () => {
   const handleOpenModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
 
-  const handleCreateRoom = () => {
-    setLoading(true)
-    if (activeTab === "predefined") {
-      const data = {
-        examName: subject
-      }
-      dispatch(creareexamfolder(data)).then((res) => {
-        console.log(res, "resopnse of create")
-        dispatch(getexams()).then((res) => {
-          setLoading(false)
-        })
-        setLoading(false)
-        handleCloseModal();
-        setSubject('')
-      })
-    }
-
-
-  };
-  const handleDelete = (id) => {
-    setLoading(true)
-    dispatch(deleteExam(id)).then((res) => {
-      console.log(res, "delete response");
-      dispatch(getexams()).then((res) => {
-        setLoading(false)
-      })
-    })
-  };
-
   useEffect(() => {
     setLoading(true)
-    dispatch(getexams()).then((res) => {
+    dispatch(getStudentExams()).then((res) => {
       setLoading(false)
     })
   }, [])
-  const handleStart = (id, status) => {
-    const data = {
-      status: status === "pending" ? "active" : status === "active" ? "ended" : ""
 
-    }
-    const datawithid = {
-      id,
-      data
-    }
-    setLoading(true)
-    dispatch(changeStatus(datawithid)).then((res) => {
-      console.log(res, "status response")
-      dispatch(getexams()).then((res) => {
-        setLoading(false)
-      })
-      if (res?.payload?.status === 200) {
-        toast?.success("Exam status changed")
-      }
-      setLoading(false)
-    })
-  }
 
   return (
     <>
@@ -139,11 +91,11 @@ const Exams = () => {
       </div> */}
 
         {/* Create Room button */}
-        <div className="fdgshasjf">
+        {/* <div className="fdgshasjf">
           <Button variant="success" onClick={handleOpenModal}>
             create Exam folder
           </Button>
-        </div>
+        </div> */}
 
         {/* Room list */}
         <div >
@@ -151,55 +103,19 @@ const Exams = () => {
             <>
               <p className="toptext">Exams</p>
               {predefinedRooms?.length === 0 ? (
-                <p className="toptext">No Exams created yet.</p>
+                <p className="toptext">No Exams Added yet.</p>
               ) : (
                 <div className="predefinedtop">
                   {predefinedRooms?.map((room, index) => (
                     <div key={index} className="predefinedtop_inner" >
-                      <Dropdown style={{ position: 'relative' }}>
-                        <Dropdown.Toggle
-                          as="img"
-                          src="/Images/Dashboard/dots.png"
-                          style={{ height: "20px", width: "20px", position: "absolute", top: "-6px", right: "-74px", cursor: 'pointer' }}
-                          alt="..."
-                        />
-
-                        <Dropdown.Menu align="end" style={{ top: '35px', right: '0px', position: 'absolute' }}>
-                          <Dropdown.Item onClick={() => handleDelete(room?._id)}>
-                            {/* <Trash className="mr-2" /> Delete */}
-                            Delete
-                          </Dropdown.Item>
-                          {room?.status !== "primary" && room?.status !== "ended" && (
-                            <Dropdown.Item onClick={() => handleStart(room?._id, room?.status)}>
-                              {room?.status === "active" ? "End Exam" : "Start Exam"}
-                            </Dropdown.Item>
-                          )}
-
-                        </Dropdown.Menu>
-                      </Dropdown>
                       <img src="/Images/exam1.png" alt=""
-                        onClick={() => navigate(`/GenerateTest`, {
-                          state: {
-                            roomId: room?._id,
-                            status: room?.status // or any status value you want to send 
-                          }
-                        })}
+                        onClick={() => navigate(`/Submission/${room?._id}`)}
                       />
                       <p className="toptext_innner" style={{ textAlign: "center" }}
-                        onClick={() => navigate(`/GenerateTest`, {
-                          state: {
-                            roomId: room?._id,
-                            status: room?.status // or any status value you want to send 
-                          }
-                        })}
+                        onClick={() => navigate(`/Submission/${room?._id}`)}
                       >{room?.examName}</p>
                       <p className="toptext_innner" style={{ textAlign: "center" }}
-                        onClick={() => navigate(`/GenerateTest`, {
-                          state: {
-                            roomId: room?._id,
-                            status: room?.status // or any status value you want to send 
-                          }
-                        })}
+                        onClick={() => navigate(`/Submission/${room?._id}`)}
                       >{room?.status}</p>
 
                     </div>
@@ -229,7 +145,7 @@ const Exams = () => {
         </div>
 
 
-        <Modal show={showModal} onHide={handleCloseModal}>
+        {/* <Modal show={showModal} onHide={handleCloseModal}>
           <Modal.Header style={{
             position: "absolute",
             top: "-12px",
@@ -265,10 +181,10 @@ const Exams = () => {
               Create
             </button>
           </Modal.Footer>
-        </Modal>
+        </Modal> */}
       </div >
     </>
   );
 };
 
-export default Exams;
+export default StudentExams;

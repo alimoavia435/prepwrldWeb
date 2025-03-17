@@ -28,6 +28,9 @@ import getAllrooms from "./reducer/getAllrooms"
 import getroomByid from "./reducer/getroomByid"
 import getAlldata from "./reducer/getAlldata"
 import getexams from "./reducer/getexams"
+import getexamdetail from "./reducer/getexamdetail"
+import getStudentExams from "./reducer/getStudentExams"
+import getStudentquestions from "./reducer/getStudentquestions"
 export const store = configureStore({
   reducer: {
     getFolder: getFolder,
@@ -59,6 +62,9 @@ export const store = configureStore({
     getAllrooms: getAllrooms,
     getroomByid: getroomByid,
     getAlldata: getAlldata,
-    getexams: getexams
+    getexams: getexams,
+    getexamdetail: getexamdetail,
+    getStudentExams: getStudentExams,
+    getStudentquestions: getStudentquestions
   },
 });

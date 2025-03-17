@@ -28,6 +28,8 @@ import SubjectDetail from "./pages/SubjectDetail/SubjectDetail";
 import AddStudent from "./pages/AddStudent/AddStudent";
 import Exams from "./pages/Exams/Exams";
 import GenerateTest from "./pages/GenerateTest/GenerateTest";
+import StudentExams from "./pages/StudentExams/Exams";
+import Submission from "./pages/StudentExams/submittion/Submission";
 
 const App = () => {
   const DashboardLayout = () => (
@@ -90,10 +92,11 @@ const App = () => {
               <Exams />
             }
           />
+
           <Route
             path="/GenerateTest"
             element={
-              <GenerateTest/>
+              <GenerateTest />
             }
           />
           <Route
@@ -145,6 +148,19 @@ const App = () => {
           />
           <Route path="/devnewPassword/:email" element={<DevNewPass />} />
           <Route element={<DashboardLayoutInvestor />}>
+            <Route
+              path="/StudentExams"
+              element={
+                <StudentExams />
+              }
+            />
+            <Route
+              path="/Submission/:id"
+              element={
+                <Submission />
+              }
+            />
+
           </Route>
         </>
 

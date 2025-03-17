@@ -112,7 +112,7 @@ const SignIn = () => {
         localStorage.setItem("Id", res?.payload?.user?._id);
 
         toast.success(res?.payload?.msg);
-
+        navigate('/StudentExams')
         setIsLoading(false);
       } else if (res?.payload?.status === 404) {
         setTimeout(() => {
@@ -163,7 +163,7 @@ const SignIn = () => {
 
             <div className="welcome__sigin__text_container">
               <p className="Headline800">
-                {isSignUpMode ? "Create your Account" : "Welcome Back to Evox!"}
+                {isSignUpMode ? "Create your Account" : "Welcome Back to PrepWrld"}
               </p>
               <p className="SignIn-P">
                 {isSignUpMode

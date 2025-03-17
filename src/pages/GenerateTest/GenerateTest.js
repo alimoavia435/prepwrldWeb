@@ -4,22 +4,47 @@ import { getAllrooms } from '../../services/redux/middleware/getAllrooms';
 import { useDispatch, useSelector } from 'react-redux';
 import { Badge, Dropdown } from 'react-bootstrap';
 import { getAlldata } from '../../services/redux/middleware/getAlldata';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Gene_rate_Test } from '../../services/redux/middleware/Gene_rate_Test';
+import { getexamdetail } from '../../services/redux/middleware/getexamdetail';
+import ScreenLoader from '../../components/loader/ScreenLoader';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  IconButton,
+} from "@mui/material";
 const GenerateTest = () => {
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [subjects, setSubjects] = useState([]);
   const [systems, setSystems] = useState([]);
   const [selectedClassRooms, setselectedClassRooms] = useState([]);
   const [subject, setSubject] = useState("");
+  const [loading, setloading] = useState(false)
   const [rooms, setrooms] = useState();
+  const navigate = useNavigate();
   const location = useLocation();
-  const { roomId } = location.state || {};
+  const { roomId, status } = location.state || {};
   const allData = useSelector(
     (state) => state?.getAlldata?.profile?.data?.stats
   )
+  const examdetailData = useSelector(
+    (state) => state?.getexamdetail?.profile?.data?.exam
+  )
   console.log(allData, "allData");
+  console.log(examdetailData, "examdetailData");
+  const [quzzzz, setquzzzz] = useState();
+  useEffect(() => {
+    if (examdetailData) {
+      setquzzzz(examdetailData?.questions)
+    }
+  }, [examdetailData])
+
   useEffect(() => {
     if (allData) {
       setSubjects(allData?.Subject)
@@ -38,12 +63,42 @@ const GenerateTest = () => {
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [selectAllSubjects, setSelectAllSubjects] = useState(false);
 
-  // Systems State
-
   const [selectedSystems, setSelectedSystems] = useState([]);
   const [selectAllSystems, setSelectAllSystems] = useState(false);
   const [totals, setTotals] = useState({ easy: 0, medium: 0, hard: 0 });
   const dispatch = useDispatch();
+
+
+
+  const [activeTab, setActiveTab] = useState('Static Tab');
+  const handleTabClick = (tabId) => setActiveTab(tabId);
+
+  const styles = {
+    tabs: {
+      display: 'flex',
+      alignItems: "center",
+      gap: "14px",
+      paddingBottom: "20px"
+    },
+    tab: {
+      backgroundColor: '#135bab',
+      color: 'white',
+      padding: '10px 20px',
+      border: 'none',
+      cursor: 'pointer'
+    },
+    activeTab: {
+      backgroundColor: '#0d3b8b',
+      color: 'white',
+      padding: '10px 20px',
+      border: 'none',
+      cursor: 'pointer'
+    },
+    content: {
+      padding: '20px',
+      border: '1px solid #ccc'
+    }
+  };
 
   const handleTypeChange = (type) => {
     setSelectedTypes(prev =>
@@ -142,8 +197,8 @@ const GenerateTest = () => {
           // Validate against system count
           return {
             ...updatedValues,
-            error: total > currentSystem.count
-              ? `This system only has ${currentSystem.count} questions!`
+            error: total > (currentSystem?.traditional+currentSystem?.nextgen)
+              ? `This system only has ${(currentSystem?.traditional+currentSystem?.nextgen)} questions!`
               : ''
           };
         }
@@ -165,13 +220,13 @@ const GenerateTest = () => {
 
 
   const handleSubmit = () => {
+
     let errorMessages = [];
 
     if (selectedTypes.length < 1 || selectedSubjects.length < 1 || selectedSystems.length < 1 || selectedClassRooms.length < 1 || !totals || !roomId) {
-      console.log('Error: Some required fields are missing.');
+      toast.warning('Some required fields are missing.');
       return null;
     }
-
     console.log(selectedSystems, "selectedSystems");
     const systems = selectedSystems?.map(({ system, easy, medium, hard, error }) => {
       if (!system || (!easy && !medium && !hard)) {
@@ -191,23 +246,20 @@ const GenerateTest = () => {
       };
     });
 
-    // Check if any value is null
     if (systems.includes(null)) {
-      console.log('Error: System data is incomplete.');
+      toast.warning('System data is incomplete.');
       return null;
     }
     if (errorMessages.length > 0) {
       toast.error("You exceed the limit of any System Questions");
       return null;
     }
-    // Check if roomIds are present
     const roomIds = selectedClassRooms?.map(room => room.roomId);
     if (!roomIds || roomIds.length === 0) {
-      console.log('Error: Room IDs are missing.');
+      toast.warning('Select Classrooms please');
       return null;
     }
-
-    // Proceed to prepare data if all checks pass
+    setloading(true)
     const data = {
       type: selectedTypes,
       subject: selectedSubjects,
@@ -223,9 +275,11 @@ const GenerateTest = () => {
 
     console.log('Form Data:', datawithid);
     dispatch(Gene_rate_Test(datawithid)).then((res) => {
-      console.log(res,"Gene_rate_Test");
-      if(res?.payload?.status===200){
+      console.log(res, "Gene_rate_Test");
+      if (res?.payload?.status === 200) {
+        setloading(false)
         toast.success("Successfully Generated")
+        navigate(-1)
       }
     })
   };
@@ -249,7 +303,9 @@ const GenerateTest = () => {
 
 
   useEffect(() => {
+    setloading(true)
     dispatch(getAllrooms()).then((res) => {
+      setloading(false)
     })
   }, [])
   const handleRemove = (room) => {
@@ -257,215 +313,411 @@ const GenerateTest = () => {
   };
 
   useEffect(() => {
+    setloading(true)
     dispatch(getAlldata()).then((res) => {
+      setloading(false)
     })
   }, [])
+
+  useEffect(() => {
+    setloading(true)
+    dispatch(getexamdetail(roomId)).then((res) => {
+      setloading(false)
+    })
+  }, [])
+
   return (
-    <div className="container">
-      <h1 style={{ textAlign: 'center' }}>Generate Test</h1>
+    <>
+      {loading && <ScreenLoader />}
+      {status === "primary" ? (
+        <div className="container">
+          <h1 style={{ textAlign: 'center' }}>Generate Test</h1>
 
-      {/* Question Type Section */}
-      <div className="section">
-        <p>Question Type (Total Available {allData?.totalQuestions})</p>
-        <label>
-          <input
-            type="checkbox"
-            checked={selectedTypes.includes('traditional')}
-            onChange={() => handleTypeChange('traditional')}
-          />
-          <span className="checkmark"></span>
-          Traditional ({allData?.Type?.traditional})
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={selectedTypes.includes('nextgen')}
-            onChange={() => handleTypeChange('nextgen')}
-          />
-          <span className="checkmark"></span>
-          Next-Gen ({allData?.Type?.nextgen})
-        </label>
-      </div>
-
-      {/* Subjects Section */}
-      <div className="section">
-        <p>Subjects</p>
-        <label>
-          <input
-            type="checkbox"
-            checked={selectAllSubjects}
-            onChange={handleSelectAllSubjects}
-          />
-          <span className="checkmark"></span>
-          Select All
-        </label>
-        <div className='tefwqsvjhdsd'>
-          {subjects?.map(subject => (
-            <label key={subject?.subject}>
-              <input
-                type="checkbox"
-                checked={selectedSubjects.includes(subject?.subject)}
-                onChange={() => handleSubjectChange(subject?.subject)}
-              />
-              <span className="checkmark"></span>
-              {subject?.subject} ({subject?.count})
-            </label>
-          ))}
-        </div>
-      </div>
-      <div className="section">
-        <p>Systems</p>
-        <label>
-          <input
-            type="checkbox"
-            checked={selectAllSystems}
-            onChange={handleSelectAllSystems}
-          />
-          <span className="checkmark"></span>
-          Select All
-        </label>
-        {/* {systems?.map(system => (
-          <div key={system.system}>
+          {/* Question Type Section */}
+          <div className="section">
+            <p>Question Type (Total Available {allData?.totalQuestions})</p>
             <label>
               <input
                 type="checkbox"
-                checked={!!selectedSystems[system.system]}
-                onChange={() => handleSystemChange(system)}
+                checked={selectedTypes.includes('traditional')}
+                onChange={() => handleTypeChange('traditional')}
               />
               <span className="checkmark"></span>
-              {system.system} ({system.count})
+              Traditional ({allData?.Type?.traditional})
             </label>
-            {selectedSystems[system.system]?.isOpen && (
-              <div className="popup">
-                {['easy', 'medium', 'hard'].map(difficulty => (
-                  <div key={difficulty}>
-                    <label>
-                      {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}:
-                      <input
-                        type="number"
-                        min="0"
-                        value={selectedSystems[system.system][difficulty]}
-                        onChange={(e) =>
-                          handleSystemInputChange(system.system, difficulty, e.target.value)
-                        }
-                      />
-                    </label>
-                  </div>
-                ))}
-                {selectedSystems[system.system]?.error && (
-                  <div className="error-message">
-                    {selectedSystems[system.system].error}
-                  </div>
-                )}
-              </div>
-            )}
+            <label>
+              <input
+                type="checkbox"
+                checked={selectedTypes.includes('nextgen')}
+                onChange={() => handleTypeChange('nextgen')}
+              />
+              <span className="checkmark"></span>
+              Next-Gen ({allData?.Type?.nextgen})
+            </label>
           </div>
-        ))} */}
-        {systems?.map(system => {
-          const selectedSystem = selectedSystems.find(s => s.system === system.system);
-          return (
-            <div key={system.system}>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={!!selectedSystem}
-                  onChange={() => handleSystemChange(system)}
-                />
-                <span className="checkmark"></span>
-                {system.system} ({system.count})
-              </label>
-              {selectedSystem?.isOpen && (
-                <div className="popup">
-                  {['easy', 'medium', 'hard']?.map(difficulty => (
-                    <div key={difficulty}>
-                      <label>
-                        {difficulty?.charAt(0)?.toUpperCase() + difficulty?.slice(1)}:
-                        <input
-                          type="number"
-                          min="0"
-                          value={selectedSystem[difficulty]}
-                          onChange={(e) =>
-                            handleSystemInputChange(system?.system, difficulty, e.target.value)
-                          }
-                        />
-                      </label>
-                    </div>
-                  ))}
-                  {selectedSystem?.error && (
-                    <div className="error-message">
-                      {selectedSystem?.error}
-                    </div>
-                  )}
-                </div>
-              )}
+
+          {/* Subjects Section */}
+          <div className="section">
+            <p>Subjects</p>
+            <label>
+              <input
+                type="checkbox"
+                checked={selectAllSubjects}
+                onChange={handleSelectAllSubjects}
+              />
+              <span className="checkmark"></span>
+              Select All
+            </label>
+            <div className='tefwqsvjhdsd'>
+              {subjects?.map(subject => (
+                <label key={subject?.subject}>
+                  <input
+                    type="checkbox"
+                    checked={selectedSubjects.includes(subject?.subject)}
+                    onChange={() => handleSubjectChange(subject?.subject)}
+                  />
+                  <span className="checkmark"></span>
+                  {subject?.subject} ({subject?.traditional}) {selectedTypes?.includes('nextgen') && <p color='blue'>({subject?.nextgen} NGN)</p>}
+                </label>
+              ))}
             </div>
-          );
-        })}
-
-      </div>
-      <div className="section">
-        <p>Class Rooms</p>
-        <Dropdown >
-          <Dropdown.Toggle
-            variant="light"
-            id="dropdown-basic"
-            style={{
-              backgroundColor: 'transparent',
-              border: '1px solid rgba(0, 0, 0, 0.3)',
-              color: 'black',
-              height: "56px",
-              width: '100%',
-              textAlign: 'left',
-            }}
-          >
-            Choose Subject
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu style={{ width: '100%' }}>
-            {rooms?.map((subjectOption, index) => (
-              <Dropdown.Item
-                key={index}
-                eventKey={subjectOption?.roomName}
-                style={{ color: 'black' }}
-                onClick={() => handleSelect(subjectOption?.roomName, subjectOption?._id)}
+          </div>
+          <div className="section">
+            <p>Systems</p>
+            <label>
+              <input
+                type="checkbox"
+                checked={selectAllSystems}
+                onChange={handleSelectAllSystems}
+              />
+              <span className="checkmark"></span>
+              Select All
+            </label>
+            <div className='tefwqsvjhdsd'>
+              {systems?.map(system => {
+                const selectedSystem = selectedSystems.find(s => s.system === system.system);
+                return (
+                  <div key={system.system}>
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked={!!selectedSystem}
+                        onChange={() => handleSystemChange(system)}
+                      />
+                      <span className="checkmark"></span>
+                      {system.system} ({system.traditional}) {selectedTypes?.includes('nextgen') && <p color='blue'>({system?.nextgen} NGN)</p>}
+                    </label>
+                    {selectedSystem?.isOpen && (
+                      <div className="popup">
+                        {['easy', 'medium', 'hard']?.map(difficulty => (
+                          <div key={difficulty}>
+                            <label>
+                              {difficulty?.charAt(0)?.toUpperCase() + difficulty?.slice(1)}:
+                              <input
+                                type="number"
+                                min="0"
+                                value={selectedSystem[difficulty]}
+                                onChange={(e) =>
+                                  handleSystemInputChange(system?.system, difficulty, e.target.value)
+                                }
+                              />
+                            </label>
+                          </div>
+                        ))}
+                        {selectedSystem?.error && (
+                          <div className="error-message">
+                            {selectedSystem?.error}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="section">
+            <p>Class Rooms</p>
+            <Dropdown >
+              <Dropdown.Toggle
+                variant="light"
+                id="dropdown-basic"
+                style={{
+                  backgroundColor: 'transparent',
+                  border: '1px solid rgba(0, 0, 0, 0.3)',
+                  color: 'black',
+                  height: "56px",
+                  width: '100%',
+                  textAlign: 'left',
+                }}
               >
-                {subjectOption?.roomName}
-              </Dropdown.Item>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
-        <div style={{ paddingTop: '10px' }}>
-          {selectedClassRooms?.map((subject, index) => (
-            <Badge
-              key={index}
-              pill
-              className='ashdgfjh'
-              style={{
+                Choose Subject
+              </Dropdown.Toggle>
 
-                color: '#ffffff',
-                padding: '8px 12px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                cursor: 'pointer',
-              }}
-              onClick={() => handleRemove(subject)}
-            >
-              {subject?.roomName} <span className="svxb" style={{ color: 'red', cursor: 'pointer', fontSize: "20px" }}>×</span>
-            </Badge>
-          ))}
+              <Dropdown.Menu style={{ width: '100%' }}>
+                {rooms?.map((subjectOption, index) => (
+                  <Dropdown.Item
+                    key={index}
+                    eventKey={subjectOption?.roomName}
+                    style={{ color: 'black' }}
+                    onClick={() => handleSelect(subjectOption?.roomName, subjectOption?._id)}
+                  >
+                    {subjectOption?.roomName}
+                  </Dropdown.Item>
+                ))}
+              </Dropdown.Menu>
+            </Dropdown>
+            <div style={{ paddingTop: '10px' }}>
+              {selectedClassRooms?.map((subject, index) => (
+                <Badge
+                  key={index}
+                  pill
+                  className='ashdgfjh'
+                  style={{
+
+                    color: '#ffffff',
+                    padding: '8px 12px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    cursor: 'pointer',
+                  }}
+                  onClick={() => handleRemove(subject)}
+                >
+                  {subject?.roomName} <span className="svxb" style={{ color: 'red', cursor: 'pointer', fontSize: "20px" }}>×</span>
+                </Badge>
+              ))}
+            </div>
+          </div>
+          {/* Totals Display */}
+          <div className="section">
+            <p> Traditional ({totals?.easy + totals?.medium + totals?.hard})</p>
+            <p>Easy: {totals?.easy}</p>
+            <p>Medium: {totals?.medium}</p>
+            <p>Hard: {totals?.hard}</p>
+            <p>Totals:{totals?.easy + totals?.medium + totals?.hard}</p>
+          </div>
+
+          <button onClick={handleSubmit}>Generate Test</button>
         </div>
-      </div>
-      {/* Totals Display */}
-      <div className="section">
-        <p> Traditional ({totals?.easy + totals?.medium + totals?.hard})</p>
-        <p>Easy: {totals?.easy}</p>
-        <p>Medium: {totals?.medium}</p>
-        <p>Hard: {totals?.hard}</p>
-        <p>Totals:{totals?.easy + totals?.medium + totals?.hard}</p>
-      </div>
+      )
+        :
+        <div>
+          <div className="Main-Search-Filter" >
+            <div className="fghgjhk">
+              <div style={{ display: "flex", gap: "10px", alignItems: "flex-start", flexDirection: "column" }}>
+                <p className="toptext" style={{ padding: "10px", borderRadius: "12px", background: "lightgrey" }}>Name: <span style={{ fontWeight: "400" }}> {examdetailData?.examName}</span></p>
+                <p className="toptext" style={{ background: "lightgrey", padding: "10px", borderRadius: "12px" }}>Status<span style={{ fontWeight: "400" }}> {examdetailData?.status}</span></p>
+              </div>
 
-      <button onClick={handleSubmit}>Generate Test</button>
-    </div>
+            </div>
+
+          </div>
+          <div style={styles.tabs}>
+            <button
+              onClick={() => handleTabClick('Static Tab')}
+              style={activeTab === 'Static Tab' ? styles.activeTab : styles.tab}
+            >
+              Questions
+            </button>
+
+            {examdetailData?.roomIds?.map((room) => (
+              <button
+                key={room._id}
+                onClick={() => handleTabClick(room._id)}
+                style={activeTab === room._id ? styles.activeTab : styles.tab}
+              >
+                {room.roomName}
+              </button>
+            ))}
+          </div>
+          <div style={styles.content}>
+            {activeTab === 'Static Tab' &&
+              <TableContainer
+                className="SubmitPropertyTablemaiiiiin"
+                sx={{
+                  boxShadow: "none",
+                }}
+                component={Paper}
+              >
+                <Table sx={{ minWidth: 650 }} aria-label="table">
+                  <TableHead >
+                    <TableRow
+                      sx={{
+                        borderTopLeftRadius: "9px",
+                        borderBottomLightRadius: "9px",
+                        background: "rgb(241, 241, 241)",
+
+                      }}
+                      className="SubmitPropertytableHeadRow"
+                    >
+                      <TableCell
+                        sx={{ borderRadius: "7.66px 0 0 7.66px", border: "none" }}
+                        className="SubmitPropertytableHeadRowCell"
+                      >
+                        #
+                      </TableCell>
+                      <TableCell
+                        sx={{ border: "none" }}
+                        className="SubmitPropertytableHeadRowCell"
+                      >
+                        Quest/caseStudy
+                      </TableCell>
+                      <TableCell
+                        sx={{ border: "none" }}
+                        className="SubmitPropertytableHeadRowCell"
+                      >
+                        Type
+                      </TableCell>
+                      <TableCell
+                        sx={{ border: "none" }}
+                        className="SubmitPropertytableHeadRowCell"
+                      >
+                        Subject
+                      </TableCell>
+                      <TableCell
+                        sx={{ border: "none" }}
+                        className="SubmitPropertytableHeadRowCell"
+                      >
+                        System
+                      </TableCell>
+                      <TableCell
+                        sx={{ border: "none" }}
+                        className="SubmitPropertytableHeadRowCell"
+                      >
+                        Options/Questions
+                      </TableCell>
+                      <TableCell
+                        sx={{ borderRadius: "0px 7.66px 7.66px 0px", border: "none" }}
+                        className="SubmitPropertytableHeadRowCell"
+                      >
+                        Correct Answers
+                      </TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableRow
+                    sx={{
+                      marginTop: "17px",
+                      height: "17px",
+                    }}
+                  ></TableRow>
+                  <TableBody >
+                    {quzzzz?.map((row, index) => (
+                      <TableRow key={row.id}>
+                        <TableCell
+                          align="center"
+                          className="SubmitPropertytableBodyRowCell"
+                        >
+                          {index + 1}
+                        </TableCell>
+                        <TableCell
+                          align="left"
+                          className="SubmitPropertytableBodyRowCell1"
+                        >
+                          { row?.explanation ? row?.explanation?.slice(0, 20):row?.caseStudy?.slice(0,25)}
+                        </TableCell>
+                        <TableCell
+                          align="left"
+                          className="SubmitPropertytableBodyRowCell2"
+                        >
+                          {row?.type}
+                        </TableCell>
+                        <TableCell
+                          align="center"
+                          className="SubmitPropertytableBodyRowCell2"
+                        >
+                          {/* {new Date(row?.createdAt).toLocaleDateString()} */}
+                          {row?.subject}
+                        </TableCell>
+                        <TableCell
+                          align="center"
+                          className="SubmitPropertytableBodyRowCell2"
+                        >
+                          {row?.system ? row?.system :"...."}
+                        </TableCell>
+                        <TableCell
+                          align="center"
+                          className="SubmitPropertytableBodyRowCell2"
+                        >
+                          {row?.options.length > 0 ? row?.options?.length:row?.Questions?.length}
+                        </TableCell>
+                        <TableCell
+                          align="center"
+                          className="SubmitPropertytableBodyRowCell2"
+                        >
+                          {row?.correctAnswers?.length ? row?.correctAnswers?.length :"..."}
+                        </TableCell>
+                        {/* <TableCell
+                          align="center"
+                          className="SubmitPropertytableBodyRowCell2"
+                        >
+                          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                            <img src="/Images/Admin/delete.png" alt="" style={{ height: "40px", width: "40px", cursor: "pointer" }}
+                              onClick={() => handleOpenModal(row._id)} />
+                          </div>
+                        </TableCell> */}
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            }
+            {examdetailData?.roomIds?.map((room) => {
+              if (activeTab === room._id) {
+                return (
+                  <TableContainer
+                    className="SubmitPropertyTablemaiiiiin"
+                    sx={{
+                      boxShadow: "none",
+                    }}
+                    key={room._id} component={Paper}>
+                    <Table sx={{ minWidth: 650 }}>
+                      <TableHead>
+                        <TableRow sx={{ background: "rgb(241, 241, 241)" }}>
+                          <TableCell sx={{ border: "none" }}
+                            className="SubmitPropertytableHeadRowCell">#</TableCell>
+                          <TableCell sx={{ border: "none" }}
+                            className="SubmitPropertytableHeadRowCell">Student Name</TableCell>
+                          <TableCell sx={{ border: "none" }}
+                            className="SubmitPropertytableHeadRowCell">Email</TableCell>
+                          {/* <TableCell>Status</TableCell> */}
+                          <TableCell sx={{ border: "none" }}
+                            className="SubmitPropertytableHeadRowCell">phone</TableCell>
+                          {/* Add more columns as needed */}
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {room?.students?.map((student, index) => (
+                          <TableRow key={student._id}>
+                            <TableCell align="center"
+                              className="SubmitPropertytableBodyRowCell">{index + 1}</TableCell>
+                            <TableCell align="center"
+                              className="SubmitPropertytableBodyRowCell">{student.fullName}</TableCell>
+                            <TableCell align="center"
+                              className="SubmitPropertytableBodyRowCell">{student.email}</TableCell>
+                            <TableCell align="center"
+                              className="SubmitPropertytableBodyRowCell">{student.phone}</TableCell>
+                            {/* <TableCell>{student.score || 'N/A'}</TableCell> */}
+                          </TableRow>
+                        ))}
+                        {!room.students?.length && (
+                          <TableRow>
+                            <TableCell colSpan={5} align="center">
+                              No students found in this room
+                            </TableCell>
+                          </TableRow>
+                        )}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                );
+              }
+              return null;
+            })}
+
+          </div>
+        </div>
+      }
+    </>
   );
 };
 

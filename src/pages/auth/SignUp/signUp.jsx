@@ -185,7 +185,7 @@ const SignUp = () => {
                 </p>
               </div>
 
-              <div
+              {/* <div
                 className="propertyDeveloper"
                 onClick={() => handleSelect("Property Developer")}
                 style={{
@@ -211,7 +211,7 @@ const SignUp = () => {
                 >
                   Student
                 </p>
-              </div>
+              </div> */}
             </div>
 
             {selected === "Investor" ? (

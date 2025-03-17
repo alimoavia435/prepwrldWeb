@@ -1,147 +1,163 @@
 /* TestGenerator.css */
 .container {
-    max-width: 800px;
-    margin: 30px auto !important;
-    padding: 20px;
-    font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 30px auto !important;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.section {
+  margin: 30px 0 !important;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.section p {
+  color: #000;
+  font-weight: bold;
+  margin-bottom: 15px !important;
+  font-size: 18px;
+}
+
+.error-message {
+  color: #dc3545;
+  margin-top: 10px;
+  font-size: 0.9em;
+  padding: 8px;
+  background-color: #fff0f0;
+  border: 1px solid #ffd6d6;
+  border-radius: 4px;
+}
+
+.svxb {
+  margin-left: 5px !important;
+}
+
+.ashdgfjh {
+  background: #139ed5e0 !important;
+  margin-right: 5px !important;
+}
+
+/* Checkbox styling */
+label {
+  display: block;
+  margin: 10px 0;
+  color: #000;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Custom checkbox */
+.checkmark {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  height: 20px;
+  width: 20px;
+  border: 2px solid #2196F3;
+  border-radius: 4px;
+}
+
+/* Checkbox checked state */
+input:checked~.checkmark {
+  background-color: #2196F3;
+}
+
+/* Checkmark indicator */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Popup styling */
+.popup {
+  margin: 10px 0 20px 30px;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  max-width: 300px;
+}
+
+.popup label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.popup input[type="number"] {
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 80px;
+}
+
+/* Totals styling */
+.totals {
+  margin: 30px 0 !important;
+  padding: 20px;
+  background-color: #135bab;
+  border-radius: 8px;
+}
+
+.tefwqsvjhdsd {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.totals h3 {
+  margin-top: 0;
+  color: #000;
+}
+
+button {
+  background-color: #2196F3;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  display: block;
+  margin: 20px auto;
+}
+
+button:hover {
+  background-color: #1976D2;
+}
+
+h1 {
+  text-align: center;
+  color: #000;
+  margin-bottom: 30px;
+}
+
+@media (max-width:575px) {
+  .tefwqsvjhdsd {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
   }
-  
-  .section {
-    margin: 30px 0 !important;
-    padding: 20px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-  }
-  
-  .section p {
-    color: #000;
-    font-weight: bold;
-    margin-bottom: 15px !important;
-    font-size: 18px;
-  }
-  .error-message {
-    color: #dc3545;
-    margin-top: 10px;
-    font-size: 0.9em;
-    padding: 8px;
-    background-color: #fff0f0;
-    border: 1px solid #ffd6d6;
-    border-radius: 4px;
-  }
-  .svxb{
-    margin-left: 5px !important;
-  }
-  .ashdgfjh{
-    background: #139ed5e0 !important;
-    margin-right: 5px !important;
-  }
-  /* Checkbox styling */
-  label {
-    display: block;
-    margin: 10px 0;
-    color: #000;
-    position: relative;
-    padding-left: 30px;
-    cursor: pointer;
-  }
-  
-  input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-  
-  /* Custom checkbox */
-  .checkmark {
-    position: absolute;
-    left: 0;
-    top: 2px;
-    height: 20px;
-    width: 20px;
-    border: 2px solid #2196F3;
-    border-radius: 4px;
-  }
-  
-  /* Checkbox checked state */
-  input:checked ~ .checkmark {
-    background-color: #2196F3;
-  }
-  
-  /* Checkmark indicator */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-    left: 6px;
-    top: 2px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-  }
-  
-  input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  /* Popup styling */
-  .popup {
-    margin: 10px 0 20px 30px;
-    padding: 15px;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    background-color: #f8f9fa;
-    max-width: 300px;
-  }
-  
-  .popup label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 8px 0;
-  }
-  
-  .popup input[type="number"] {
-    padding: 6px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 80px;
-  }
-  
-  /* Totals styling */
-  .totals {
-    margin: 30px 0 !important;
-    padding: 20px;
-    background-color: #135bab;
-    border-radius: 8px;
-  }
-  
-  .totals h3 {
-    margin-top: 0;
-    color: #000;
-  }
-  
-  button {
-    background-color: #2196F3;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    display: block;
-    margin: 20px auto;
-  }
-  
-  button:hover {
-    background-color: #1976D2;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #000;
-    margin-bottom: 30px;
-  }
+}

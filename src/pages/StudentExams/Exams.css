@@ -1,0 +1,68 @@
+.predefinedtop {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 20px !important;
+    padding: 20px;
+}
+
+.sdhjDSHK {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    justify-content: center !important;
+}
+
+.predefinedtop_inner {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 200px;
+    border-radius: 12px;
+    border: 1px solid #000000;
+    gap: 20px;
+    cursor: pointer;
+}
+.predefinedtop_inner:hover{
+    border: 1px solid #135bab;
+    opacity: 0.7;
+}
+
+.modal-body {
+    width: 100%;
+}
+
+.toptext {
+    font-family: Urbanist-Bold;
+    font-size: 30px;
+    line-height: 30px;
+    font-weight: 700;
+    text-align: left;
+    color: #000000;
+    margin: 0px !important;
+}
+
+.toptext_innner {
+    font-family: Urbanist;
+    font-size: 17px;
+    line-height: 17px;
+    font-weight: 400;
+    text-align: left;
+    color: #000000;
+    margin: 0px !important;
+}
+
+.fdgshasjf {
+    margin-top: 20px !important;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}

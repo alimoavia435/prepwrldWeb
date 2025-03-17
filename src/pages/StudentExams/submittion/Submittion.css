@@ -1,0 +1,65 @@
+.case-study-container {
+  display: flex;
+  gap: 30px;
+}
+
+.case-study {
+  flex: 1;
+  background: #f8f9fa;
+  color: #000000;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+}
+
+.case-study pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.sub-questions {
+  flex: 2;
+}
+
+.sub-question {
+  margin-bottom: 30px !important;
+  padding: 15px;
+  border: 1px solid #000000;;
+  color: #000000;
+  border-radius: 8px;
+}
+
+.sub-question h4 {
+  margin-top: 0 !important;
+}
+
+.traditional-question .case-study {
+  margin-bottom: 25px !important;
+}
+
+.options button {
+  margin: 8px 0 !important;
+  padding: 12px;
+  transition: all 0.2s;
+  color: #000000;
+}
+
+.explanation {
+  margin-top: 15px !important;
+  padding: 15px;
+  background: #e3f2fd;
+  color: #000000;
+  border-radius: 6px;
+}
+
+.controls {
+  margin-top: 30px !important;
+  text-align: center;
+  color: #000000;
+}
+
+.controls button {
+  padding: 12px 35px;
+  font-size: 16px;
+  color: #000000;
+}

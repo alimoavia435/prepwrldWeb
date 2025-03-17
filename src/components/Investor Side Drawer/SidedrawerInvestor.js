@@ -4,6 +4,7 @@ import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
+import { useDispatch, useSelector } from "react-redux";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar from "@mui/material/AppBar";
@@ -17,10 +18,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { useWeb3React } from "@web3-react/core";
-import NotificationInvestorComponent from "../../components/NotificationInvestor/notificationInvestor";
 import { toast, ToastContainer } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
+import { useWeb3React } from "@web3-react/core";
+import NotificationComponent from "../Notifications/notificationComponent";
 import Avatar from "@mui/material/Avatar";
 import { getinvesnotification } from "../../services/redux/middleware/getinvesnotification";
 import {
@@ -31,9 +31,8 @@ import {
 import { Menu, MenuItem, makeStyles } from "@mui/material";
 import { useMediaQuery } from "react-responsive";
 import { borderBottom, borderRight, display, minHeight } from "@mui/system";
-import HeaderInvestor from "../Header Investor/HeaderInvestor";
-// import useAuth from "../../hooks/Web3Connection/useAuth";
-
+import Header from "../Header/Header";
+import { getkyc } from "../../services/redux/middleware/getkyc";
 const drawerWidth = 280;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -136,70 +135,70 @@ const themeMui = createTheme({
     },
   },
 });
-function getHeaderName(pathname) {
-  if (pathname.startsWith("/market-detail")) {
-    return "Market Report";
-  }
 
-  switch (pathname) {
-    case "/kyc-info":
-      return "KYC";
-    case "/investor-profile":
-      return "KYC & Profile";
-    case "/Staking":
-      return "Staking";
-    case "/portfolio":
-      return "Portfolio Management";
-    case "/notification-investor":
-      return "Notifiations";
-    case "/marketreport":
-      return "Market Report";
+function getHeaderName(pathname) {
+  switch (true) {
+
+
+
+    case pathname === "/StudentExams":
+      return "Student Exams";
+    // case pathname === "/subjects":
+    //   return "Class Rooms";
+    // case pathname === "/users":
+    //   return "Students";
+    // case pathname === "/Exams":
+    //   return "Exams";
+
     default:
       return "";
   }
 }
 
-
-export default function SidedrawerInvestor({
-  children,
-  showSidebar,
-  PageName,
-}) {
+export default function SidedrawerInvestor({ children, showSidebar, PageName }) {
   const location = useLocation();
-  const [profileImage, setProfileImage] = useState(
-    localStorage.getItem("profileImageDeveloper")
-  );
-  console.log("profile image", profileImage);
-  useEffect(() => {
-    const checkProfileImageChange = () => {
-      const newProfileImage = localStorage.getItem("profileImageDeveloper");
-
-      if (newProfileImage !== profileImage) {
-        setProfileImage(newProfileImage);
-      }
-    };
-    const intervalId = setInterval(checkProfileImageChange, 1000);
-
-    return () => clearInterval(intervalId);
-  }, [profileImage]);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(true);
   const [selectedSubItem, setSelectedSubItem] = useState(1);
   const [active, setactive] = useState("");
   const [selectedItem, setSelectedItem] = useState(0);
-  const { account, chainId } = useWeb3React();
+  const modalRef = React.useRef(null);
+  // const { login } = useAuth();
+
+  const [profileImage, setProfileImage] = useState(
+    localStorage.getItem("profileImage")
+  );
+
   const [openWalletModal, setOpenWalletModal] = useState(false);
   const handleOpen = () => setOpenWalletModal(true);
   const handleWalletClose = () => setOpenWalletModal(false);
+  const currentPath = location.pathname;
+  const kycapproval = localStorage.getItem("kycapproval");
 
+  const [status, setStatus] = useState(kycapproval);
 
+  const kycData = useSelector(
+    (state) => state?.getkyc?.getkyc?.data?.developer
+  );
+  console.log("kycData", kycData?.developerKYC);
 
+  useEffect(() => {
+    localStorage.setItem("kycapproval", kycData?.developerKYC);
+    setStatus(kycData?.developerKYC); // Update state to reflect changes in UI
+  }, [kycData]);
 
+  useEffect(() => {
+    const checkProfileImageChange = () => {
+      const newProfileImage = localStorage.getItem("profileImage");
+      if (newProfileImage !== profileImage) {
+        setProfileImage(newProfileImage);
+      }
+    };
 
-  // const { login } = useAuth();
-  const modalRef = React.useRef(null);
-
+    const intervalId = setInterval(checkProfileImageChange, 1000);
+    return () => clearInterval(intervalId);
+  }, [profileImage]);
   const handle_accordian = (abc) => {
     setactive(active === abc ? "" : abc);
   };
@@ -213,10 +212,6 @@ export default function SidedrawerInvestor({
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
-
-
-
-
   const theme = useTheme();
   const isMobile = useMediaQuery({
     query: "(max-width: 1064px)",
@@ -239,16 +234,31 @@ export default function SidedrawerInvestor({
     setSelectedSubItem(null);
     setSelectedOtherItem(null);
     setSelectedItem(index);
+
+    localStorage.setItem("selectedItemIndex", index);
+    localStorage.setItem("selectedItemText", text);
+
     if (window.innerWidth < 1030) {
       setOpen(false);
       setMobileOpen((prevState) => !prevState);
     }
+
     if (text === "Skainet Academy") {
       setIsDropdownOpen(!isDropdownOpen);
     } else {
       setIsDropdownOpen(false);
     }
   };
+  useEffect(() => {
+    if (window.location.pathname === "/property-developer-profile") {
+      const savedIndex = localStorage.getItem("selectedItemIndex");
+      const savedText = localStorage.getItem("selectedItemText");
+
+      if (savedIndex === "3" && savedText === "KYC & Profile") {
+        setSelectedItem(3);
+      }
+    }
+  }, []);
 
   const handleOtherListItemClick = (index) => {
     console.log("clicked", index);
@@ -259,7 +269,7 @@ export default function SidedrawerInvestor({
   const navigate = useNavigate();
   const [open, setOpen] = useState(true);
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const dispatch = useDispatch();
   const handleDrawerOpen = () => {
     console.log("Drawer Open,,,!");
     setOpen(true);
@@ -288,18 +298,14 @@ export default function SidedrawerInvestor({
   const handleLogoutMain = () => {
     // localStorage.removeItem("token");
     // localStorage.removeItem("Id");
-
     localStorage.clear();
+
     navigate("/");
     setTimeout(() => {
       toast.success("Logout Successfully!");
     }, 500);
   };
 
-  const handleSignIn = () => {
-    localStorage.clear();
-    navigate("/");
-  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -307,67 +313,75 @@ export default function SidedrawerInvestor({
 
   const menuItems = [
     // {
-    //     text: "Dashboard",
-    //     // path: "/investor-profile",
-    //     disabled: false,
+    //   text: "KYC",
+    //   path: "/kyc-info",
+    //   disabled: false,
     // },
     // {
-    //     text: "Ownership & Trading",
-    //     // path: "ViewAllMyProperties",
-    //     disabled: false,
+    //   text: "Properties",
+    //   path: "ViewAllMyProperties",
+    //   disabled: false,
+    // },
+    {
+      text: "StudentExams",
+      path: "/StudentExams",
+      disabled: false,
+    },
+    // {
+    //   text: "Live Projects",
+    //   path: "/LiveProjects",
+    //   disabled: false,
     // },
     // {
-    //     text: "Portfolio Management",
-    //     // path: "ViewAllMyProperties",
-    //     disabled: false,
+    //   text: "Students",
+    //   path: "/users",
+    //   disabled: false,
     // },
     // {
-    //     text: "Claiming ROIs",
-    //     // path: "ViewAllMyProperties",
-    //     disabled: false,
+    //   text: "Exams",
+    //   path: "/Exams",
+    //   disabled: false,
     // },
-    {
-      text: "Portfolio Management",
-      path: "/portfolio",
-      disabled: false,
-    },
-    {
-      text: "Staking",
-      path: "/Staking",
-      disabled: false,
-    },
-
-    {
-      text: "KYC & Profile",
-      path: "/investor-profile",
-      disabled: false,
-    },
-    {
-      text: "Market Report",
-      path: "/marketreport",
-      disabled: false,
-    },
+    // {
+    //   text: "Support",
+    //   path: "/support-requests",
+    //   disabled: false,
+    // },
   ];
 
   const dashicons = [
-    // "/Images/Dashboard/Dashboard.svg",
-    // "/Images/Dashboard/OwnerShip.svg",
-    "/Images/Dashboard/PortFolio.svg",
-    // "/Images/Dashboard/Claiming.svg",
-    "/Images/Dashboard/StakingIcon.svg",
-    "/Images/Dashboard/ProfileIcon.svg",
-    "/Images/Dashboard/MarketReport.svg",
+    // "/Images/Dashboard/PropertySubmission.svg",
+    // "/Images/Dashboard/ProjectIcon.svg",
+    // "Images/Dashboard/profileIcon.svg",
+    // "Images/Dashboard/updates.svg",
+    // "/Images/Dashboard/support.svg",
+
+
+    // "/Images/Dashboard/ProjectIcon.svg",
+    // "/Images/Dashboard/PropertySubmission.svg",
+    // "/Images/Dashboard/profile-2user (1).svg",
+    "/Images/exam1.png",
+    // "Images/Dashboard/updates.svg"
+
   ];
   const activeDashicons = [
-    // "/Images/Dashboard/DashboardBlue.svg",
-    // "/Images/Dashboard/OwnerShipBlue.svg",
-    "/Images/Dashboard/PortFolioBLue.svg",
-    // "/Images/Dashboard/ClaimingBlue.svg",
-    "/Images/Dashboard/StakingBlue.svg",
-    "/Images/Dashboard/ProfileBlue.svg",
-    "/Images/Dashboard/MarketReportActive.svg",
-  ];
+    // "/Images/Dashboard/UserIconBlue.svg",
+    // "/Images/Dashboard/ProjectIconBlue.svg",
+    // "/Images/Dashboard/blueProfile.svg",
 
+    // "/Images/Dashboard/blue-Support.svg",
+
+
+
+    // "/Images/Dashboard/ProjectIconBlue.svg",
+    // "/Images/Dashboard/ProjectIconBlue.svg",
+    // "/Images/Dashboard/profile-2user.svg",
+    "/Images/exam1.png",
+    // "/Images/Dashboard/blueUpdates.svg",
+    // "/Images/Dashboard/UserIconBlue.svg",
+
+
+  ];
   const OthermenuItems = [{}, {}];
   const otherdashicons = ["", ""];
 
@@ -418,14 +432,6 @@ export default function SidedrawerInvestor({
     };
   }, [open]);
 
-  async function connect() {
-    
-  }
-
-  useEffect(() => {
-    connect();
-  }, []);
-
   // useEffect(() => {
 
   //     const pathToActive = {
@@ -458,6 +464,14 @@ export default function SidedrawerInvestor({
     }
   };
 
+  async function connect() {
+
+  }
+
+  useEffect(() => {
+    connect();
+  }, []);
+
   useEffect(() => {
     if (mobileOpen) {
       document.addEventListener("mousedown", closeDrawerOnOutsideClick);
@@ -468,6 +482,10 @@ export default function SidedrawerInvestor({
       document.removeEventListener("mousedown", closeDrawerOnOutsideClick);
     };
   }, [mobileOpen]);
+
+  useEffect(() => {
+    dispatch(getkyc());
+  }, []);
 
   return (
     <>
@@ -564,7 +582,7 @@ export default function SidedrawerInvestor({
                         style={{ background: "transparent" }}
                       >
                         <p>
-                          <HeaderInvestor
+                          <Header
                             headername={getHeaderName(location.pathname)}
                           />
                         </p>
@@ -573,12 +591,7 @@ export default function SidedrawerInvestor({
                         className={`notify-search ${mobileOpen ? "blurred" : ""
                           }`}
                       >
-                        {/* <img
-                          src="/Images/Dashboard/Notification.svg"
-                          alt=""
-                          className="notification-icon"
-                        /> */}
-                        <NotificationInvestorComponent />
+                        <NotificationComponent />
 
                         {/* <img src="/Images/Dashboard/line.svg" alt="" /> */}
 
@@ -597,23 +610,9 @@ export default function SidedrawerInvestor({
                                 ? profileImage
                                 : "/Images/Dashboard/Profile.svg"
                             }
-                            // src="/Images/Dashboard/Profile.svg"
                             sx={{ width: 48, height: 48 }}
                             className="avatar-img"
                           />
-                          <button
-                            className="connect__header__button"
-                            onClick={() => {
-                              account ? handleWalletClose() : handleOpen();
-                            }}
-                          >
-                            {account
-                              ? `${account.substring(
-                                0,
-                                6
-                              )}...${account.substring(account.length - 4)}`
-                              : "Connect Wallet"}
-                          </button>
                           {/* <img src={profileImage ? profileImage : '/Images/Dashboard/Profile.svg'} className={profileImage ? 'Navbar-Profile' : ''} alt="" /> */}
                         </div>
                       </div>
@@ -669,10 +668,10 @@ export default function SidedrawerInvestor({
               >
                 <div className="drawer__main__container1">
                   <div>
-                    <DrawerHeader>
-                      {/* <a href="https://skainet.academy/"> */}
+                    <DrawerHeader style={{ background: "aliceblue" }}>
+
                       <img
-                        src="/Images/Dashboard/logo.svg"
+                        src="/Images/auth/preplog.png"
                         className="logo__container1"
                         alt="Logo"
                       />
@@ -769,32 +768,18 @@ export default function SidedrawerInvestor({
                       )}
                     </List>
                   </div>
-                  <div>
-                    <div
-                      onClick={() => navigate("/")}
-                      style={{ cursor: "pointer" }}
-                      className="Website-Button-div"
-                    >
-                      <img
-                        src="/Images/Dashboard/website.svg"
-                        className="icon-size"
-                        alt="Logout-icon"
-                      />
-                      <p className="Website-txt">Back to Website</p>
-                    </div>
-                    <div
-                      style={{ cursor: "pointer" }}
-                      onClick={() => handleLogoutMain()}
-                      className="Logout-divv"
-                    >
-                      <img
-                        src="/Images/Dashboard/LogoutNew.svg"
-                        className="icon-size"
-                        alt="Logout-icon"
-                      />
+                  <div
+                    style={{ cursor: "pointer" }}
+                    onClick={() => handleLogoutMain()}
+                    className="Logout-div"
+                  >
+                    <img
+                      src="/Images/Dashboard/LogoutNew.svg"
+                      className="icon-size"
+                      alt="Logout-icon"
+                    />
 
-                      <p className="Logout-txt">Logout</p>
-                    </div>
+                    <p className="Logout-txt">Logout</p>
                   </div>
                 </div>
               </Drawer>
@@ -822,9 +807,9 @@ export default function SidedrawerInvestor({
                 onClose={() => handleDrawerToggle}
               >
                 <div>
-                  <DrawerHeader>
+                  <DrawerHeader style={{ background: "aliceblue" }}>
                     <img
-                      src="/Images/Dashboard/logo.svg"
+                      src="/Images/auth/preplog.png"
                       className="logo__container1"
                       alt="Logo"
                     />
@@ -916,34 +901,18 @@ export default function SidedrawerInvestor({
                     )}
                   </List>
                 </div>
+                <div
+                  style={{ cursor: "pointer" }}
+                  onClick={() => handleLogoutMain()}
+                  className="Logout-div"
+                >
+                  <img
+                    src="/Images/Dashboard/LogoutNew.svg"
+                    className="icon-size"
+                    alt="Logout-icon"
+                  />
 
-                <div>
-                  <div
-                    onClick={() => navigate("/")}
-                    style={{ cursor: "pointer" }}
-                    className="Website-Button-div"
-                  >
-                    <img
-                      src="/Images/Dashboard/website.svg"
-                      className="icon-size"
-                      alt="Logout-icon"
-                    />
-                    <p className="Website-txt">Back to Website</p>
-                  </div>
-
-                  <div
-                    style={{ cursor: "pointer" }}
-                    onClick={() => handleLogoutMain()}
-                    className="Logout-divv"
-                  >
-                    <img
-                      src="/Images/Dashboard/LogoutNew.svg"
-                      className="icon-size"
-                      alt="Logout-icon"
-                    />
-
-                    <p className="Logout-txt">Logout</p>
-                  </div>
+                  <p className="Logout-txt">Logout</p>
                 </div>
               </Drawer>
             )}
@@ -972,11 +941,15 @@ export default function SidedrawerInvestor({
               }}
             >
               <DrawerHeader />
+
+
               {children}
+
             </Main>
           </Box>
         )}
       </ThemeProvider>
+
     </>
   );
 }
