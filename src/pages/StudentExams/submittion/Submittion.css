@@ -11,7 +11,6 @@
   border-radius: 8px;
   max-width: 400px;
 }
-
 .case-study pre {
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -20,7 +19,11 @@
 .sub-questions {
   flex: 2;
 }
-
+.progress{
+  color: #000000;
+  padding: 10px;
+  margin-bottom: 20px !important;
+}
 .sub-question {
   margin-bottom: 30px !important;
   padding: 15px;

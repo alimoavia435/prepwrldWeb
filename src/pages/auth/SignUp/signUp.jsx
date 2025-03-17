@@ -3,7 +3,6 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import signUpImage from "../../../assets/signUpImage.svg";
 import Vector from "../../../assets/Vector.svg";
-import facebook from "../../../assets/gg_facebook.svg";
 import google from "../../../assets/flat-color-icons_google.svg";
 import { Link, useNavigate } from "react-router-dom";
 import propertyDeveloperImage from "../../../assets/PropertyDeveloperbg.png";
@@ -330,28 +329,7 @@ const SignUp = () => {
             ""
           )}
         </div>
-        {/* {selected === "Investor" ? (
-          <div className="social__button__main-container">
-            <div className="facebook">
-              <img src={facebook} alt="facebook" />
-              <p>Sign in with Facebook</p>
-            </div>
-            <div className="facebook">
-              <img src={google} alt="google" />
-              <p>Sign in with Google</p>
-            </div>
-            <span className="AccountSignUp">
-              <p>
-                I have an account?
-                <Link className="a" to="/SignIn">
-                  Login
-                </Link>
-              </p>
-            </span>
-          </div>
-        ) : (
-          ""
-        )} */}
+       
       </div>
     </>
   );

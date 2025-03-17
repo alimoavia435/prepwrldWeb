@@ -3,7 +3,7 @@ import investorImage from "../../../assets/image-bg.png";
 import investorImage2 from "../../../assets/investor-bg2.png";
 import propertyDeveloperImage from "../../../assets/PropertyDeveloperbg.png";
 import Vector from "../../../assets/Vector.svg";
-import facebook from "../../../assets/gg_facebook.svg";
+
 import google from "../../../assets/flat-color-icons_google.svg";
 import imageeye from "../../../assets/imageeye.svg";
 import eyeSlash from "../../../assets/eye-slash.svg";
@@ -326,10 +326,7 @@ const SignIn = () => {
                   />
                 </div>
                 <div className="social__button__main-container">
-                  {/* <div className="facebook">
-                    <img src={facebook} alt="facebook" />
-                    <p>Sign in with Facebook</p>
-                  </div> */}
+               
 
                   <p className="AccountSignUp">
                     Don't have an account already?{" "}
