@@ -1,15 +1,15 @@
 .case-study-container {
   display: flex;
+  width: 100%;
   gap: 30px;
 }
 
 .case-study {
-  flex: 1;
   background: #f8f9fa;
   color: #000000;
   padding: 20px;
   border-radius: 8px;
-  max-width: 400px;
+  width: 50%;
 }
 .case-study pre {
   white-space: pre-wrap;
@@ -17,7 +17,7 @@
 }
 
 .sub-questions {
-  flex: 2;
+  width: 50%;
 }
 .progress{
   color: #000000;
@@ -45,6 +45,7 @@
   padding: 12px;
   transition: all 0.2s;
   color: #000000;
+  text-align: left;
 }
 
 .explanation {
@@ -65,4 +66,25 @@
   padding: 12px 35px;
   font-size: 16px;
   color: #000000;
+}
+
+@media (max-width:1200px){
+  .case-study-container {
+    flex-direction: column;
+  }
+  .case-study {
+    width: 100%;
+  }
+  .sub-questions {
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: repeat(2,1fr);
+    width: 100%;
+  }
+}
+@media (max-width:768px)
+{
+  .sub-questions {
+    grid-template-columns: repeat(1,1fr);
+  }
 }
