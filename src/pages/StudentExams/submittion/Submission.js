@@ -3,6 +3,7 @@ import './Submittion.css';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStudentquestions } from '../../../services/redux/middleware/getStudentquestions';
+import { resultpost } from '../../../services/redux/middleware/resultpost';
 
 const Timer = ({ status, onComplete }) => {
     const [time, setTime] = useState(0);
@@ -41,6 +42,7 @@ const Submission = () => {
     const questionsData = useSelector(state => state?.getStudentquestions?.profile?.data);
     const [loading, setLoading] = useState(false);
     const [examCompleted, setExamCompleted] = useState(false);
+    const [examEndTime, setExamEndTime] = useState(null);
     // Load persisted state from localStorage
     const loadPersistedState = () => ({
         currentIndex: parseInt(localStorage.getItem('currentQuestionIndex')) || 0,
@@ -63,7 +65,8 @@ const Submission = () => {
     const [submitted, setSubmitted] = useState(persistedState.submitted);
     const [questions, setQuestions] = useState([]);
     const [results, setResults] = useState(persistedState.results);
-
+    const [totttal, settotttal] = useState();
+    const [timetaken, settimetaken] = useState();
     // Save state to localStorage
     const persistState = () => {
         localStorage.setItem('currentQuestionIndex', currentQuestionIndex);
@@ -119,6 +122,16 @@ const Submission = () => {
         }));
     };
 
+    useEffect(() => {
+        const trad = questions?.filter(question => question.type === 'traditional').length;
+        const nextgen = questions?.filter(question => question.type === 'nextgen');
+
+        const nexttotal = nextgen.reduce((total, item) => {
+            return total + (item.Questions?.length || 0); // Add length of Questions array in each object
+        }, 0);
+        settotttal(trad + nexttotal)
+    }, [questions])
+
     const handleNext = () => {
         if (currentQuestionIndex < questions.length - 1) {
             setCurrentQuestionIndex(prev => prev + 1);
@@ -126,7 +139,26 @@ const Submission = () => {
             setSelectedSubAnswers({});
             setSubmitted(false);
         } else {
-            setExamCompleted(true);
+            setExamCompleted(true)
+            const savedStartTime = localStorage.getItem('examStartTime');
+            const elapsed = Math.floor((Date.now() - savedStartTime) / 1000);
+            console.log("settimetaken", elapsed)
+            const hours = Math.floor(elapsed / 3600); // 1 hour = 3600 seconds
+            const minutes = Math.floor((elapsed % 3600) / 60); // 1 minute = 60 seconds
+            const seconds = elapsed % 60; // Remaining seconds
+
+            console.log(`${hours} hour(s), ${minutes} minute(s), ${seconds} second(s)`);
+            settimetaken(` ${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`)
+            const data = {
+                examId: id,
+                totalCorrectAnswers: parseInt(results?.correct),
+                totalIncorrectAnswers: parseInt(results.incorrect),
+                percentage: parseInt(percentage),
+                totalTimeTaken: parseInt(elapsed)
+            }
+            dispatch(resultpost(data)).then((res) => {
+                console.log("resultpost", res);
+            })
             // Handle exam completion
             localStorage.removeItem('examStartTime');
             localStorage.removeItem('currentQuestionIndex');
@@ -135,7 +167,7 @@ const Submission = () => {
             localStorage.removeItem('submittedStatus');
         }
     };
-    const percentage = Math.round((results.correct / results.total) * 100);
+    const percentage = Math.round((results.correct / totttal) * 100);
     if (examCompleted) {
         return (
             <div className="result-screen">
@@ -155,7 +187,9 @@ const Submission = () => {
                         <div className="percentage">{percentage}%</div>
                     </div>
 
-                    <Timer status="ended" onComplete={true} />
+                    <div style={{padding:"10x",width:"100%",background:"#000000",color:"whte"}}>
+                        <p style={{textAlign:"center"}}>{timetaken}</p>
+                    </div>
 
                     <div className="result-stats">
                         <div className="stat-item correct">
@@ -167,7 +201,7 @@ const Submission = () => {
                             <p>Incorrect</p>
                         </div>
                         <div className="stat-item total">
-                            <span>{results.total}</span>
+                            <span>{totttal}</span>
                             <p>Total</p>
                         </div>
                     </div>
@@ -196,12 +230,12 @@ const Submission = () => {
         <div className="question-container">
             <Timer status={questionsData?.status} />
 
-            <div className="results" style={{color:"#000000"}}>
+            <div className="results" style={{ color: "#000000" }}>
                 <h3>Progress:</h3>
-                <p>Total Questions: {results.total}</p>
-                <p>Correct: {results.correct}</p>
-                <p>Incorrect: {results.incorrect}</p>
-                <p>Attempted: {results.attempted}</p>
+                <p>Total Questions: {totttal}</p>
+                <p>Correct: {results?.correct}</p>
+                <p>Incorrect: {results?.incorrect}</p>
+                <p>Attempted: {results?.incorrect + results?.correct}</p>
             </div>
 
             <div className="progress" style={{ color: "#000000", padding: "10px", height: "unset" }}>
@@ -258,7 +292,7 @@ const Submission = () => {
                 </div>
             ) : (
                 // Traditional Question Layout
-                <div className="traditional-question" style={{color:"#000000"}}>
+                <div className="traditional-question" style={{ color: "#000000" }}>
                     {currentQuestion.caseStudy && (
                         <div className="case-study">
                             <h3>Case Study:</h3>
@@ -312,7 +346,7 @@ const Submission = () => {
                 ) : (
                     <button
                         onClick={handleNext}
-                        // disabled={currentQuestionIndex === questions.length - 1}
+                    // disabled={currentQuestionIndex === questions.length - 1}
                     >
                         {currentQuestionIndex === questions.length - 1 ? 'Finish' : 'Next'}
                     </button>
