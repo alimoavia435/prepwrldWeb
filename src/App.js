@@ -94,7 +94,7 @@ const App = () => {
           />
 
           <Route
-            path="/GenerateTest"
+            path="/GenerateTest/:roomId"
             element={
               <GenerateTest />
             }

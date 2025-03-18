@@ -178,26 +178,23 @@ const Exams = () => {
                         </Dropdown.Menu>
                       </Dropdown>
                       <img src="/Images/exam1.png" alt=""
-                        onClick={() => navigate(`/GenerateTest`, {
+                        onClick={() => navigate(`/GenerateTest/${room?._id}`, {
                           state: {
-                            roomId: room?._id,
-                            status: room?.status // or any status value you want to send 
+                            status: room?.status
                           }
                         })}
                       />
                       <p className="toptext_innner" style={{ textAlign: "center" }}
-                        onClick={() => navigate(`/GenerateTest`, {
+                        onClick={() => navigate(`/GenerateTest/${room?._id}`, {
                           state: {
-                            roomId: room?._id,
-                            status: room?.status // or any status value you want to send 
+                            status: room?.status
                           }
                         })}
                       >{room?.examName}</p>
                       <p className="toptext_innner" style={{ textAlign: "center" }}
-                        onClick={() => navigate(`/GenerateTest`, {
+                        onClick={() => navigate(`/GenerateTest/${room?._id}`, {
                           state: {
-                            roomId: room?._id,
-                            status: room?.status // or any status value you want to send 
+                            status: room?.status
                           }
                         })}
                       >{room?.status}</p>

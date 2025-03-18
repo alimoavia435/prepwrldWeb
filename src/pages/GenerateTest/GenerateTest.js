@@ -4,7 +4,7 @@ import { getAllrooms } from '../../services/redux/middleware/getAllrooms';
 import { useDispatch, useSelector } from 'react-redux';
 import { Badge, Dropdown } from 'react-bootstrap';
 import { getAlldata } from '../../services/redux/middleware/getAlldata';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Gene_rate_Test } from '../../services/redux/middleware/Gene_rate_Test';
 import { getexamdetail } from '../../services/redux/middleware/getexamdetail';
@@ -19,6 +19,7 @@ import {
   Paper,
   IconButton,
 } from "@mui/material";
+import { getallresult } from '../../services/redux/middleware/getallresult';
 const GenerateTest = () => {
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [subjects, setSubjects] = useState([]);
@@ -26,16 +27,22 @@ const GenerateTest = () => {
   const [selectedClassRooms, setselectedClassRooms] = useState([]);
   const [subject, setSubject] = useState("");
   const [loading, setloading] = useState(false)
+  const [allresult, setallresult] = useState();
   const [rooms, setrooms] = useState();
   const navigate = useNavigate();
   const location = useLocation();
-  const { roomId, status } = location.state || {};
+  const { status } = location.state || {};
+  const { roomId } = useParams();
   const allData = useSelector(
     (state) => state?.getAlldata?.profile?.data?.stats
   )
   const examdetailData = useSelector(
     (state) => state?.getexamdetail?.profile?.data?.exam
   )
+  const resultData = useSelector(
+    (state) => state?.getallresult.profile
+  )
+  console.log(resultData?.data?.results, "resultData");
   console.log(allData, "allData");
   console.log(examdetailData, "examdetailData");
   const [quzzzz, setquzzzz] = useState();
@@ -51,7 +58,11 @@ const GenerateTest = () => {
       setSystems(allData?.System)
     }
   }, [allData])
-
+  useEffect(() => {
+    if (resultData?.data?.results?.length > 0) {
+      setallresult(resultData?.data?.results)
+    }
+  }, [resultData])
   const roomData = useSelector(
     (state) => state?.getAllrooms?.profile?.data?.rooms
   )
@@ -107,6 +118,7 @@ const GenerateTest = () => {
         : [...prev, type]
     );
   };
+
 
   const handleSubjectChange = (subject) => {
     setSelectedSubjects(prev =>
@@ -197,8 +209,8 @@ const GenerateTest = () => {
           // Validate against system count
           return {
             ...updatedValues,
-            error: total > (currentSystem?.traditional+currentSystem?.nextgen)
-              ? `This system only has ${(currentSystem?.traditional+currentSystem?.nextgen)} questions!`
+            error: total > (currentSystem?.traditional + currentSystem?.nextgen)
+              ? `This system only has ${(currentSystem?.traditional + currentSystem?.nextgen)} questions!`
               : ''
           };
         }
@@ -284,8 +296,17 @@ const GenerateTest = () => {
     })
   };
 
+  const formatTime = (sec) => {
+    const hours = Math.floor(sec / 3600); // 1 hour = 3600 seconds
+    const minutes = Math.floor((sec % 3600) / 60); // 1 minute = 60 seconds
+    const seconds = sec % 60; // Remaining seconds
 
+    // Optionally log the result
+    console.log(`${hours} hour(s), ${minutes} minute(s), ${seconds} second(s)`);
 
+    // Return the formatted time string
+    return `${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+  }
 
 
   const handleSelect = (roomName, roomId) => {
@@ -307,7 +328,7 @@ const GenerateTest = () => {
     dispatch(getAllrooms()).then((res) => {
       setloading(false)
     })
-  }, [])
+  }, [activeTab])
   const handleRemove = (room) => {
     setselectedClassRooms(selectedClassRooms.filter((s) => s.roomId !== room.roomId));
   };
@@ -317,15 +338,21 @@ const GenerateTest = () => {
     dispatch(getAlldata()).then((res) => {
       setloading(false)
     })
-  }, [])
+  }, [activeTab])
 
   useEffect(() => {
     setloading(true)
     dispatch(getexamdetail(roomId)).then((res) => {
       setloading(false)
     })
-  }, [])
+  }, [activeTab])
 
+  useEffect(() => {
+    setloading(true)
+    dispatch(getallresult(roomId)).then((res) => {
+      setloading(false)
+    })
+  }, [activeTab])
   return (
     <>
       {loading && <ScreenLoader />}
@@ -529,6 +556,12 @@ const GenerateTest = () => {
                 {room.roomName}
               </button>
             ))}
+            <button
+              onClick={() => handleTabClick('result')}
+              style={activeTab === 'result' ? styles.activeTab : styles.tab}
+            >
+              Result
+            </button>
           </div>
           <div style={styles.content}>
             {activeTab === 'Static Tab' &&
@@ -613,7 +646,7 @@ const GenerateTest = () => {
                           align="left"
                           className="SubmitPropertytableBodyRowCell1"
                         >
-                          { row?.explanation ? row?.explanation?.slice(0, 20):row?.caseStudy?.slice(0,25)}
+                          {row?.explanation ? row?.explanation?.slice(0, 20) : row?.caseStudy?.slice(0, 25)}
                         </TableCell>
                         <TableCell
                           align="left"
@@ -632,19 +665,19 @@ const GenerateTest = () => {
                           align="center"
                           className="SubmitPropertytableBodyRowCell2"
                         >
-                          {row?.system ? row?.system :"...."}
+                          {row?.system ? row?.system : "...."}
                         </TableCell>
                         <TableCell
                           align="center"
                           className="SubmitPropertytableBodyRowCell2"
                         >
-                          {row?.options.length > 0 ? row?.options?.length:row?.Questions?.length}
+                          {row?.options.length > 0 ? row?.options?.length : row?.Questions?.length}
                         </TableCell>
                         <TableCell
                           align="center"
                           className="SubmitPropertytableBodyRowCell2"
                         >
-                          {row?.correctAnswers?.length ? row?.correctAnswers?.length :"..."}
+                          {row?.correctAnswers?.length ? row?.correctAnswers?.length : "..."}
                         </TableCell>
                         {/* <TableCell
                           align="center"
@@ -660,6 +693,155 @@ const GenerateTest = () => {
                   </TableBody>
                 </Table>
               </TableContainer>
+            }
+            {activeTab === 'result' &&
+              <>
+                {resultData?.message?.message === "Exam has not ended yet. Results will be available once the exam ends." ?
+                  <div style={{ color: "black", padding: "70px 0px" }}>
+                    <p>Exam has not ended yet. Results will be available once the exam ends. </p>
+                  </div>
+                  :
+                  <TableContainer
+                    className="SubmitPropertyTablemaiiiiin"
+                    sx={{
+                      boxShadow: "none",
+                    }}
+                    component={Paper}
+                  >
+                    <Table sx={{ minWidth: 650 }} aria-label="table">
+                      <TableHead >
+                        <TableRow
+                          sx={{
+                            borderTopLeftRadius: "9px",
+                            borderBottomLightRadius: "9px",
+                            background: "rgb(241, 241, 241)",
+
+                          }}
+                          className="SubmitPropertytableHeadRow"
+                        >
+                          <TableCell
+                            sx={{ borderRadius: "7.66px 0 0 7.66px", border: "none" }}
+                            className="SubmitPropertytableHeadRowCell"
+                          >
+                            #
+                          </TableCell>
+                          <TableCell
+                            sx={{ border: "none" }}
+                            className="SubmitPropertytableHeadRowCell"
+                          >
+                            Student Name
+                          </TableCell>
+                          <TableCell
+                            sx={{ border: "none" }}
+                            className="SubmitPropertytableHeadRowCell"
+                          >
+                            Student Email
+                          </TableCell>
+                          <TableCell
+                            sx={{ border: "none" }}
+                            className="SubmitPropertytableHeadRowCell"
+                          >
+                            ClassName
+                          </TableCell>
+                          <TableCell
+                            sx={{ border: "none" }}
+                            className="SubmitPropertytableHeadRowCell"
+                          >
+                            Correct
+                          </TableCell>
+                          <TableCell
+                            sx={{ border: "none" }}
+                            className="SubmitPropertytableHeadRowCell"
+                          >
+                            Incorrect
+                          </TableCell>
+                          <TableCell
+                            sx={{ border: "none" }}
+                            className="SubmitPropertytableHeadRowCell"
+                          >
+                            Time Taken
+                          </TableCell>
+                          <TableCell
+                            sx={{ borderRadius: "0px 7.66px 7.66px 0px", border: "none" }}
+                            className="SubmitPropertytableHeadRowCell"
+                          >
+                            Percentage
+                          </TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableRow
+                        sx={{
+                          marginTop: "17px",
+                          height: "17px",
+                        }}
+                      ></TableRow>
+                      <TableBody >
+                        {allresult?.map((row, index) => (
+                          <TableRow key={row.id}>
+                            <TableCell
+                              align="center"
+                              className="SubmitPropertytableBodyRowCell"
+                            >
+                              {index + 1}
+                            </TableCell>
+                            <TableCell
+                              align="left"
+                              className="SubmitPropertytableBodyRowCell1"
+                            >
+                              {row?.studentName}
+                            </TableCell>
+                            <TableCell
+                              align="left"
+                              className="SubmitPropertytableBodyRowCell2"
+                            >
+                              {row?.studentEmail}
+                            </TableCell>
+                            <TableCell
+                              align="left"
+                              className="SubmitPropertytableBodyRowCell2"
+                            >
+                              {row?.roomName}
+                            </TableCell>
+                            <TableCell
+                              align="center"
+                              className="SubmitPropertytableBodyRowCell2"
+                            >
+                              {/* {new Date(row?.createdAt).toLocaleDateString()} */}
+                              {row?.totalCorrectAnswers}
+                            </TableCell>
+                            <TableCell
+                              align="center"
+                              className="SubmitPropertytableBodyRowCell2"
+                            >
+                              {row?.totalIncorrectAnswers}
+                            </TableCell>
+                            <TableCell
+                              align="center"
+                              className="SubmitPropertytableBodyRowCell2"
+                            >
+                              {formatTime(row?.totalTimeTaken)}
+                            </TableCell>
+                            <TableCell
+                              align="center"
+                              className="SubmitPropertytableBodyRowCell2"
+                            >
+                              {row?.percentage}
+                            </TableCell>
+                            {/* <TableCell
+                          align="center"
+                          className="SubmitPropertytableBodyRowCell2"
+                        >
+                          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                            <img src="/Images/Admin/delete.png" alt="" style={{ height: "40px", width: "40px", cursor: "pointer" }}
+                              onClick={() => handleOpenModal(row._id)} />
+                          </div>
+                        </TableCell> */}
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>}
+              </>
             }
             {examdetailData?.roomIds?.map((room) => {
               if (activeTab === room._id) {

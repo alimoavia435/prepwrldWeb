@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStudentquestions } from '../../../services/redux/middleware/getStudentquestions';
 import { resultpost } from '../../../services/redux/middleware/resultpost';
+import { getStudentResult } from '../../../services/redux/middleware/getStudentResult';
 
 const Timer = ({ status, onComplete }) => {
     const [time, setTime] = useState(0);
@@ -67,6 +68,24 @@ const Submission = () => {
     const [results, setResults] = useState(persistedState.results);
     const [totttal, settotttal] = useState();
     const [timetaken, settimetaken] = useState();
+    const [studentresult, setstudentresult] = useState();
+    const resultdata = useSelector(
+        (state) => state?.getStudentResult?.profile?.data?.result
+    )
+    console.log("resultdata", resultdata)
+    useEffect(() => {
+        if (resultdata) {
+            setstudentresult(resultdata)
+            setExamCompleted(resultdata?.isComplete)
+            const hours = Math.floor((resultdata?.totalTimeTaken) / 3600); // 1 hour = 3600 seconds
+            const minutes = Math.floor(((resultdata?.totalTimeTaken) % 3600) / 60); // 1 minute = 60 seconds
+            const seconds = (resultdata?.totalTimeTaken) % 60; // Remaining seconds
+
+            console.log(`${hours} hour(s), ${minutes} minute(s), ${seconds} second(s)`);
+            settimetaken(` ${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`)
+        }
+    }, [resultdata])
+
     // Save state to localStorage
     const persistState = () => {
         localStorage.setItem('currentQuestionIndex', currentQuestionIndex);
@@ -165,60 +184,72 @@ const Submission = () => {
             localStorage.removeItem('studentAnswers');
             localStorage.removeItem('studentSubAnswers');
             localStorage.removeItem('submittedStatus');
+            localStorage.removeItem('examResults');
         }
     };
+    useEffect(() => {
+        setLoading(true)
+        dispatch(getStudentResult(id)).then((res) => {
+            setLoading(false)
+        })
+    }, [])
     const percentage = Math.round((results.correct / totttal) * 100);
     if (examCompleted) {
         return (
-            <div className="result-screen">
-                <div className="result-card">
-                    <h2>Exam Completed!</h2>
-                    <div className="circular-progress">
-                        <svg>
-                            <circle className="bg" cx="100" cy="100" r="90"></circle>
-                            <circle
-                                className="progress"
-                                cx="100"
-                                cy="100"
-                                r="90"
-                                style={{ strokeDashoffset: 565.48 - (565.48 * percentage) / 100 }}
-                            ></circle>
-                        </svg>
-                        <div className="percentage">{percentage}%</div>
-                    </div>
-
-                    <div style={{padding:"10x",width:"100%",background:"#000000",color:"whte"}}>
-                        <p style={{textAlign:"center"}}>{timetaken}</p>
-                    </div>
-
-                    <div className="result-stats">
-                        <div className="stat-item correct">
-                            <span>{results.correct}</span>
-                            <p>Correct</p>
+            <>
+                <div className="result-screen">
+                    <div className="result-card">
+                        <h2>Exam Completed!</h2>
+                        <div className="circular-progress">
+                            <svg>
+                                <circle className="bg" cx="100" cy="100" r="90"></circle>
+                                <circle
+                                    className="progress"
+                                    cx="100"
+                                    cy="100"
+                                    r="90"
+                                    style={{ strokeDashoffset: 565.48 - (565.48 * (percentage ? percentage : studentresult?.percentage)) / 100 }}
+                                ></circle>
+                            </svg>
+                            <div className="percentage">{percentage ? percentage : studentresult?.percentage}%</div>
                         </div>
-                        <div className="stat-item incorrect">
-                            <span>{results.incorrect}</span>
-                            <p>Incorrect</p>
-                        </div>
-                        <div className="stat-item total">
-                            <span>{totttal}</span>
-                            <p>Total</p>
-                        </div>
-                    </div>
 
-                    <button
-                        className="close-btn"
-                        onClick={() => {
-                            localStorage.removeItem('examResults');
-                            // Add navigation logic here if needed
-                        }}
-                    >
-                        Close
-                    </button>
+                        <div style={{ padding: "10x", width: "100%", background: "#000000", color: "whte" }}>
+                            <p style={{ textAlign: "center" }}>{timetaken}</p>
+                        </div>
+
+                        <div className="result-stats">
+                            <div className="stat-item correct">
+                                <span>{results.correct ? results?.correct : studentresult?.totalCorrectAnswers}</span>
+                                <p>Correct</p>
+                            </div>
+                            <div className="stat-item incorrect">
+                                <span>{results.incorrect ? results.incorrect : studentresult?.totalIncorrectAnswers}</span>
+                                <p>Incorrect</p>
+                            </div>
+                            <div className="stat-item total">
+                                <span>{totttal}</span>
+                                <p>Total</p>
+                            </div>
+                        </div>
+
+                        {/* <button
+                            className="close-btn"
+                            onClick={() => {
+                                localStorage.removeItem('examResults');
+                                
+                            }}
+                        >
+                            Close
+                        </button> */}
+                    </div>
                 </div>
-            </div>
+            </>
         );
     }
+
+
+
     const currentQuestion = questions[currentQuestionIndex];
     const isNextGen = currentQuestion?.type === 'nextgen';
     const allSubQuestionsAnswered = isNextGen &&
