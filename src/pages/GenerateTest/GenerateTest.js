@@ -517,11 +517,11 @@ const GenerateTest = () => {
           </div>
           {/* Totals Display */}
           <div className="section">
-            <p> Traditional ({totals?.easy + totals?.medium + totals?.hard})</p>
+            {/* <p> Traditional ({totals?.easy + totals?.medium + totals?.hard})</p> */}
             <p>Easy: {totals?.easy}</p>
             <p>Medium: {totals?.medium}</p>
             <p>Hard: {totals?.hard}</p>
-            <p>Totals:{totals?.easy + totals?.medium + totals?.hard}</p>
+            <p>Totals {selectedTypes.includes('traditional') && 'Traditional'} {(selectedTypes.includes('traditional') && selectedTypes.includes('nextgen')) && 'and'}  {selectedTypes.includes('nextgen') && 'Next-gen'}:{totals?.easy + totals?.medium + totals?.hard}</p>
           </div>
 
           <button onClick={handleSubmit}>Generate Test</button>
