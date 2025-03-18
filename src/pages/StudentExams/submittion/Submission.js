@@ -1,39 +1,122 @@
-
 import { useState, useEffect } from 'react';
-import './Submittion.css'
+import './Submittion.css';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStudentquestions } from '../../../services/redux/middleware/getStudentquestions';
+
+const Timer = ({ status, onComplete }) => {
+    const [time, setTime] = useState(0);
+
+    useEffect(() => {
+        const savedStartTime = localStorage.getItem('examStartTime');
+        const startTime = savedStartTime ? parseInt(savedStartTime) : Date.now();
+
+        if (!savedStartTime) {
+            localStorage.setItem('examStartTime', startTime.toString());
+        }
+
+        const interval = setInterval(() => {
+            if (status !== 'ended' && !onComplete) {
+                const elapsed = Math.floor((Date.now() - startTime) / 1000);
+                setTime(elapsed);
+            }
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [status, onComplete]);
+
+    const formatTime = (seconds) => {
+        const hrs = Math.floor(seconds / 3600);
+        const mins = Math.floor((seconds % 3600) / 60);
+        const secs = seconds % 60;
+        return `${String(hrs).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    };
+
+    return <div className="timer">Time Taken: {formatTime(time)}</div>;
+};
+
 const Submission = () => {
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [selectedSubAnswers, setSelectedSubAnswers] = useState({});
-    const [submitted, setSubmitted] = useState(false);
-    const [questions, setQuestions] = useState([]);
     const { id } = useParams();
-    const [selectedAnswer, setSelectedAnswer] = useState('');
-    const [loading, setloading] = useState(false);
     const dispatch = useDispatch();
-    const questionsData = useSelector(
-        (state) => state?.getStudentquestions?.profile?.data
-    )
+    const questionsData = useSelector(state => state?.getStudentquestions?.profile?.data);
+    const [loading, setLoading] = useState(false);
+    const [examCompleted, setExamCompleted] = useState(false);
+    // Load persisted state from localStorage
+    const loadPersistedState = () => ({
+        currentIndex: parseInt(localStorage.getItem('currentQuestionIndex')) || 0,
+        answers: JSON.parse(localStorage.getItem('studentAnswers')) || {},
+        subAnswers: JSON.parse(localStorage.getItem('studentSubAnswers')) || {},
+        submitted: JSON.parse(localStorage.getItem('submittedStatus')) || false,
+        results: JSON.parse(localStorage.getItem('examResults')) || {
+            total: 0,
+            correct: 0,
+            incorrect: 0,
+            attempted: 0
+        }
+    });
 
-    console.log(questionsData, "questionsData")
+    // State initialization with persisted data
+    const persistedState = loadPersistedState();
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(persistedState.currentIndex);
+    const [selectedAnswer, setSelectedAnswer] = useState('');
+    const [selectedSubAnswers, setSelectedSubAnswers] = useState(persistedState.subAnswers);
+    const [submitted, setSubmitted] = useState(persistedState.submitted);
+    const [questions, setQuestions] = useState([]);
+    const [results, setResults] = useState(persistedState.results);
+
+    // Save state to localStorage
+    const persistState = () => {
+        localStorage.setItem('currentQuestionIndex', currentQuestionIndex);
+        localStorage.setItem('studentAnswers', JSON.stringify({ [currentQuestionIndex]: selectedAnswer }));
+        localStorage.setItem('studentSubAnswers', JSON.stringify(selectedSubAnswers));
+        localStorage.setItem('submittedStatus', submitted);
+        localStorage.setItem('examResults', JSON.stringify(results));
+    };
+
+    useEffect(() => {
+        setLoading(true);
+        dispatch(getStudentquestions(id)).then(() => setLoading(false));
+    }, [id, dispatch]);
 
     useEffect(() => {
         if (questionsData?.questions) {
             setQuestions(questionsData.questions);
+            setResults(prev => ({
+                ...prev,
+                total: questionsData.questions.length,
+            }));
         }
     }, [questionsData]);
 
     useEffect(() => {
-        if (questionsData?.questions) {
-            setQuestions(questionsData.questions);
-        }
-    }, [questionsData]);
+        persistState();
+    }, [currentQuestionIndex, selectedAnswer, selectedSubAnswers, submitted, results]);
 
     const handleSubmit = () => {
+        const currentQuestion = questions[currentQuestionIndex];
+        let correctCount = 0;
+
+        if (currentQuestion.type === 'traditional') {
+            const isCorrect = currentQuestion.correctAnswers.includes(selectedAnswer);
+            updateResults(isCorrect);
+        } else {
+            const subQuestions = currentQuestion.Questions;
+            Object.entries(selectedSubAnswers).forEach(([index, answer]) => {
+                if (subQuestions[index].correctAnswers.includes(answer)) correctCount++;
+            });
+            updateResults(correctCount, subQuestions.length);
+        }
+
         setSubmitted(true);
-        // API call would go here with all answers
+    };
+
+    const updateResults = (correct, totalSubQuestions = 1) => {
+        setResults(prev => ({
+            ...prev,
+            attempted: prev.attempted + 1,
+            correct: prev.correct + correct,
+            incorrect: prev.incorrect + (totalSubQuestions - correct)
+        }));
     };
 
     const handleNext = () => {
@@ -42,26 +125,86 @@ const Submission = () => {
             setSelectedAnswer('');
             setSelectedSubAnswers({});
             setSubmitted(false);
+        } else {
+            setExamCompleted(true);
+            // Handle exam completion
+            localStorage.removeItem('examStartTime');
+            localStorage.removeItem('currentQuestionIndex');
+            localStorage.removeItem('studentAnswers');
+            localStorage.removeItem('studentSubAnswers');
+            localStorage.removeItem('submittedStatus');
         }
     };
+    const percentage = Math.round((results.correct / results.total) * 100);
+    if (examCompleted) {
+        return (
+            <div className="result-screen">
+                <div className="result-card">
+                    <h2>Exam Completed!</h2>
+                    <div className="circular-progress">
+                        <svg>
+                            <circle className="bg" cx="100" cy="100" r="90"></circle>
+                            <circle
+                                className="progress"
+                                cx="100"
+                                cy="100"
+                                r="90"
+                                style={{ strokeDashoffset: 565.48 - (565.48 * percentage) / 100 }}
+                            ></circle>
+                        </svg>
+                        <div className="percentage">{percentage}%</div>
+                    </div>
 
+                    <Timer status="ended" onComplete={true} />
+
+                    <div className="result-stats">
+                        <div className="stat-item correct">
+                            <span>{results.correct}</span>
+                            <p>Correct</p>
+                        </div>
+                        <div className="stat-item incorrect">
+                            <span>{results.incorrect}</span>
+                            <p>Incorrect</p>
+                        </div>
+                        <div className="stat-item total">
+                            <span>{results.total}</span>
+                            <p>Total</p>
+                        </div>
+                    </div>
+
+                    <button
+                        className="close-btn"
+                        onClick={() => {
+                            localStorage.removeItem('examResults');
+                            // Add navigation logic here if needed
+                        }}
+                    >
+                        Close
+                    </button>
+                </div>
+            </div>
+        );
+    }
     const currentQuestion = questions[currentQuestionIndex];
     const isNextGen = currentQuestion?.type === 'nextgen';
-
-    // Check if all sub-questions are answered for nextgen type
     const allSubQuestionsAnswered = isNextGen &&
         currentQuestion.Questions?.every((_, i) => selectedSubAnswers[i] !== undefined);
-    useEffect(() => {
-        setloading(true)
-        dispatch(getStudentquestions(id)).then((res) => {
-            setloading(false)
-        })
-    }, [])
-    if (!currentQuestion) return <div>Loading questions...</div>;
+
+    if (loading || !currentQuestion) return <div>Loading questions...</div>;
 
     return (
         <div className="question-container">
-            <div className="progress"style={{color:"#000000",padding:"10px",height:"unset"}}>
+            <Timer status={questionsData?.status} />
+
+            <div className="results" style={{color:"#000000"}}>
+                <h3>Progress:</h3>
+                <p>Total Questions: {results.total}</p>
+                <p>Correct: {results.correct}</p>
+                <p>Incorrect: {results.incorrect}</p>
+                <p>Attempted: {results.attempted}</p>
+            </div>
+
+            <div className="progress" style={{ color: "#000000", padding: "10px", height: "unset" }}>
                 Question {currentQuestionIndex + 1} of {questions.length}
             </div>
             {isNextGen ? (
@@ -115,7 +258,7 @@ const Submission = () => {
                 </div>
             ) : (
                 // Traditional Question Layout
-                <div className="traditional-question">
+                <div className="traditional-question" style={{color:"#000000"}}>
                     {currentQuestion.caseStudy && (
                         <div className="case-study">
                             <h3>Case Study:</h3>
@@ -169,7 +312,7 @@ const Submission = () => {
                 ) : (
                     <button
                         onClick={handleNext}
-                        disabled={currentQuestionIndex === questions.length - 1}
+                        // disabled={currentQuestionIndex === questions.length - 1}
                     >
                         {currentQuestionIndex === questions.length - 1 ? 'Finish' : 'Next'}
                     </button>
