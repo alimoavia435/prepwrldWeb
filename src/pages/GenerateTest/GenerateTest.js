@@ -44,6 +44,7 @@ const GenerateTest = () => {
   console.log(allData, "allData");
   console.log(examdetailData, "examdetailData");
   const [quzzzz, setquzzzz] = useState();
+  const [description, setDescription] = useState("");
   useEffect(() => {
     if (examdetailData) {
       setquzzzz(examdetailData?.questions);
@@ -229,67 +230,112 @@ const GenerateTest = () => {
   const handleSubmit = () => {
     let errorMessages = [];
 
+    // Basic validation
     if (
       selectedTypes.length < 1 ||
-      selectedSubjects.length < 1 ||
-      selectedSystems.length < 1 ||
       selectedClassRooms.length < 1 ||
-      !totals ||
-      !roomId
+      !roomId ||
+      !description
     ) {
       toast.warning("Some required fields are missing.");
       return null;
     }
 
-    console.log(selectedSystems, "selectedSystems");
-    const systems = selectedSystems?.map(
-      ({ system, easy, medium, hard, error }) => {
-      if (!system || (!easy && !medium && !hard)) {
-          toast.error(" systems or difficulty levels are missing.");
+    // Validate traditional data if selected
+    if (selectedTypes.includes("traditional")) {
+      if (selectedSubjects.length < 1 || selectedSystems.length < 1) {
+        toast.warning("Traditional subjects and systems are required.");
         return null;
       }
-        if (error && error !== " ") {
-        errorMessages.push(`Error: ${error}`);
-        return null;
-      }
-      return {
-        name: system,
-          easy: easy || " ",
-          medium: medium || " ",
-          hard: hard || " ",
-        };
-      }
-    );
+    }
 
-    if (systems.includes(null)) {
+    // Validate nextgen data if selected
+    if (selectedTypes.includes("nextgen")) {
+      if (nextGenSubjects.length < 1 || nextGenSystems.length < 1) {
+        toast.warning("Next-Gen subjects and systems are required.");
+        return null;
+      }
+    }
+
+    // Process traditional systems
+    const traditionalSystems = selectedTypes.includes("traditional")
+      ? selectedSystems?.map(({ system, easy, medium, hard, error }) => {
+          if (!system || (!easy && !medium && !hard)) {
+            toast.error(
+              "Traditional systems or difficulty levels are missing."
+            );
+            return null;
+          }
+          if (error && error !== " ") {
+            errorMessages.push(`Error: ${error}`);
+            return null;
+          }
+          return {
+            name: system,
+            easy: easy || " ",
+            medium: medium || " ",
+            hard: hard || " ",
+          };
+        })
+      : [];
+
+    // Process nextgen systems
+    const nextGenSystemsData = selectedTypes.includes("nextgen")
+      ? nextGenSystems.map(({ system, questions, error }) => {
+          if (!system || !questions) {
+            toast.error("Next-Gen systems or question counts are missing.");
+            return null;
+          }
+          if (error) {
+            errorMessages.push(`Error: ${error}`);
+            return null;
+          }
+          return {
+            name: system,
+            questions: questions,
+          };
+        })
+      : [];
+
+    if (
+      traditionalSystems.includes(null) ||
+      nextGenSystemsData.includes(null)
+    ) {
       toast.warning("System data is incomplete.");
       return null;
     }
+
     if (errorMessages.length > 0) {
-      toast.error("You exceed the limit of any System Questions");
+      toast.error("You exceed the limit of questions in some systems");
       return null;
     }
+
     const roomIds = selectedClassRooms?.map((room) => room.roomId);
     if (!roomIds || roomIds.length === 0) {
       toast.warning("Select Classrooms please");
       return null;
     }
+
     setloading(true);
 
-    // Calculate total questions (traditional + nextgen)
+    // Calculate totals
     const traditionalTotal = totals?.easy + totals?.medium + totals?.hard;
     const nextGenTotal = nextGenSystems.reduce(
       (total, system) => total + (parseInt(system.questions) || 0),
       0
     );
 
+    // Prepare the data object with separate traditional and nextgen data
     const data = {
-      type: selectedTypes,
-      subject: selectedSubjects,
-      systems,
-      roomIds,
+      subjects: selectedSubjects,
+      systems: traditionalSystems,
       traditionalTotal,
+      nextGenSubjects,
+      nextGenSystemsData,
       nextGenTotal,
+      roomIds,
+      description,
+      types: selectedTypes,
     };
 
     const datawithid = {
@@ -411,12 +457,26 @@ const GenerateTest = () => {
 
   // Update useEffect to handle checkbox selection based on active tab
   useEffect(() => {
-    if (activeQuestionTab === 'traditional') {
-      setSelectedTypes(['traditional']);
-    } else if (activeQuestionTab === 'nextgen') {
-      setSelectedTypes(['nextgen']);
+    if (activeQuestionTab === "traditional") {
+      setSelectedTypes(["traditional"]);
+    } else if (activeQuestionTab === "nextgen") {
+      setSelectedTypes(["nextgen"]);
+    } else if (activeQuestionTab === "both") {
+      setSelectedTypes(["traditional", "nextgen"]);
     }
   }, [activeQuestionTab]);
+
+  // Add this new useEffect to handle the submit button state
+  useEffect(() => {
+    // If there are selections in both traditional and nextgen
+    if (
+      (selectedSubjects.length > 0 || selectedSystems.length > 0) &&
+      (nextGenSubjects.length > 0 || nextGenSystems.length > 0)
+    ) {
+      // Automatically set to "both" mode
+      setSelectedTypes(["traditional", "nextgen"]);
+    }
+  }, [selectedSubjects, selectedSystems, nextGenSubjects, nextGenSystems]);
 
   return (
     <>
@@ -429,180 +489,130 @@ const GenerateTest = () => {
           <div style={styles.tabs}>
             <button
               onClick={() => setActiveQuestionTab("traditional")}
-              style={activeQuestionTab === "traditional" ? styles.activeTab : styles.tab}
+              style={
+                activeQuestionTab === "traditional"
+                  ? styles.activeTab
+                  : styles.tab
+              }
             >
               Traditional ({allData?.Type?.traditional})
             </button>
             <button
               onClick={() => setActiveQuestionTab("nextgen")}
-              style={activeQuestionTab === "nextgen" ? styles.activeTab : styles.tab}
+              style={
+                activeQuestionTab === "nextgen" ? styles.activeTab : styles.tab
+              }
             >
               Next-Gen ({allData?.Type?.nextgen})
             </button>
+            <button
+              onClick={() => setActiveQuestionTab("both")}
+              style={
+                activeQuestionTab === "both" ? styles.activeTab : styles.tab
+              }
+            >
+              Both Types
+            </button>
           </div>
 
-          {activeQuestionTab === "traditional" ? (
+          {(activeQuestionTab === "traditional" ||
+            activeQuestionTab === "both") && (
             <>
-          {/* Subjects Section */}
-          <div className="section">
-            <p>Subjects</p>
-            <label>
-              <input
-                type="checkbox"
-                checked={selectAllSubjects}
-                onChange={handleSelectAllSubjects}
-              />
-              <span className="checkmark"></span>
-              Select All
-            </label>
-                <div className="tefwqsvjhdsd">
-                  {subjects?.map((subject) => (
-                <label key={subject?.subject}>
+              {/* Subjects Section */}
+              <div className="section">
+                <p>Subjects</p>
+                <label>
                   <input
                     type="checkbox"
-                    checked={selectedSubjects.includes(subject?.subject)}
-                    onChange={() => handleSubjectChange(subject?.subject)}
+                    checked={selectAllSubjects}
+                    onChange={handleSelectAllSubjects}
                   />
                   <span className="checkmark"></span>
-                      {subject?.subject} ({subject?.traditional})
+                  Select All
                 </label>
-              ))}
-            </div>
-          </div>
-          <div className="section">
-            <p>Systems</p>
-            <label>
-              <input
-                type="checkbox"
-                checked={selectAllSystems}
-                onChange={handleSelectAllSystems}
-              />
-              <span className="checkmark"></span>
-              Select All
-            </label>
+                <div className="tefwqsvjhdsd">
+                  {subjects?.map((subject) => (
+                    <label key={subject?.subject}>
+                      <input
+                        type="checkbox"
+                        checked={selectedSubjects.includes(subject?.subject)}
+                        onChange={() => handleSubjectChange(subject?.subject)}
+                      />
+                      <span className="checkmark"></span>
+                      {subject?.subject} ({subject?.traditional})
+                    </label>
+                  ))}
+                </div>
+              </div>
+              <div className="section">
+                <p>Systems</p>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={selectAllSystems}
+                    onChange={handleSelectAllSystems}
+                  />
+                  <span className="checkmark"></span>
+                  Select All
+                </label>
                 <div className="tefwqsvjhdsd">
                   {systems?.map((system) => {
                     const selectedSystem = selectedSystems.find(
                       (s) => s.system === system.system
                     );
-                return (
-                  <div key={system.system}>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={!!selectedSystem}
-                        onChange={() => handleSystemChange(system)}
-                      />
-                      <span className="checkmark"></span>
+                    return (
+                      <div key={system.system}>
+                        <label>
+                          <input
+                            type="checkbox"
+                            checked={!!selectedSystem}
+                            onChange={() => handleSystemChange(system)}
+                          />
+                          <span className="checkmark"></span>
                           {system.system} ({system.traditional})
-                    </label>
-                    {selectedSystem?.isOpen && (
-                      <div className="popup">
+                        </label>
+                        {selectedSystem?.isOpen && (
+                          <div className="popup">
                             {["easy", "medium", "hard"]?.map((difficulty) => (
-                          <div key={difficulty}>
-                            <label>
+                              <div key={difficulty}>
+                                <label>
                                   {difficulty?.charAt(0)?.toUpperCase() +
                                     difficulty?.slice(1)}
                                   :
-                              <input
-                                type="number"
-                                min="0"
-                                value={selectedSystem[difficulty]}
-                                onChange={(e) =>
+                                  <input
+                                    type="number"
+                                    min="0"
+                                    value={selectedSystem[difficulty]}
+                                    onChange={(e) =>
                                       handleSystemInputChange(
                                         system?.system,
                                         difficulty,
                                         e.target.value
                                       )
-                                }
-                              />
-                            </label>
-                          </div>
-                        ))}
-                        {selectedSystem?.error && (
-                          <div className="error-message">
-                            {selectedSystem?.error}
+                                    }
+                                  />
+                                </label>
+                              </div>
+                            ))}
+                            {selectedSystem?.error && (
+                              <div className="error-message">
+                                {selectedSystem?.error}
+                              </div>
+                            )}
                           </div>
                         )}
                       </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <div className="section">
-            <p>Class Rooms</p>
-                <Dropdown>
-              <Dropdown.Toggle
-                variant="light"
-                id="dropdown-basic"
-                style={{
-                      backgroundColor: "transparent",
-                      border: "1px solid rgba(0, 0, 0, 0.3)",
-                      color: "black",
-                  height: "56px",
-                      width: "100%",
-                      textAlign: "left",
-                }}
-              >
-                Choose Subject
-              </Dropdown.Toggle>
-
-                  <Dropdown.Menu style={{ width: "100%" }}>
-                {rooms?.map((subjectOption, index) => (
-                  <Dropdown.Item
-                    key={index}
-                    eventKey={subjectOption?.roomName}
-                        style={{ color: "black" }}
-                        onClick={() =>
-                          handleSelect(
-                            subjectOption?.roomName,
-                            subjectOption?._id
-                          )
-                        }
-                  >
-                    {subjectOption?.roomName}
-                  </Dropdown.Item>
-                ))}
-              </Dropdown.Menu>
-            </Dropdown>
-                <div style={{ paddingTop: "10px" }}>
-              {selectedClassRooms?.map((subject, index) => (
-                <Badge
-                  key={index}
-                  pill
-                      className="ashdgfjh"
-                  style={{
-                        color: "#ffffff",
-                        padding: "8px 12px",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        cursor: "pointer",
-                  }}
-                  onClick={() => handleRemove(subject)}
-                >
-                      {subject?.roomName}{" "}
-                      <span
-                        className="svxb"
-                        style={{
-                          color: "red",
-                          cursor: "pointer",
-                          fontSize: "20px",
-                        }}
-                      >
-                        ×
-                      </span>
-                </Badge>
-              ))}
-            </div>
-          </div>
-          {/* Totals Display */}
+                    );
+                  })}
+                </div>
+              </div>
             </>
-          ) : (
+          )}
+          {(activeQuestionTab === "nextgen" ||
+            activeQuestionTab === "both") && (
             <>
               {/* Next-Gen Subjects Section */}
-          <div className="section">
+              <div className="section">
                 <p>Next-Gen Subjects</p>
                 <div className="tefwqsvjhdsd">
                   {subjects?.map(
@@ -667,83 +677,98 @@ const GenerateTest = () => {
                   )}
                 </div>
               </div>
-
-              {/* Existing Classroom Section */}
-              <div className="section">
-                <p>Class Rooms</p>
-                <Dropdown>
-                  <Dropdown.Toggle
-                    variant="light"
-                    id="dropdown-basic"
-                    style={{
-                      backgroundColor: "transparent",
-                      border: "1px solid rgba(0, 0, 0, 0.3)",
-                      color: "black",
-                      height: "56px",
-                      width: "100%",
-                      textAlign: "left",
-                    }}
-                  >
-                    Choose Subject
-                  </Dropdown.Toggle>
-
-                  <Dropdown.Menu style={{ width: "100%" }}>
-                    {rooms?.map((subjectOption, index) => (
-                      <Dropdown.Item
-                        key={index}
-                        eventKey={subjectOption?.roomName}
-                        style={{ color: "black" }}
-                        onClick={() =>
-                          handleSelect(
-                            subjectOption?.roomName,
-                            subjectOption?._id
-                          )
-                        }
-                      >
-                        {subjectOption?.roomName}
-                      </Dropdown.Item>
-                    ))}
-                  </Dropdown.Menu>
-                </Dropdown>
-                <div style={{ paddingTop: "10px" }}>
-                  {selectedClassRooms?.map((subject, index) => (
-                    <Badge
-                      key={index}
-                      pill
-                      className="ashdgfjh"
-                      style={{
-                        color: "#ffffff",
-                        padding: "8px 12px",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        cursor: "pointer",
-                      }}
-                      onClick={() => handleRemove(subject)}
-                    >
-                      {subject?.roomName}{" "}
-                      <span
-                        className="svxb"
-                        style={{
-                          color: "red",
-                          cursor: "pointer",
-                          fontSize: "20px",
-                        }}
-                      >
-                        ×
-                      </span>
-                    </Badge>
-                  ))}
-                </div>
-              </div>
             </>
           )}
           <div className="section">
+            <p>Class Rooms</p>
+            <Dropdown>
+              <Dropdown.Toggle
+                variant="light"
+                id="dropdown-basic"
+                style={{
+                  backgroundColor: "transparent",
+                  border: "1px solid rgba(0, 0, 0, 0.3)",
+                  color: "black",
+                  height: "56px",
+                  width: "100%",
+                  textAlign: "left",
+                }}
+              >
+                Choose Subject
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu style={{ width: "100%" }}>
+                {rooms?.map((subjectOption, index) => (
+                  <Dropdown.Item
+                    key={index}
+                    eventKey={subjectOption?.roomName}
+                    style={{ color: "black" }}
+                    onClick={() =>
+                      handleSelect(
+                        subjectOption?.roomName,
+                        subjectOption?._id
+                      )
+                    }
+                  >
+                    {subjectOption?.roomName}
+                  </Dropdown.Item>
+                ))}
+              </Dropdown.Menu>
+            </Dropdown>
+            <div style={{ paddingTop: "10px" }}>
+              {selectedClassRooms?.map((subject, index) => (
+                <Badge
+                  key={index}
+                  pill
+                  className="ashdgfjh"
+                  style={{
+                    color: "#ffffff",
+                    padding: "8px 12px",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => handleRemove(subject)}
+                >
+                  {subject?.roomName}{" "}
+                  <span
+                    className="svxb"
+                    style={{
+                      color: "red",
+                      cursor: "pointer",
+                      fontSize: "20px",
+                    }}
+                  >
+                    ×
+                  </span>
+                </Badge>
+              ))}
+            </div>
+          </div>
+          <div className="section">
+            <p>Description</p>
+            <textarea
+              placeholder="Enter test description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              style={{
+                width: "100%",
+                minHeight: "100px",
+                padding: "10px",
+                border: "1px solid rgba(0, 0, 0, 0.3)",
+                borderRadius: "4px",
+                marginBottom: "20px",
+              }}
+            />
+          </div>
+          <div className="section">
             <p>
-              Total Next-Gen :{" "}
+              Total Next-Gen : (
               {nextGenSystems.reduce(
                 (total, system) => total + (parseInt(system.questions) || 0),
                 0
               )}
+              )
             </p>
             <p>
               {" "}
