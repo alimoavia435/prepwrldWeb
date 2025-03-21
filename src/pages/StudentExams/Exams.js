@@ -109,13 +109,25 @@ const StudentExams = () => {
                   {predefinedRooms?.map((room, index) => (
                     <div key={index} className="predefinedtop_inner" >
                       <img src="/Images/exam1.png" alt=""
-                        onClick={() => navigate(`/Submission/${room?._id}`)}
+                          onClick={() =>
+                            navigate(`/Submission/${room?._id}`, {
+                              state: { description: room?.description, examName: room?.examName }
+                            })
+                          }
                       />
                       <p className="toptext_innner" style={{ textAlign: "center" }}
-                        onClick={() => navigate(`/Submission/${room?._id}`)}
+                         onClick={() =>
+                          navigate(`/Submission/${room?._id}`, {
+                            state: { description: room?.description, examName: room?.examName }
+                          })
+                        }
                       >{room?.examName}</p>
                       <p className="toptext_innner" style={{ textAlign: "center" }}
-                        onClick={() => navigate(`/Submission/${room?._id}`)}
+                        onClick={() =>
+                          navigate(`/Submission/${room?._id}`, {
+                            state: { description: room?.description, examName: room?.examName }
+                          })
+                        }
                       >{room?.status}</p>
 
                     </div>
