@@ -260,11 +260,11 @@ const GenerateTest = () => {
     // Process traditional systems
     const traditionalSystems = selectedTypes.includes("traditional")
       ? selectedSystems?.map(({ system, easy, medium, hard, error }) => {
-          if (!system || (!easy && !medium && !hard)) {
+      if (!system || (!easy && !medium && !hard)) {
             toast.error(
               "Traditional systems or difficulty levels are missing."
             );
-            return null;
+        return null;
           }
           if (error && error !== " ") {
             errorMessages.push(`Error: ${error}`);
@@ -287,11 +287,11 @@ const GenerateTest = () => {
             return null;
           }
           if (error) {
-            errorMessages.push(`Error: ${error}`);
-            return null;
-          }
-          return {
-            name: system,
+        errorMessages.push(`Error: ${error}`);
+        return null;
+      }
+      return {
+        name: system,
             questions: questions,
           };
         })
@@ -518,94 +518,94 @@ const GenerateTest = () => {
           {(activeQuestionTab === "traditional" ||
             activeQuestionTab === "both") && (
             <>
-              {/* Subjects Section */}
-              <div className="section">
-                <p>Subjects</p>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={selectAllSubjects}
-                    onChange={handleSelectAllSubjects}
-                  />
-                  <span className="checkmark"></span>
-                  Select All
-                </label>
+          {/* Subjects Section */}
+          <div className="section">
+            <p>Subjects</p>
+            <label>
+              <input
+                type="checkbox"
+                checked={selectAllSubjects}
+                onChange={handleSelectAllSubjects}
+              />
+              <span className="checkmark"></span>
+              Select All
+            </label>
                 <div className="tefwqsvjhdsd">
                   {subjects?.map((subject) => (
-                    <label key={subject?.subject}>
-                      <input
-                        type="checkbox"
-                        checked={selectedSubjects.includes(subject?.subject)}
-                        onChange={() => handleSubjectChange(subject?.subject)}
-                      />
-                      <span className="checkmark"></span>
-                      {subject?.subject} ({subject?.traditional})
-                    </label>
-                  ))}
-                </div>
-              </div>
-              <div className="section">
-                <p>Systems</p>
-                <label>
+                <label key={subject?.subject}>
                   <input
                     type="checkbox"
-                    checked={selectAllSystems}
-                    onChange={handleSelectAllSystems}
+                    checked={selectedSubjects.includes(subject?.subject)}
+                    onChange={() => handleSubjectChange(subject?.subject)}
                   />
                   <span className="checkmark"></span>
-                  Select All
+                      {subject?.subject} ({subject?.traditional})
                 </label>
+              ))}
+            </div>
+          </div>
+          <div className="section">
+            <p>Systems</p>
+            <label>
+              <input
+                type="checkbox"
+                checked={selectAllSystems}
+                onChange={handleSelectAllSystems}
+              />
+              <span className="checkmark"></span>
+              Select All
+            </label>
                 <div className="tefwqsvjhdsd">
                   {systems?.map((system) => {
                     const selectedSystem = selectedSystems.find(
                       (s) => s.system === system.system
                     );
-                    return (
-                      <div key={system.system}>
-                        <label>
-                          <input
-                            type="checkbox"
-                            checked={!!selectedSystem}
-                            onChange={() => handleSystemChange(system)}
-                          />
-                          <span className="checkmark"></span>
+                return (
+                  <div key={system.system}>
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked={!!selectedSystem}
+                        onChange={() => handleSystemChange(system)}
+                      />
+                      <span className="checkmark"></span>
                           {system.system} ({system.traditional})
-                        </label>
-                        {selectedSystem?.isOpen && (
-                          <div className="popup">
+                    </label>
+                    {selectedSystem?.isOpen && (
+                      <div className="popup">
                             {["easy", "medium", "hard"]?.map((difficulty) => (
-                              <div key={difficulty}>
-                                <label>
+                          <div key={difficulty}>
+                            <label>
                                   {difficulty?.charAt(0)?.toUpperCase() +
                                     difficulty?.slice(1)}
                                   :
-                                  <input
-                                    type="number"
-                                    min="0"
-                                    value={selectedSystem[difficulty]}
-                                    onChange={(e) =>
+                              <input
+                                type="number"
+                                min="0"
+                                value={selectedSystem[difficulty]}
+                                onChange={(e) =>
                                       handleSystemInputChange(
                                         system?.system,
                                         difficulty,
                                         e.target.value
                                       )
-                                    }
-                                  />
-                                </label>
-                              </div>
-                            ))}
-                            {selectedSystem?.error && (
-                              <div className="error-message">
-                                {selectedSystem?.error}
-                              </div>
-                            )}
+                                }
+                              />
+                            </label>
+                          </div>
+                        ))}
+                        {selectedSystem?.error && (
+                          <div className="error-message">
+                            {selectedSystem?.error}
                           </div>
                         )}
                       </div>
-                    );
-                  })}
-                </div>
-              </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
             </>
           )}
           {(activeQuestionTab === "nextgen" ||
