@@ -1747,10 +1747,11 @@ const Submission = () => {
               <div className="explanation">
                 <p>
                   <strong>Explanation:</strong>{" "}
-                  {
-                    currentQuestion?.Questions[currentSubQuestionIndex]
-                      ?.explanation
-                  }
+                  {(() => {
+                    const currentSubQuestion = currentQuestion?.Questions[currentSubQuestionIndex];
+                    console.log("Current Sub Question for Explanation:", currentSubQuestion);
+                    return currentSubQuestion?.explanation || "No explanation available";
+                  })()}
                 </p>
               </div>
             )}
