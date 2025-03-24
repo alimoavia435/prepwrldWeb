@@ -2,19 +2,29 @@ import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { Envelope, Telephone, GeoAlt, Clock } from 'react-bootstrap-icons';
 import './Support.css';
-
+import { complaint } from '../../services/redux/middleware/complaint';  
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 const Support = () => {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
   });
-
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission here
     console.log('Form submitted:', formData);
+    dispatch(complaint(formData)).then((res) => {
+      console.log(res, "rehddjdsjhgds");
+      if (res.payload.status === 200) {
+        toast.success(res?.payload?.data?.message);
+      } else {
+        toast.error(res?.payload?.data?.message);
+      }
+    });
   };
 
   const handleChange = (e) => {

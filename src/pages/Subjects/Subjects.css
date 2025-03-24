@@ -1,8 +1,8 @@
 .predefinedtop {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
+    gap: 25px;
+    margin-top: 20px;
 }
 
 .sdhjDSHK {
@@ -15,25 +15,28 @@
 
 .predefinedtop_inner {
     background: white;
-    border-radius: 12px;
+    border-radius: 15px;
     padding: 20px;
     position: relative;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
     border: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
 }
 
 .predefinedtop_inner:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: #139ed5;
 }
 
 .predefinedtop_inner img {
     width: 60px;
     height: 60px;
-    margin-bottom: 15px;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .predefinedtop_inner:hover img {
@@ -44,26 +47,85 @@
     font-size: 16px;
     font-weight: 500;
     color: #2c3e50;
-    margin: 10px 0;
+    margin: 0;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.predefinedtop_inner:hover .toptext_innner {
+    color: #139ed5;
+}
+
+.student-count {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #6c757d;
+    font-size: 14px;
+    padding: 6px 12px;
+    background: #f8f9fa;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.predefinedtop_inner:hover .student-count {
+    background: #e3f2fd;
+    color: #139ed5;
 }
 
 .fdgshasjf {
+    display: flex;
+    justify-content: flex-end;
     margin-bottom: 30px;
 }
 
-.fdgshasjf .btn-success {
-    background: linear-gradient(45deg, #28a745, #20c997);
+.fdgshasjf button {
+    background: #139ed5;
     border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
+    padding: 12px 25px;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(40, 167, 69, 0.2);
+    box-shadow: 0 4px 15px rgba(19, 158, 213, 0.2);
 }
 
-.fdgshasjf .btn-success:hover {
+.fdgshasjf button:hover {
+    background: #0f8ab8;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+    box-shadow: 0 6px 20px rgba(19, 158, 213, 0.3);
+}
+
+.fdgshasjf button:active {
+    transform: translateY(0);
+}
+
+.toptext {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 25px;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+    background: #f8f9fa;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.empty-state p {
+    margin: 10px 0;
+    color: #6c757d;
 }
 
 .modal {
@@ -95,16 +157,19 @@
 
 /* Main Container Styles */
 .main-container {
+    padding: 30px;
+    background: #f8f9fa;
     min-height: 100vh;
-    background-color: #f8f9fa;
-    padding: 20px;
 }
 
 /* Content Wrapper */
 .content-wrapper {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 /* Fixed Button Container */
@@ -121,29 +186,22 @@
     justify-content: center;
 }
 
-/* Title Text */
-.toptext {
-    font-size: 24px;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 20px;
-}
-
 /* Dropdown Menu */
 .dropdown-menu {
     border: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 8px;
     min-width: 150px;
 }
 
-.dropdown-item {
-    padding: 8px 16px;
-    border-radius: 6px;
-    transition: all 0.2s ease;
+.rename-item, .delete-item {
     display: flex;
     align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
 .rename-item {
@@ -151,8 +209,7 @@
 }
 
 .rename-item:hover {
-    background-color: #f0f7ff;
-    color: #139ed5;
+    background: #e3f2fd;
 }
 
 .delete-item {
@@ -160,40 +217,72 @@
 }
 
 .delete-item:hover {
-    background-color: #fff5f5;
-    color: #dc3545;
+    background: #fff5f5;
 }
 
 /* Modal Styles */
 .modal-content {
-    border-radius: 12px;
     border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
 }
 
 .modal-header {
-    border-bottom: none;
+    border-bottom: 1px solid #e9ecef;
+    padding: 20px 25px;
 }
 
 .modal-body {
-    padding: 30px;
+    padding: 25px;
 }
 
 .modal-footer {
-    border-top: none;
-    padding: 20px 30px;
+    border-top: 1px solid #e9ecef;
+    padding: 20px 25px;
+}
+
+.modal-footer button {
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.modal-footer button:first-child {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    color: #6c757d;
+}
+
+.modal-footer button:last-child {
+    background: #139ed5;
+    border: none;
+    color: white;
+}
+
+.modal-footer button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(19, 158, 213, 0.2);
 }
 
 /* Form Controls */
 .form-control {
-    border-radius: 8px;
-    border: 1px solid #ced4da;
-    padding: 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 12px 15px;
+    font-size: 15px;
     transition: all 0.3s ease;
 }
 
 .form-control:focus {
     border-color: #139ed5;
-    box-shadow: 0 0 0 0.2rem rgba(19, 158, 213, 0.25);
+    box-shadow: 0 0 0 3px rgba(19, 158, 213, 0.1);
+}
+
+.form-label {
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 8px;
 }
 
 /* Modal Buttons */
@@ -223,30 +312,44 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .main-container {
+        padding: 15px;
+    }
+
+    .content-wrapper {
+        padding: 20px;
+    }
+
     .predefinedtop {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 15px;
     }
-    
-    .content-wrapper {
-        padding: 10px;
+
+    .predefinedtop_inner {
+        padding: 15px;
     }
-    
-    .toptext {
-        font-size: 20px;
+
+    .fdgshasjf button {
+        width: 100%;
+        justify-content: center;
     }
 }
 
 @media (max-width: 480px) {
+    .content-wrapper {
+        padding: 15px;
+    }
+
     .predefinedtop {
         grid-template-columns: 1fr;
     }
-    
-    .modal-body {
-        padding: 20px;
+
+    .toptext {
+        font-size: 20px;
     }
-    
-    .modal-footer {
-        padding: 15px 20px;
+
+    .predefinedtop_inner img {
+        width: 50px;
+        height: 50px;
     }
 }
