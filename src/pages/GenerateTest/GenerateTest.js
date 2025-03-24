@@ -70,6 +70,7 @@ const GenerateTest = () => {
       setrooms(roomData);
     }
   }, [roomData]);
+
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [selectAllSubjects, setSelectAllSubjects] = useState(false);
 
@@ -694,7 +695,7 @@ const GenerateTest = () => {
                   textAlign: "left",
                 }}
               >
-                Choose Subject
+                Choose classRooms
               </Dropdown.Toggle>
 
               <Dropdown.Menu style={{ width: "100%" }}>

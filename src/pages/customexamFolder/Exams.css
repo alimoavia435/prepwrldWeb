@@ -1,0 +1,152 @@
+.predefinedtop {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 20px !important;
+    padding: 20px;
+}
+
+.sdhjDSHK {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    justify-content: center !important;
+}
+
+.predefinedtop_inner {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 200px;
+    border-radius: 12px;
+    border: 1px solid #000000;
+    gap: 20px;
+    cursor: pointer;
+}
+.predefinedtop_inner:hover{
+    border: 1px solid #135bab;
+    opacity: 0.7;
+}
+
+.modal-body {
+    width: 100%;
+}
+
+.toptext {
+    font-family: Urbanist-Bold;
+    font-size: 30px;
+    line-height: 30px;
+    font-weight: 700;
+    text-align: left;
+    color: #000000;
+    margin: 0px !important;
+}
+
+.toptext_innner {
+    font-family: Urbanist;
+    font-size: 17px;
+    line-height: 17px;
+    font-weight: 400;
+    text-align: left;
+    color: #000000;
+    margin: 0px !important;
+}
+
+.fdgshasjf {
+    margin-top: 20px !important;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #139ed5;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0f7fb3;
+}
+
+/* Main Container Styles */
+.main-container {
+    height: 100vh;
+    display: flex;
+    background-color: #fff;
+    position: relative;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background: #fff;
+    border-right: 1px solid #e0e0e0;
+    padding: 20px 0;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-item:hover {
+    background: #f8f9fa;
+    color: #135bab;
+}
+
+.sidebar-item.active {
+    background: #f0f7ff;
+    color: #135bab;
+    border-left: 3px solid #135bab;
+}
+
+.sidebar-item span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    flex: 1;
+    margin-left: 250px;
+    padding: 20px;
+    overflow-y: auto;
+    height: 100vh;
+}

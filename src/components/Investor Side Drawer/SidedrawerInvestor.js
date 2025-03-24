@@ -143,6 +143,8 @@ function getHeaderName(pathname) {
 
     case pathname === "/StudentExams":
       return "Student Exams";
+    case pathname === "/Questions":
+      return "Custom Exams";
     // case pathname === "/subjects":
     //   return "Class Rooms";
     // case pathname === "/users":
@@ -327,11 +329,6 @@ export default function SidedrawerInvestor({ children, showSidebar, PageName }) 
       path: "/StudentExams",
       disabled: false,
     },
-    // {
-    //   text: "Live Projects",
-    //   path: "/LiveProjects",
-    //   disabled: false,
-    // },
     // {
     //   text: "Students",
     //   path: "/users",

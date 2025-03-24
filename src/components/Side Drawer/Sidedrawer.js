@@ -138,9 +138,6 @@ const themeMui = createTheme({
 
 function getHeaderName(pathname) {
   switch (true) {
-
-
-
     case pathname === "/notifications":
       return "Notifications";
     case pathname === "/subjects":
@@ -149,8 +146,13 @@ function getHeaderName(pathname) {
       return "Students";
     case pathname === "/Exams":
       return "Exams";
-
-    default:
+    case pathname === "/CustomExams":
+      return "Custom Exams";
+    case pathname === "/Support":
+      return "Support"; 
+    case pathname === "/TeacherManual":
+      return "Teacher Manual";
+    default:  
       return "";
   }
 }
@@ -306,7 +308,6 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
     }, 500);
   };
 
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -342,6 +343,21 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
       path: "/Exams",
       disabled: false,
     },
+    {
+      text: "Custom Exams",
+      path: "/CustomExams",
+      disabled: false,
+    },
+    {
+      text: "Support",
+      path: "/Support",
+      disabled: false,
+    },
+    {
+      text: "Teacher Manual",
+      path: "/TeacherManual",
+      disabled: false,
+    },
     // {
     //   text: "Support",
     //   path: "/support-requests",
@@ -356,13 +372,13 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
     // "Images/Dashboard/updates.svg",
     // "/Images/Dashboard/support.svg",
 
-
     // "/Images/Dashboard/ProjectIcon.svg",
     // "/Images/Dashboard/PropertySubmission.svg",
     // "/Images/Dashboard/profile-2user (1).svg",
     "/Images/exam1.png",
-    // "Images/Dashboard/updates.svg"
-
+    "/Images/exam1.png",
+    "Images/Dashboard/updates.svg",
+    "/Images/Dashboard/ProjectIcon.svg"
   ];
   const activeDashicons = [
     // "/Images/Dashboard/UserIconBlue.svg",
@@ -371,16 +387,14 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
 
     // "/Images/Dashboard/blue-Support.svg",
 
-
-
-    // "/Images/Dashboard/ProjectIconBlue.svg",
+    
     // "/Images/Dashboard/ProjectIconBlue.svg",
     // "/Images/Dashboard/profile-2user.svg",
     "/Images/exam1.png",
-    // "/Images/Dashboard/blueUpdates.svg",
+    "/Images/exam1.png",
+    "/Images/Dashboard/blueUpdates.svg",
+    "/Images/Dashboard/ProjectIconBlue.svg",
     // "/Images/Dashboard/UserIconBlue.svg",
-
-
   ];
   const OthermenuItems = [{}, {}];
   const otherdashicons = ["", ""];
@@ -464,9 +478,7 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
     }
   };
 
-  async function connect() {
-
-  }
+  async function connect() {}
 
   useEffect(() => {
     connect();
@@ -498,8 +510,8 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
                   ? "0px" // Padding when the drawer is open on mobile
                   : `${drawerWidth}px` // Padding when the drawer is open on larger screens
                 : isMobile
-                  ? "0px" // Padding when the drawer is closed on mobile
-                  : "28px", // Padding when the drawer is closed on larger screens
+                ? "0px" // Padding when the drawer is closed on mobile
+                : "28px", // Padding when the drawer is closed on larger screens
               transition: "padding-left 0.3s ease", // Smooth transition when opening/closing drawer
             }}
           >
@@ -588,8 +600,9 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
                         </p>
                       </div>
                       <div
-                        className={`notify-search ${mobileOpen ? "blurred" : ""
-                          }`}
+                        className={`notify-search ${
+                          mobileOpen ? "blurred" : ""
+                        }`}
                       >
                         <NotificationComponent />
 
@@ -601,7 +614,7 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
                             alignItems: "center",
                             gap: "12px",
                           }}
-                        // onClick={() => navigate('/profile')}
+                          // onClick={() => navigate('/profile')}
                         >
                           <Avatar
                             alt=""
@@ -669,7 +682,6 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
                 <div className="drawer__main__container1">
                   <div>
                     <DrawerHeader style={{ background: "aliceblue" }}>
-
                       <img
                         src="/Images/auth/preplog.png"
                         className="logo__container1"
@@ -942,14 +954,11 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
             >
               <DrawerHeader />
 
-
               {children}
-
             </Main>
           </Box>
         )}
       </ThemeProvider>
-
     </>
   );
 }

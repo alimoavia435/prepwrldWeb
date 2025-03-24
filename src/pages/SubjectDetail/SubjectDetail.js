@@ -42,6 +42,7 @@ const SubjectDetail = () => {
     const [Teacherinfo, setTeacherinfo] = useState([]);
     const navigate = useNavigate();
     const { id } = useParams();
+    console.log("idcoming", id);
     const data = useSelector(
         (state) => state?.getAllUsers?.getAllUsers?.data?.allUsers
     );
@@ -102,26 +103,26 @@ const SubjectDetail = () => {
         setOpenDeleteModal(true);      // Open the modal
     };
 
-    // const deleteCurrentItem = async (id) => {
-    //     setLoading(true)
-    //     console.log("goda", id);
-    //     // dispatch(deleteUserById(id)).then((res) => {
-    //     //   console.log("delete response", res);
-    //     //   if (res?.payload?.status === 200) {
-    //     //     toast.success("User Deleted Successfully")
-    //     //   }
-    //     //   if (filter === "Students") {
-    //     //     dispatch(getteachers("student")).then(() => {
-    //     //       setLoading(false)
-    //     //     });
-    //     //   }
-    //     //   else {
-    //     //     dispatch(getteachers("teacher")).then(() => {
-    //     //       setLoading(false)
-    //     //     });
-    //     //   }
-    //     // })
-    // }
+    const deleteCurrentItem = async (id) => {
+        setLoading(true)
+        console.log("goda", id);
+        // dispatch(deleteUserById(id)).then((res) => {
+        //   console.log("delete response", res);
+        //   if (res?.payload?.status === 200) {
+        //     toast.success("User Deleted Successfully")
+        //   }
+        //   if (filter === "Students") {
+        //     dispatch(getteachers("student")).then(() => {
+        //       setLoading(false)
+        //     });
+        //   }
+        //   else {
+        //     dispatch(getteachers("teacher")).then(() => {
+        //       setLoading(false)
+        //     });
+        //   }
+        // })
+    }
 
     return (
         <>

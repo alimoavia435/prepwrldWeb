@@ -1,0 +1,172 @@
+.manual-container {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 40px 0;
+}
+
+.manual-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 0 20px;
+}
+
+.manual-header h1 {
+  color: #135bab;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.manual-header p {
+  color: #6c757d;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 25px;
+}
+
+.manual-link-button {
+  display: inline-flex;
+  align-items: center;
+  background-color: #135bab;
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.manual-link-button:hover {
+  background-color: #0d4a8c;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(19, 91, 171, 0.2);
+  color: white;
+  text-decoration: none;
+}
+
+.manual-link-button .link-icon {
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
+.manual-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.manual-card {
+  height: 100%;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.manual-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.manual-card .card-body {
+  padding: 30px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-icon {
+  color: #135bab;
+  font-size: 2rem;
+  margin-right: 15px;
+}
+
+.section-header h2 {
+  color: #135bab;
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.section-description {
+  color: #6c757d;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.topic-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.topic-list li {
+  color: #495057;
+  padding: 8px 0;
+  font-size: 0.95rem;
+  position: relative;
+  padding-left: 20px;
+}
+
+.topic-list li:before {
+  content: "•";
+  color: #135bab;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .manual-card {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .manual-header h1 {
+    font-size: 2rem;
+  }
+
+  .manual-header p {
+    font-size: 1rem;
+  }
+
+  .manual-card .card-body {
+    padding: 20px;
+  }
+
+  .section-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .manual-link-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #135bab;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0d4a8c;
+}

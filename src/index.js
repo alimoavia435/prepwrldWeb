@@ -9,10 +9,8 @@ import { store } from "./services/redux/store";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import "react-quill/dist/quill.snow.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const clientId =
   "35938479132-l19pvp26n14ub2hv75pe7sfsma4e4jch.apps.googleusercontent.com";

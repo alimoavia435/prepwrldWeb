@@ -30,7 +30,11 @@ import Exams from "./pages/Exams/Exams";
 import GenerateTest from "./pages/GenerateTest/GenerateTest";
 import StudentExams from "./pages/StudentExams/Exams";
 import Submission from "./pages/StudentExams/submittion/Submission";
-
+import Questions from "./pages/CustomExams/Questions";
+import CustomExams from "./pages/customexamFolder/CustomExams";
+import AddQuestion from "./pages/CustomExams/AddQuestions/AddQuestions";
+import Support from "./pages/Support/Support";
+import TecaherManual from "./pages/TecaherManual/TecaherManual";
 const App = () => {
   const DashboardLayout = () => (
     <>
@@ -49,35 +53,12 @@ const App = () => {
   );
 
   return (
-
     <Router>
       <Routes>
         {/* {tokenDev ? ( */}
-        <Route
-          element={
-
-            <DashboardLayout />
-
-          }
-        >
-
-
-
-
-          <Route
-            path="/notifications"
-            element={
-
-              <NotificationDetail />
-
-            }
-          />
-          <Route
-            path="/subjects"
-            element={
-              <RoomPage />
-            }
-          />
+        <Route element={<DashboardLayout />}>
+          <Route path="/notifications" element={<NotificationDetail />} />
+          <Route path="/subjects" element={<RoomPage />} />
           {/* <Route
             path="/users"
             element={
@@ -86,36 +67,16 @@ const App = () => {
 
             }
           /> */}
-          <Route
-            path="/Exams"
-            element={
-              <Exams />
-            }
-          />
+          <Route path="/Exams" element={<Exams />} />
 
-          <Route
-            path="/GenerateTest/:roomId"
-            element={
-              <GenerateTest />
-            }
-          />
-          <Route
-            path="/AddStudent/:id"
-            element={
-              <AddStudent />
-            }
-          />
-          <Route
-            path="/SubjectDetail/:id"
-            element={
-
-              <SubjectDetail />
-
-            }
-          />
-
-
-
+          <Route path="/GenerateTest/:roomId" element={<GenerateTest />} />
+          <Route path="/AddStudent/:id" element={<AddStudent />} />
+          <Route path="/SubjectDetail/:id" element={<SubjectDetail />} />
+          <Route path="/Questions/:id" element={<Questions />} />
+          <Route path="/CustomExams" element={<CustomExams />} />
+          <Route path="/AddQuestions" element={<AddQuestion />} />
+          <Route path="/Support" element={<Support />} />
+          <Route path="/TeacherManual" element={<TecaherManual />} />
         </Route>
         {/* ) : ( */}
         <>
@@ -134,10 +95,7 @@ const App = () => {
             path="/verifyaccountdeveloper/:email"
             element={<VerifyAccountDeveloper />}
           />
-          <Route
-            path="/reset-password/:userType"
-            element={<ResetPassword />}
-          />
+          <Route path="/reset-password/:userType" element={<ResetPassword />} />
           <Route
             path="/developer-reset-password"
             element={<DeveloperReset />}
@@ -148,19 +106,8 @@ const App = () => {
           />
           <Route path="/devnewPassword/:email" element={<DevNewPass />} />
           <Route element={<DashboardLayoutInvestor />}>
-            <Route
-              path="/StudentExams"
-              element={
-                <StudentExams />
-              }
-            />
-            <Route
-              path="/Submission/:id"
-              element={
-                <Submission />
-              }
-            />
-
+            <Route path="/StudentExams" element={<StudentExams />} />
+            <Route path="/Submission/:id" element={<Submission />} />
           </Route>
         </>
 
@@ -170,10 +117,8 @@ const App = () => {
         <Route path="/resetPasswordVerify" element={<ResetVerifyAccount />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/newPassword" element={<NewPassword />} />
-
       </Routes>
     </Router>
-
   );
 };
 

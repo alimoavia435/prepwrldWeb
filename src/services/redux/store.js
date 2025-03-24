@@ -33,6 +33,8 @@ import getStudentExams from "./reducer/getStudentExams"
 import getStudentquestions from "./reducer/getStudentquestions"
 import getStudentResult from "./reducer/getStudentResult"
 import getallresult from "./reducer/getallresult"
+import getcustomexams from "./reducer/getcustomexams"
+import getcustomquestionbyid from "./reducer/getcustomquestionbyid"
 export const store = configureStore({
   reducer: {
     getFolder: getFolder,
@@ -69,7 +71,8 @@ export const store = configureStore({
     getStudentExams: getStudentExams,
     getStudentquestions: getStudentquestions,
     getStudentResult: getStudentResult,
-    getallresult: getallresult
-
+    getallresult: getallresult,
+    getcustomexams: getcustomexams,
+    getcustomquestionbyid: getcustomquestionbyid
   },
 });
