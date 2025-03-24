@@ -32,13 +32,16 @@ import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import ScreenLoader from "../../components/loader/ScreenLoader";
 import { getroomByid } from "../../services/redux/middleware/getroomByid";
+import DeleteModal from "../../components/DeleteModal";
 // import DeleteModal from "../../components/DeleteModal/index";
+import { deleteStudent } from "../../services/redux/middleware/deleteStudent";
 
 const SubjectDetail = () => {
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [filter, setFilter] = useState("investor");
     const [openDeleteModal, setOpenDeleteModal] = useState(false);
+    const [selectedStudent, setSelectedStudent] = useState(null);
     const [Teacherinfo, setTeacherinfo] = useState([]);
     const navigate = useNavigate();
     const { id } = useParams();
@@ -97,31 +100,39 @@ const SubjectDetail = () => {
         });
     }, [id])
 
-    const handleOpenModal = (id) => {
-        console.log("hhh", id)
-        setSelectedItemId(id);
-        setOpenDeleteModal(true);      // Open the modal
+    const handleOpenDeleteModal = (student) => {
+        setSelectedStudent(student);
+        setOpenDeleteModal(true);
     };
 
-    const deleteCurrentItem = async (id) => {
-        setLoading(true)
-        console.log("goda", id);
-        // dispatch(deleteUserById(id)).then((res) => {
-        //   console.log("delete response", res);
-        //   if (res?.payload?.status === 200) {
-        //     toast.success("User Deleted Successfully")
-        //   }
-        //   if (filter === "Students") {
-        //     dispatch(getteachers("student")).then(() => {
-        //       setLoading(false)
-        //     });
-        //   }
-        //   else {
-        //     dispatch(getteachers("teacher")).then(() => {
-        //       setLoading(false)
-        //     });
-        //   }
-        // })
+    const handleCloseDeleteModal = () => {
+        setOpenDeleteModal(false);
+        setSelectedStudent(null);
+    };
+
+    const handleDeleteStudent = async () => {
+        if (!selectedStudent) return;
+        
+        setLoading(true);
+    const data={
+        roomid:id,
+        studentid:selectedStudent._id
+    }
+        dispatch(deleteStudent(data)).then((res)=>{
+            console.log("delete student response",res);
+            if(res?.payload?.status===200){
+                toast.success("Student deleted successfully");
+                handleCloseDeleteModal();
+                setLoading(false);
+                // Refresh the room data
+                dispatch(getroomByid(id));
+            }
+            else{
+                toast.error("Failed to delete student");
+                setLoading(false);
+            }
+        })
+      
     }
 
     return (
@@ -251,8 +262,12 @@ const SubjectDetail = () => {
                                         className="SubmitPropertytableBodyRowCell2"
                                     >
                                         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                                            <img src="/Images/SubmitProperty/deleteIcon.svg" alt="" style={{ height: "20px", width: "20px", cursor: "pointer" }}
-                                            onClick={() => handleOpenModal(row._id)} />
+                                            <img 
+                                                src="/Images/SubmitProperty/deleteIcon.svg" 
+                                                alt="Delete" 
+                                                style={{ height: "20px", width: "20px", cursor: "pointer" }}
+                                                onClick={() => handleOpenDeleteModal(row)} 
+                                            />
                                         </div>
                                     </TableCell>
                                 </TableRow>
@@ -316,13 +331,16 @@ const SubjectDetail = () => {
                     </>
                 )}
 
+                {/* Delete Confirmation Modal */}
+                <DeleteModal
+                    show={openDeleteModal}
+                    onHide={handleCloseDeleteModal}
+                    onConfirm={handleDeleteStudent}
+                    title="Delete Student"
+                    message={`Are you sure you want to delete ${selectedStudent?.fullName}? This action cannot be undone.`}
+                />
             </div>
-            {/* <DeleteModal
-        open={openDeleteModal}
-        setOpen={setOpenDeleteModal}
-        deleteCurrentItem={deleteCurrentItem}
-        itemId={selectedItemId} 
-      /> */}
+            
         </>
     );
 };

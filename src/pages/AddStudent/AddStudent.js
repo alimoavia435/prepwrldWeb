@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { addStudent } from "../../services/redux/middleware/addStudent";
 import ScreenLoader from "../../components/loader/ScreenLoader";
 import { toast } from "react-toastify";
+import { Eye, EyeSlash } from 'react-bootstrap-icons';
 
 const AddStudent = () => {
     // Separate useState hooks for each field
@@ -16,6 +17,7 @@ const AddStudent = () => {
     const [phoneNumber, setPhoneNumber] = useState("");
     const dispatch = useDispatch();
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate()
     const { id } = useParams();
     const handleSubmit = (e) => {
@@ -44,8 +46,11 @@ const AddStudent = () => {
 
     };
 
-    return (
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
+    return (
         <>
             {loading && <ScreenLoader />}
             <div className="dfscvyile">
@@ -93,14 +98,23 @@ const AddStudent = () => {
                     {/* Password */}
                     <Form.Group className="czxhvjhas" controlId="password">
                         <p className="toptext_innner">Password</p>
-                        <Form.Control
-                            className="custom-input"
-                            type="password"
-                            placeholder="Enter password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
+                        <div className="password-input-container">
+                            <Form.Control
+                                className="custom-input"
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Enter password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                            <button
+                                type="button"
+                                className="password-toggle-btn"
+                                onClick={togglePasswordVisibility}
+                            >
+                                {showPassword ? <EyeSlash size={20} /> : <Eye size={20} />}
+                            </button>
+                        </div>
                     </Form.Group>
 
                     {/* Submit Button */}

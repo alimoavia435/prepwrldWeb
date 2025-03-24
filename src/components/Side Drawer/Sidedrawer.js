@@ -149,10 +149,10 @@ function getHeaderName(pathname) {
     case pathname === "/CustomExams":
       return "Custom Exams";
     case pathname === "/Support":
-      return "Support"; 
+      return "Support";
     case pathname === "/TeacherManual":
       return "Teacher Manual";
-    default:  
+    default:
       return "";
   }
 }
@@ -368,6 +368,10 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
   const dashicons = [
     // "/Images/Dashboard/PropertySubmission.svg",
     "/Images/Dashboard/ProjectIcon.svg",
+    "/Images/exam1.png",
+    "/Images/exam1.png",
+    "Images/Dashboard/updates.svg",
+    "/Images/Dashboard/ProjectIcon.svg",
     // "Images/Dashboard/profileIcon.svg",
     // "Images/Dashboard/updates.svg",
     // "/Images/Dashboard/support.svg",
@@ -375,10 +379,6 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
     // "/Images/Dashboard/ProjectIcon.svg",
     // "/Images/Dashboard/PropertySubmission.svg",
     // "/Images/Dashboard/profile-2user (1).svg",
-    "/Images/exam1.png",
-    "/Images/exam1.png",
-    "Images/Dashboard/updates.svg",
-    "/Images/Dashboard/ProjectIcon.svg"
   ];
   const activeDashicons = [
     // "/Images/Dashboard/UserIconBlue.svg",
@@ -387,7 +387,6 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
 
     // "/Images/Dashboard/blue-Support.svg",
 
-    
     // "/Images/Dashboard/ProjectIconBlue.svg",
     // "/Images/Dashboard/profile-2user.svg",
     "/Images/exam1.png",
