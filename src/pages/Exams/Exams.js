@@ -249,40 +249,40 @@ const Exams = () => {
         </div>
       </div>
 
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header style={{
-          position: "absolute",
-          top: "-12px",
-          right: "-12px", cursor: "pointer"
-        }} closeButton onHide={handleCloseModal}>
-        </Modal.Header>
-        <Modal.Body>
-          <>
-            <img
-              src="/Images/Dashboard/open-folder.png"
-              alt="Placeholder"
-              className="mb-3"
-            />
-
-            <Form.Group controlId="customRoomName">
-              <Form.Control
-                type="text"
-                placeholder="Enter name"
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
+        <Modal show={showModal} onHide={handleCloseModal}>
+          <Modal.Header style={{
+            position: "absolute",
+            top: "-12px",
+            right: "-12px", cursor: "pointer"
+          }} closeButton onHide={handleCloseModal}>
+          </Modal.Header>
+          <Modal.Body>
+            <>
+              <img
+                src="/Images/Dashboard/open-folder.png"
+                alt="Placeholder"
+                className="mb-3"
               />
-            </Form.Group>
-          </>
-        </Modal.Body>
-        <Modal.Footer className="sdhjDSHK">
-          <Button variant="secondary" style={{ height: "44px", borderRadius: "10px", width: "100%", maxWidth: "120px" }} onClick={handleCloseModal}>
-            Cancel
-          </Button>
-          <button style={{ background: "#135bab", height: "44px", color: "#ffffff", borderRadius: "10px", border: "none", width: "100%", maxWidth: "120px" }} onClick={handleCreateRoom}>
-            Create
-          </button>
-        </Modal.Footer>
-      </Modal>
+
+              <Form.Group controlId="customRoomName">
+                <Form.Control
+                  type="text"
+                  placeholder="Enter name"
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                />
+              </Form.Group>
+            </>
+          </Modal.Body>
+          <Modal.Footer className="sdhjDSHK">
+            <Button variant="secondary" style={{ height: "44px", borderRadius: "10px", width: "100%", maxWidth: "120px" }} onClick={handleCloseModal}>
+              Cancel
+            </Button>
+            <button style={{ background: "#135bab", height: "44px", color: "#ffffff", borderRadius: "10px", border: "none", width: "100%", maxWidth: "120px" }} onClick={handleCreateRoom}>
+              Create
+            </button>
+          </Modal.Footer>
+        </Modal>
 
       {/* Rename Modal */}
       <Modal show={showRenameModal} onHide={() => setShowRenameModal(false)}>

@@ -63,7 +63,7 @@ const TecaherManual = () => {
   ];
 
   return (
-    <div className="manual-container">
+    <div className="manual-container" style={{overflowY:"scroll",height:"100vh"}}>
       <div className="manual-header">
         <h1>Teacher Manual</h1>
         <p>Comprehensive guide for teachers using PrepWorld platform</p>

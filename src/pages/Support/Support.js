@@ -35,7 +35,7 @@ const Support = () => {
   };
 
   return (
-    <div className="support-container">
+    <div className="support-container" style={{overflowY:"scroll",height:"100vh"}}>
       <div className="support-header">
         <h1>How can we help you?</h1>
         <p>We're here to help and answer any questions you might have</p>
