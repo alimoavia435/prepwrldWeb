@@ -123,7 +123,7 @@ const RoomPage = () => {
   return (
     <>
       {loading && <ScreenLoader />}
-      <div className="main-container" style={{overflowY:"unset"}}>
+      <div className="main-container" >
         <div className="content-wrapper">
           <div className="fdgshasjf">
             <Button variant="success" onClick={handleOpenModal}>

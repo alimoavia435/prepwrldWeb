@@ -187,51 +187,22 @@ const Questions = () => {
       {loading && <ScreenLoader />}
 
       <div className="main-div">
-        <div
-          className="Main-Search-Filter"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-end",
-          }}
-        >
-          <div className="filter-opt">
-            <Dropdown>
-              <Dropdown.Toggle
-                variant="light"
-                id="dropdown-basic"
-                style={{
-                  display: "flex",
-                  backgroundColor: "transparent",
-                  border: "1px solid black",
-                  color: "black",
-                  alignItems: "center",
-                  gap: "10px",
-                }}
+        <div className="Main-Search-Filter">
+          <div className="filter-tabs-container">
+            <div className="filter-tabs">
+              <button 
+                className={`filter-tab ${filterType === "traditional" ? "active" : ""}`}
+                onClick={() => handleFilterChange("traditional")}
               >
-                <p>{filterType ? filterType : " Filter Options"} </p>
-                <img
-                  src="/Images/Dropdown.png"
-                  style={{ height: "20px", width: "20px" }}
-                  alt="^"
-                />
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item
-                  onClick={() => handleFilterChange("traditional")}
-                  style={{ color: "black" }}
-                >
-                  traditional
-                </Dropdown.Item>
-                <Dropdown.Item
-                  onClick={() => handleFilterChange("nextgen")}
-                  style={{ color: "black" }}
-                >
-                  Next Gen
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+                Traditional
+              </button>
+              <button 
+                className={`filter-tab ${filterType === "nextgen" ? "active" : ""}`}
+                onClick={() => handleFilterChange("nextgen")}
+              >
+                Next Gen
+              </button>
+            </div>
           </div>
           <Box
             sx={{
@@ -264,44 +235,6 @@ const Questions = () => {
               >
                 Add Question
               </button>
-              <div className="filter-optionsss">
-                <Dropdown>
-                  <Dropdown.Toggle
-                    variant="light"
-                    id="dropdown-basic"
-                    style={{
-                      display: "flex",
-                      backgroundColor: "transparent",
-                      border: "1px solid black",
-                      color: "black",
-                      alignItems: "center",
-                      gap: "10px",
-                    }}
-                  >
-                    <p>{filterType ? filterType : " Filter Options"} </p>
-                    <img
-                      src="/Images/Admin/Dropdown.png"
-                      alt="^"
-                      style={{ height: "20px", width: "20px" }}
-                    />
-                  </Dropdown.Toggle>
-
-                  <Dropdown.Menu>
-                    <Dropdown.Item
-                      onClick={() => handleFilterChange("traditional")}
-                      style={{ color: "black" }}
-                    >
-                      traditional
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      onClick={() => handleFilterChange("nextgen")}
-                      style={{ color: "black" }}
-                    >
-                      Next Gen
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </div>
             </div>
             <div className="search__notification__main__container">
               <input
