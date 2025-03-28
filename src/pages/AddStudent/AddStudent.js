@@ -39,9 +39,14 @@ const AddStudent = () => {
             console.log(res, "add student response");
             if (res?.payload?.status === 201) {
                 toast.success("Added Succefully")
-            }
+            
             navigate(-1)
             setLoading(false)
+        }
+        else{
+            toast.error(res?.payload?.message?.message)
+            setLoading(false)
+        }
         })
 
     };
