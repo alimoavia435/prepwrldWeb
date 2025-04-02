@@ -1,232 +1,87 @@
 .Headline800 {
-    font-family: Urbanist-Bold;
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 46px;
-    text-align: center;
-    color: black !important;
+  font-family: Urbanist-Bold;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 46px;
+  text-align: center;
+  color: black !important;
 }
 
 .labeltextt {
-    color: #000 !important;
-    font-family: Urbanist-Medium !important;
-    font-size: 14px !important;
-    font-weight: 500 !important;
-    line-height: 19.6px !important;
-    text-align: left !important;
-    margin-bottom: 15px !important;
+  color: #000 !important;
+  font-family: Urbanist-Medium !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 19.6px !important;
+  text-align: left !important;
+  margin-bottom: 15px !important;
 }
 
 .azpmjnwixs {
-    background: grey;
-    color: #000;
-    border: none;
-    height: 40px;
-    width: 150px !important;
+  background: grey;
+  color: #000;
+  border: none;
+  height: 40px;
+  width: 150px !important;
 }
 
 .wretrsdy {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 20px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 60px !important;
 }
 
-.wgyefdhjas {}
+.wgyefdhjas {
+}
 
 /* AddQuestions.css */
 
 /* Style for input placeholder */
 input::placeholder,
 textarea::placeholder {
-    color: #00000099;
-    opacity: 1;
-    /* Ensures the color is applied fully */
+  color: #00000099;
+  opacity: 1;
+  /* Ensures the color is applied fully */
 }
 
 /* Style for input text */
 input,
 textarea {
-    color: #000000;
-    /* Black color for input text */
+  color: #000000;
+  /* Black color for input text */
 }
 
 /* Style for the options text */
 .MuiFormControl-root .MuiInputBase-input {
-    color: #000000;
+  color: #000000;
 }
 
 /* Style for the submit button */
 .addqbttn {
-    background-color: #1395ed;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    margin-top: 40px !important;
+  background-color: #1395ed;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 40px !important;
 }
 
 /* TextEditor.css */
 .custom-quill {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.custom-quill .ql-container {
-    min-height: 150px;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-    font-family: 'Urbanist', sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #000000;
-    background-color: #ffffff;
-}
-
-.custom-quill .ql-toolbar {
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 8px 8px 0 0;
-    background-color: #f8f9fa;
+  height: 300px;
+  width: 100%;
+  /* max-width: 700px; */
+  margin-bottom: 62px !important;
+  color: black;
+  /* border: 1px solid black;  */
 }
 
 .custom-quill .ql-editor {
-    padding: 15px;
-}
-
-.custom-quill .ql-editor.ql-empty::before {
-    color: #919191;
-    font-style: normal;
-    font-family: 'Urbanist', sans-serif;
-}
-
-/* Toolbar button styles */
-.custom-quill .ql-toolbar button {
-    color: #000000;
-    width: 28px;
-    height: 28px;
-    border-radius: 4px;
-    margin: 0 2px;
-}
-
-.custom-quill .ql-toolbar button:hover {
-    color: #139ed5;
-    background-color: #e9ecef;
-}
-
-.custom-quill .ql-toolbar button.ql-active {
-    color: #139ed5;
-    background-color: #e9ecef;
-}
-
-/* Dropdown styles */
-.custom-quill .ql-toolbar .ql-picker {
-    height: 28px;
-    border-radius: 4px;
-}
-
-.custom-quill .ql-toolbar .ql-picker-label {
-    color: #000000;
-}
-
-.custom-quill .ql-toolbar .ql-picker-options {
-    background-color: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-    .custom-quill .ql-toolbar {
-        flex-wrap: wrap;
-        padding: 8px;
-    }
-
-    .custom-quill .ql-toolbar button {
-        width: 24px;
-        height: 24px;
-    }
-
-    .custom-quill .ql-editor {
-        padding: 12px;
-        font-size: 14px;
-    }
-
-    .custom-quill .ql-container {
-        min-height: 120px;
-    }
-}
-
-@media (max-width: 480px) {
-    .custom-quill .ql-toolbar {
-        padding: 6px;
-    }
-
-    .custom-quill .ql-toolbar button {
-        width: 22px;
-        height: 22px;
-    }
-
-    .custom-quill .ql-editor {
-        padding: 10px;
-        font-size: 13px;
-    }
-
-    .custom-quill .ql-container {
-        min-height: 100px;
-    }
-}
-
-/* Focus state */
-.custom-quill .ql-container:focus-within {
-    border-color: #139ed5;
-    box-shadow: 0 0 0 2px rgba(19, 158, 213, 0.2);
-}
-
-/* Placeholder text */
-.custom-quill .ql-editor.ql-empty::before {
-    content: 'Write your explanation here...';
-    font-family: 'Urbanist', sans-serif;
-    font-size: 14px;
-    color: #919191;
-}
-
-/* Content styles */
-.custom-quill .ql-editor p {
-    margin-bottom: 1em;
-}
-
-.custom-quill .ql-editor h1,
-.custom-quill .ql-editor h2,
-.custom-quill .ql-editor h3,
-.custom-quill .ql-editor h4,
-.custom-quill .ql-editor h5,
-.custom-quill .ql-editor h6 {
-    font-weight: 600;
-    margin: 1em 0 0.5em;
-}
-
-.custom-quill .ql-editor ul,
-.custom-quill .ql-editor ol {
-    padding-left: 1.5em;
-    margin: 0.5em 0;
-}
-
-.custom-quill .ql-editor blockquote {
-    border-left: 4px solid #139ed5;
-    margin: 1em 0;
-    padding-left: 1em;
-    color: #666;
-}
-
-.custom-quill .ql-editor code {
-    background-color: #f8f9fa;
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-    font-family: monospace;
+  color: black;
 }
 
 .addqbttn:hover {
-    background-color: #115293;
+  background-color: #115293;
 }

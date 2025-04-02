@@ -25,7 +25,7 @@ import { Tabs, Tab, Box, Typography } from "@mui/material";
 import { toast } from "react-toastify";
 // import { deletQuestbyid } from "../../services/redux/middleware/deletQuestbyid";
 import { getcustomquestionbyid } from "../../services/redux/middleware/getcustomquestionbyid";
-
+import { getallresult } from "../../services/redux/middleware/getallresult";
 const TabPanel = ({ children, value, index, setFilter }) => {
   return (
     <div
@@ -49,64 +49,96 @@ const Questions = () => {
   const [Allquestions, setAllquestions] = useState([]);
   const [filterType, setFilterType] = useState("traditional");
   const [casestudyqs, setcasestudyqs] = useState([]);
+  const [allresult, setallresult] = useState([]);
+  const [activeTab, setActiveTab] = useState("questions");
   const data = useSelector(
     (state) => state?.getAllUsers?.getAllUsers?.data?.allUsers
   );
   const { id } = useParams();
   const questionData1 = useSelector(
-    (state) => state?.getcustomquestionbyid?.profile?.data
+    (state) => state?.getcustomquestionbyid?.profile?.data?.customExam
   );
   console.log("getAllquestions", questionData1);
   const questionData = [];
   const [searchTerm, setSearchTerm] = useState("");
-  // useEffect(() => {
-  //   if (questionData) {
-  //     if (searchTerm) {
-  //       const filteredQuestions = questionData?.filter(
-  //         (question) =>
-  //           question?.question
-  //             ?.toLowerCase()
-  //             ?.includes(searchTerm?.toLowerCase()) ||
-  //           question?.caseStudy
-  //             ?.toLowerCase()
-  //             ?.includes(searchTerm?.toLowerCase()) ||
-  //           question?.type
-  //             ?.toLowerCase()
-  //             ?.includes(searchTerm?.toLowerCase()) ||
-  //           question?.subject
-  //             ?.toLowerCase()
-  //             ?.includes(searchTerm?.toLowerCase()) ||
-  //           question?.difficulty
-  //             ?.toLowerCase()
-  //             ?.includes(searchTerm?.toLowerCase())
-  //       );
-  //       const filteredqs = filteredQuestions?.filter(
-  //         (questioin) => questioin.type === filterType
-  //       );
-  //       if (filterType === "traditional") {
-  //         setAllquestions(filteredqs);
-  //       } else {
-  //         setcasestudyqs(filteredqs);
-  //       }
-  //     } else {
-  //       const filteredqs = questionData?.filter(
-  //         (questioin) => questioin.type === filterType
-  //       );
-  //       if (filterType === "traditional") {
-  //         setAllquestions(filteredqs);
-  //       } else {
-  //         setcasestudyqs(filteredqs);
-  //       }
-  //     }
-  //   } else {
-  //     setAllquestions([]);
-  //   }
-  // }, [searchTerm, questionData]);
+  useEffect(() => {
+    if (questionData1) {
+      console.log("searchTerm", searchTerm);
+      if (searchTerm) {
+        const filteredQuestions = questionData1?.allQuestions.filter(
+          (question) =>
+            question?.question
+              ?.toLowerCase()
+              ?.includes(searchTerm?.toLowerCase()) ||
+            question?.caseStudy
+              ?.toLowerCase()
+              ?.includes(searchTerm?.toLowerCase()) ||
+            question?.type
+              ?.toLowerCase()
+              ?.includes(searchTerm?.toLowerCase()) ||
+            question?.subject
+              ?.toLowerCase()
+              ?.includes(searchTerm?.toLowerCase()) ||
+            question?.difficulty
+              ?.toLowerCase()
+              ?.includes(searchTerm?.toLowerCase())
+        );
+        const filteredqs = filteredQuestions?.filter(
+          (questioin) => questioin.type === filterType
+        );
+        if (filterType === "traditional") {
+          setAllquestions(filteredqs);
+        } else {
+          setcasestudyqs(filteredqs);
+        }
+      } else {
+        const filteredqs = questionData1?.allQuestions?.filter(
+          (questioin) => questioin.type === filterType
+        );
+        console.log("filteredqs", filteredqs);
+        if (filterType === "traditional") {
+          setAllquestions(filteredqs);
+        } else {
+          setcasestudyqs(filteredqs);
+        }
+      }
+    } else {
+      setAllquestions([]);
+      setcasestudyqs([]);
+    }
+  }, [searchTerm, questionData1, filterType]);
 
   const dispatch = useDispatch();
 
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 470);
+  const resultData = useSelector((state) => state?.getallresult.profile);
+  console.log(resultData?.data?.results, "resultData");
 
+  useEffect(() => {
+    if (resultData?.data?.results?.length > 0) {
+      setallresult(resultData?.data?.results);
+    }
+  }, [resultData]);
+
+  const formatTime = (sec) => {
+    const hours = Math.floor(sec / 3600); // 1 hour = 3600 seconds
+    const minutes = Math.floor((sec % 3600) / 60); // 1 minute = 60 seconds
+    const seconds = sec % 60; // Remaining seconds
+
+    // Optionally log the result
+    console.log(`${hours} hour(s), ${minutes} minute(s), ${seconds} second(s)`);
+
+    // Return the formatted time string
+    return `${hours < 10 ? "0" + hours : hours}:${
+      minutes < 10 ? "0" + minutes : minutes
+    }:${seconds < 10 ? "0" + seconds : seconds}`;
+  };
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 470);
+  useEffect(() => {
+    setLoading(true);
+    dispatch(getallresult(id)).then((res) => {
+      setLoading(false);
+    });
+  }, [activeTab]);
   // Handle window resize
   useEffect(() => {
     const handleResize = () => {
@@ -182,28 +214,53 @@ const Questions = () => {
     });
   }, []);
 
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
+  const handleAddQuestion = () => {
+    if (
+      questionData1?.status === "active" ||
+      questionData1?.status === "ended"
+    ) {
+      toast.error("Cannot add questions to an active or ended exam");
+      return;
+    }
+    navigate("/AddQuestions", { state: { id: id } });
+  };
+
   return (
     <>
       {loading && <ScreenLoader />}
 
       <div className="main-div">
-        <div className="Main-Search-Filter">
-          <div className="filter-tabs-container">
-            <div className="filter-tabs">
-              <button 
-                className={`filter-tab ${filterType === "traditional" ? "active" : ""}`}
-                onClick={() => handleFilterChange("traditional")}
-              >
-                Traditional
-              </button>
-              <button 
-                className={`filter-tab ${filterType === "nextgen" ? "active" : ""}`}
-                onClick={() => handleFilterChange("nextgen")}
-              >
-                Next Gen
-              </button>
+        {/* Exam Header */}
+        <div className="exam-header">
+          <div className="exam-header-content">
+            <div className="exam-info">
+              <h1 className="exam-name">{questionData1?.customExamName}</h1>
+              <div className="exam-meta">
+                <div className="exam-status">
+                  <span
+                    className={`status-dot ${
+                      questionData1?.status === "active" ? "active" : ""
+                    }`}
+                  ></span>
+                  <span
+                    style={{
+                      color:
+                        questionData1?.status === "active" ? "#52c41a" : "red",
+                    }}
+                  >
+                    {questionData1?.status}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+
+        <div className="Main-Search-Filter">
           <Box
             sx={{
               width: "100%",
@@ -219,21 +276,33 @@ const Questions = () => {
               },
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: "8px",
-              }}
-            >
+            <div className="action-buttons">
               <button
-                onClick={() =>
-                  navigate("/AddQuestions", { state: { id: id  } })
-                }
-                className="addqbttnw"
+                onClick={handleAddQuestion}
+                className={`action-btn add-btn ${
+                  questionData1?.status === "active" ||
+                  questionData1?.status === "ended"
+                    ? "disabled"
+                    : ""
+                }`}
               >
                 Add Question
+              </button>
+              <button
+                onClick={() => handleTabChange("questions")}
+                className={`action-btn questions-btn ${
+                  activeTab === "questions" ? "active" : ""
+                }`}
+              >
+                Questions
+              </button>
+              <button
+                onClick={() => handleTabChange("results")}
+                className={`action-btn results-btn ${
+                  activeTab === "results" ? "active" : ""
+                }`}
+              >
+                Results
               </button>
             </div>
             <div className="search__notification__main__container">
@@ -250,286 +319,489 @@ const Questions = () => {
               />
             </div>
           </Box>
+          {activeTab === "questions" && (
+            <div className="filter-tabs-container">
+              <div className="filter-tabs">
+                <button
+                  className={`filter-tab ${
+                    filterType === "traditional" ? "active" : ""
+                  }`}
+                  onClick={() => handleFilterChange("traditional")}
+                >
+                  Traditional
+                </button>
+                <button
+                  className={`filter-tab ${
+                    filterType === "nextgen" ? "active" : ""
+                  }`}
+                  onClick={() => handleFilterChange("nextgen")}
+                >
+                  Next Gen
+                </button>
+              </div>
+            </div>
+          )}
         </div>
-        {filterType === "traditional" ? (
-          <TableContainer
-            className="SubmitPropertyTablemaiiiiin"
-            sx={{
-              boxShadow: "none",
-            }}
-            component={Paper}
-          >
-            <Table sx={{ minWidth: 650 }} aria-label="table">
-              <TableHead>
-                <TableRow
-                  sx={{
-                    borderTopLeftRadius: "9px",
-                    borderBottomLightRadius: "9px",
-                    background: "rgb(241, 241, 241)",
-                  }}
-                  className="SubmitPropertytableHeadRow"
-                >
-                  <TableCell
-                    sx={{ borderRadius: "7.66px 0 0 7.66px", border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    #
-                  </TableCell>
-                  <TableCell
-                    sx={{ border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    Title
-                  </TableCell>
-                  <TableCell
-                    sx={{ border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    Question Type
-                  </TableCell>
-                  <TableCell
-                    sx={{ border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    Subject
-                  </TableCell>
-                  <TableCell
-                    sx={{ border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    System
-                  </TableCell>
-                  <TableCell
-                    sx={{ border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    Difficulty
-                  </TableCell>
-                  <TableCell
-                    sx={{ border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    Options
-                  </TableCell>
-                  <TableCell
-                    sx={{ border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    Correct OPt.
-                  </TableCell>
-                  <TableCell
+
+        {activeTab === "questions" ? (
+          filterType === "traditional" ? (
+            <TableContainer
+              className="SubmitPropertyTablemaiiiiin"
+              sx={{ boxShadow: "none" }}
+              component={Paper}
+            >
+              <Table sx={{ minWidth: 650 }} aria-label="table">
+                <TableHead>
+                  <TableRow
                     sx={{
-                      borderRadius: "0px 7.66px 7.66px 0px",
-                      border: "none",
+                      borderTopLeftRadius: "9px",
+                      borderBottomLightRadius: "9px",
+                      background: "rgb(241, 241, 241)",
                     }}
-                    className="SubmitPropertytableHeadRowCell"
+                    className="SubmitPropertytableHeadRow"
                   >
-                    Actions
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableRow
-                sx={{
-                  marginTop: "17px",
-                  height: "17px",
-                }}
-              ></TableRow>
-              <TableBody>
-                {Allquestions?.map((row, index) => (
-                  <TableRow key={row.id}>
                     <TableCell
-                      align="center"
-                      className="SubmitPropertytableBodyRowCell"
+                      sx={{ borderRadius: "7.66px 0 0 7.66px", border: "none" }}
+                      className="SubmitPropertytableHeadRowCell"
                     >
-                      {index + 1}
+                      #
                     </TableCell>
                     <TableCell
-                      align="left"
-                      className="SubmitPropertytableBodyRowCell1"
+                      sx={{ border: "none" }}
+                      className="SubmitPropertytableHeadRowCell"
                     >
-                      {row?.question?.slice(0, 10)}..?
+                      Title
                     </TableCell>
                     <TableCell
-                      align="left"
-                      className="SubmitPropertytableBodyRowCell2"
+                      sx={{ border: "none" }}
+                      className="SubmitPropertytableHeadRowCell"
                     >
-                      {row?.type}
+                      Question Type
                     </TableCell>
                     <TableCell
-                      align="center"
-                      className="SubmitPropertytableBodyRowCell2"
+                      sx={{ border: "none" }}
+                      className="SubmitPropertytableHeadRowCell"
                     >
-                      {row?.subject}
+                      Subject
                     </TableCell>
                     <TableCell
-                      align="center"
-                      className="SubmitPropertytableBodyRowCell2"
+                      sx={{ border: "none" }}
+                      className="SubmitPropertytableHeadRowCell"
                     >
-                      {row?.system}
+                      System
                     </TableCell>
                     <TableCell
-                      align="center"
-                      className="SubmitPropertytableBodyRowCell2"
+                      sx={{ border: "none" }}
+                      className="SubmitPropertytableHeadRowCell"
                     >
-                      {row?.difficulty}
+                      Difficulty
                     </TableCell>
                     <TableCell
-                      align="center"
-                      className="SubmitPropertytableBodyRowCell2"
+                      sx={{ border: "none" }}
+                      className="SubmitPropertytableHeadRowCell"
                     >
-                      {row?.options?.length}
+                      Options
                     </TableCell>
                     <TableCell
-                      align="center"
-                      className="SubmitPropertytableBodyRowCell2"
+                      sx={{ border: "none" }}
+                      className="SubmitPropertytableHeadRowCell"
                     >
-                      {row?.correctAnswers?.length}
+                      Correct OPt.
                     </TableCell>
                     <TableCell
-                      align="center"
-                      className="SubmitPropertytableBodyRowCell2"
+                      sx={{
+                        borderRadius: "0px 7.66px 7.66px 0px",
+                        border: "none",
+                      }}
+                      className="SubmitPropertytableHeadRowCell"
                     >
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "10px",
-                        }}
-                      >
-                        <img
-                          src="/Images/Admin/delete.png"
-                          alt=""
-                          style={{
-                            height: "40px",
-                            width: "40px",
-                            cursor: "pointer",
-                          }}
-                          onClick={() => handleOpenModal(row._id)}
-                        />
-                      </div>
+                      Actions
                     </TableCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                </TableHead>
+                <TableRow
+                  sx={{
+                    marginTop: "17px",
+                    height: "17px",
+                  }}
+                ></TableRow>
+                <TableBody>
+                  {Allquestions?.map((row, index) => (
+                    <TableRow key={row.id}>
+                      <TableCell
+                        align="center"
+                        className="SubmitPropertytableBodyRowCell"
+                      >
+                        {index + 1}
+                      </TableCell>
+                      <TableCell
+                        align="left"
+                        className="SubmitPropertytableBodyRowCell1"
+                      >
+                        {row?.question?.slice(0, 10)}..?
+                      </TableCell>
+                      <TableCell
+                        align="left"
+                        className="SubmitPropertytableBodyRowCell2"
+                      >
+                        {row?.type}
+                      </TableCell>
+                      <TableCell
+                        align="center"
+                        className="SubmitPropertytableBodyRowCell2"
+                      >
+                        {row?.subject}
+                      </TableCell>
+                      <TableCell
+                        align="center"
+                        className="SubmitPropertytableBodyRowCell2"
+                      >
+                        {row?.system}
+                      </TableCell>
+                      <TableCell
+                        align="center"
+                        className="SubmitPropertytableBodyRowCell2"
+                      >
+                        {row?.difficulty}
+                      </TableCell>
+                      <TableCell
+                        align="center"
+                        className="SubmitPropertytableBodyRowCell2"
+                      >
+                        {row?.options?.length}
+                      </TableCell>
+                      <TableCell
+                        align="center"
+                        className="SubmitPropertytableBodyRowCell2"
+                      >
+                        {row?.correctAnswers?.length}
+                      </TableCell>
+                      <TableCell
+                        align="center"
+                        className="SubmitPropertytableBodyRowCell2"
+                      >
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "10px",
+                          }}
+                        >
+                          <img
+                            src="/Images/Admin/delete.png"
+                            alt=""
+                            style={{
+                              height: "40px",
+                              width: "40px",
+                              cursor: "pointer",
+                            }}
+                            onClick={() => handleOpenModal(row._id)}
+                          />
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          ) : (
+            <TableContainer
+              className="SubmitPropertyTablemaiiiiin"
+              sx={{ boxShadow: "none" }}
+              component={Paper}
+            >
+              <Table sx={{ minWidth: 650 }} aria-label="table">
+                <TableHead>
+                  <TableRow
+                    sx={{
+                      borderTopLeftRadius: "9px",
+                      borderBottomLightRadius: "9px",
+                      background: "rgb(241, 241, 241)",
+                    }}
+                    className="SubmitPropertytableHeadRow"
+                  >
+                    <TableCell
+                      sx={{ borderRadius: "7.66px 0 0 7.66px", border: "none" }}
+                      className="SubmitPropertytableHeadRowCell"
+                    >
+                      #
+                    </TableCell>
+                    <TableCell
+                      sx={{ border: "none" }}
+                      className="SubmitPropertytableHeadRowCell"
+                    >
+                      CaseStudy
+                    </TableCell>
+                    <TableCell
+                      sx={{ border: "none" }}
+                      className="SubmitPropertytableHeadRowCell"
+                    >
+                      Question Type
+                    </TableCell>
+
+                    <TableCell
+                      sx={{ border: "none" }}
+                      className="SubmitPropertytableHeadRowCell"
+                    >
+                      Questions
+                    </TableCell>
+                    <TableCell
+                      sx={{ border: "none" }}
+                      className="SubmitPropertytableHeadRowCell"
+                    >
+                      System
+                    </TableCell>
+                    <TableCell
+                      sx={{ border: "none" }}
+                      className="SubmitPropertytableHeadRowCell"
+                    >
+                      subject
+                    </TableCell>
+                    {/* <TableCell
+                      sx={{
+                        borderRadius: "0px 7.66px 7.66px 0px",
+                        border: "none",
+                      }}
+                      className="SubmitPropertytableHeadRowCell"
+                    >
+                      Actions
+                    </TableCell> */}
+                  </TableRow>
+                </TableHead>
+                <TableRow
+                  sx={{
+                    marginTop: "17px",
+                    height: "17px",
+                  }}
+                ></TableRow>
+                <TableBody>
+                  {casestudyqs?.map((row, index) => (
+                    <TableRow key={row.id}>
+                      <TableCell
+                        align="center"
+                        className="SubmitPropertytableBodyRowCell"
+                      >
+                        {index + 1}
+                      </TableCell>
+                      <TableCell
+                        align="left"
+                        className="SubmitPropertytableBodyRowCell1"
+                      >
+                        {row?.caseStudy?.slice(0, 20)}
+                      </TableCell>
+                      <TableCell
+                        align="left"
+                        className="SubmitPropertytableBodyRowCell2"
+                      >
+                        {row?.type}
+                      </TableCell>
+
+                      <TableCell
+                        align="center"
+                        className="SubmitPropertytableBodyRowCell2"
+                      >
+                        {row?.questions?.length}
+                      </TableCell>
+                      <TableCell
+                        align="center"
+                        className="SubmitPropertytableBodyRowCell2"
+                      >
+                        {row?.system}
+                      </TableCell>
+                      <TableCell
+                        align="center"
+                        className="SubmitPropertytableBodyRowCell2"
+                      >
+                        {row?.subject}
+                      </TableCell>
+                      {/* <TableCell
+                        align="center"
+                        className="SubmitPropertytableBodyRowCell2"
+                      >
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "10px",
+                          }}
+                        >
+                          <img
+                            src="/Images/Admin/delete.png"
+                            alt=""
+                            style={{
+                              height: "40px",
+                              width: "40px",
+                              cursor: "pointer",
+                            }}
+                            onClick={() => handleOpenModal(row._id)}
+                          />
+                        </div>
+                      </TableCell> */}
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          )
         ) : (
-          <TableContainer
-            className="SubmitPropertyTablemaiiiiin"
-            sx={{
-              boxShadow: "none",
-            }}
-            component={Paper}
-          >
-            <Table sx={{ minWidth: 650 }} aria-label="table">
-              <TableHead>
-                <TableRow
-                  sx={{
-                    borderTopLeftRadius: "9px",
-                    borderBottomLightRadius: "9px",
-                    background: "rgb(241, 241, 241)",
-                  }}
-                  className="SubmitPropertytableHeadRow"
-                >
-                  <TableCell
-                    sx={{ borderRadius: "7.66px 0 0 7.66px", border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    #
-                  </TableCell>
-                  <TableCell
-                    sx={{ border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    CaseStudy
-                  </TableCell>
-                  <TableCell
-                    sx={{ border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    Question Type
-                  </TableCell>
-
-                  <TableCell
-                    sx={{ border: "none" }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    Questions
-                  </TableCell>
-                  <TableCell
-                    sx={{
-                      borderRadius: "0px 7.66px 7.66px 0px",
-                      border: "none",
-                    }}
-                    className="SubmitPropertytableHeadRowCell"
-                  >
-                    Actions
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableRow
+          <>
+            {allresult?.length === 0 ? (
+              <div style={{ color: "black", padding: "70px 0px" }}>
+                <p>
+                  Exam has not ended yet. Results will be available once the
+                  exam ends.{" "}
+                </p>
+              </div>
+            ) : (
+              <TableContainer
+                className="SubmitPropertyTablemaiiiiin"
                 sx={{
-                  marginTop: "17px",
-                  height: "17px",
+                  boxShadow: "none",
                 }}
-              ></TableRow>
-              <TableBody>
-                {casestudyqs?.map((row, index) => (
-                  <TableRow key={row.id}>
-                    <TableCell
-                      align="center"
-                      className="SubmitPropertytableBodyRowCell"
+                component={Paper}
+              >
+                <Table sx={{ minWidth: 650 }} aria-label="table">
+                  <TableHead>
+                    <TableRow
+                      sx={{
+                        borderTopLeftRadius: "9px",
+                        borderBottomLightRadius: "9px",
+                        background: "rgb(241, 241, 241)",
+                      }}
+                      className="SubmitPropertytableHeadRow"
                     >
-                      {index + 1}
-                    </TableCell>
-                    <TableCell
-                      align="left"
-                      className="SubmitPropertytableBodyRowCell1"
-                    >
-                      {row?.caseStudy?.slice(0, 20)}
-                    </TableCell>
-                    <TableCell
-                      align="left"
-                      className="SubmitPropertytableBodyRowCell2"
-                    >
-                      {row?.type}
-                    </TableCell>
-
-                    <TableCell
-                      align="center"
-                      className="SubmitPropertytableBodyRowCell2"
-                    >
-                      {row?.Questions?.length}
-                    </TableCell>
-                    <TableCell
-                      align="center"
-                      className="SubmitPropertytableBodyRowCell2"
-                    >
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "10px",
+                      <TableCell
+                        sx={{
+                          borderRadius: "7.66px 0 0 7.66px",
+                          border: "none",
                         }}
+                        className="SubmitPropertytableHeadRowCell"
                       >
-                        <img
-                          src="/Images/Admin/delete.png"
-                          alt=""
-                          style={{
-                            height: "40px",
-                            width: "40px",
-                            cursor: "pointer",
-                          }}
-                          onClick={() => handleOpenModal(row._id)}
-                        />
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                        #
+                      </TableCell>
+                      <TableCell
+                        sx={{ border: "none" }}
+                        className="SubmitPropertytableHeadRowCell"
+                      >
+                        Student Name
+                      </TableCell>
+                      <TableCell
+                        sx={{ border: "none" }}
+                        className="SubmitPropertytableHeadRowCell"
+                      >
+                        Student Email
+                      </TableCell>
+                      <TableCell
+                        sx={{ border: "none" }}
+                        className="SubmitPropertytableHeadRowCell"
+                      >
+                        ClassName
+                      </TableCell>
+                      <TableCell
+                        sx={{ border: "none" }}
+                        className="SubmitPropertytableHeadRowCell"
+                      >
+                        Correct
+                      </TableCell>
+                      <TableCell
+                        sx={{ border: "none" }}
+                        className="SubmitPropertytableHeadRowCell"
+                      >
+                        Incorrect
+                      </TableCell>
+                      <TableCell
+                        sx={{ border: "none" }}
+                        className="SubmitPropertytableHeadRowCell"
+                      >
+                        Time Taken
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          borderRadius: "0px 7.66px 7.66px 0px",
+                          border: "none",
+                        }}
+                        className="SubmitPropertytableHeadRowCell"
+                      >
+                        Percentage
+                      </TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableRow
+                    sx={{
+                      marginTop: "17px",
+                      height: "17px",
+                    }}
+                  ></TableRow>
+                  <TableBody>
+                    {allresult?.map((row, index) => (
+                      <TableRow key={row.id}>
+                        <TableCell
+                          align="center"
+                          className="SubmitPropertytableBodyRowCell"
+                        >
+                          {index + 1}
+                        </TableCell>
+                        <TableCell
+                          align="left"
+                          className="SubmitPropertytableBodyRowCell1"
+                        >
+                          {row?.studentName}
+                        </TableCell>
+                        <TableCell
+                          align="left"
+                          className="SubmitPropertytableBodyRowCell2"
+                        >
+                          {row?.studentEmail}
+                        </TableCell>
+                        <TableCell
+                          align="left"
+                          className="SubmitPropertytableBodyRowCell2"
+                        >
+                          {row?.roomName}
+                        </TableCell>
+                        <TableCell
+                          align="center"
+                          className="SubmitPropertytableBodyRowCell2"
+                        >
+                          {/* {new Date(row?.createdAt).toLocaleDateString()} */}
+                          {row?.totalCorrectAnswers}
+                        </TableCell>
+                        <TableCell
+                          align="center"
+                          className="SubmitPropertytableBodyRowCell2"
+                        >
+                          {row?.totalIncorrectAnswers}
+                        </TableCell>
+                        <TableCell
+                          align="center"
+                          className="SubmitPropertytableBodyRowCell2"
+                        >
+                          {formatTime(row?.totalTimeTaken)}
+                        </TableCell>
+                        <TableCell
+                          align="center"
+                          className="SubmitPropertytableBodyRowCell2"
+                        >
+                          {row?.percentage}
+                        </TableCell>
+                        {/* <TableCell
+                    align="center"
+                    className="SubmitPropertytableBodyRowCell2"
+                  >
+                    <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                      <img src="/Images/Admin/delete.png" alt="" style={{ height: "40px", width: "40px", cursor: "pointer" }}
+                        onClick={() => handleOpenModal(row._id)} />
+                    </div>
+                  </TableCell> */}
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            )}
+          </>
         )}
+
         {data?.totalPages > 1 && (
           <>
             <Stack
@@ -591,17 +863,16 @@ const Questions = () => {
         deleteCurrentItem={deleteCurrentItem}
         itemId={selectedItemId}
       />
-      <div className="fixed-generate-button">
+      {/* <div className="fixed-generate-button">
         <button
           className="generate-exam-btn"
           onClick={() => {
-            // API call will be added later
             console.log("Generate Exam clicked");
           }}
         >
           Generate Exam
         </button>
-      </div>
+      </div>*/}
     </>
   );
 };

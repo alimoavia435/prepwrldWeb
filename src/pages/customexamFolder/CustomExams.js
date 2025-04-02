@@ -8,7 +8,7 @@ import { getAllrooms } from "../../services/redux/middleware/getAllrooms";
 import ScreenLoader from "../../components/loader/ScreenLoader";
 import { Trash, PlayFill, StopFill, House, Book, Calendar, People, Gear, Pencil } from 'react-bootstrap-icons';
 import { deleteCustomrooms } from "../../services/redux/middleware/deleteCustomrooms";
-import { changeStatus } from "../../services/redux/middleware/changeStatus";
+import { customstatus } from "../../services/redux/middleware/customstatus";
 import { toast } from "react-toastify";
 import { createCustomExam } from "../../services/redux/middleware/createCustomExam";
 import { getcustomexams } from "../../services/redux/middleware/getcustomexams";
@@ -118,7 +118,7 @@ const CustomExams = () => {
       data,
     };
     setLoading(true);
-    dispatch(changeStatus(datawithid)).then((res) => {
+    dispatch(customstatus(datawithid)).then((res) => {
       console.log(res, "status response");
       dispatch(getcustomexams()).then((res) => {
         setLoading(false);
