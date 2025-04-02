@@ -1007,8 +1007,7 @@ const GenerateTest = () => {
                 "Exam has not ended yet. Results will be available once the exam ends." ? (
                   <div style={{ color: "black", padding: "70px 0px" }}>
                     <p>
-                      Exam has not ended yet. Results will be available once the
-                      exam ends.{" "}
+                    Results will be available once the the students have attempted and exam end
                     </p>
                   </div>
                 ) : (
