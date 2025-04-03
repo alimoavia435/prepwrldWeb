@@ -159,7 +159,7 @@ const SignIn = () => {
 
         <div className="signIn__div__main">
           <div className="SignIn-div2">
-            <img src={Vector} alt="Logo" />
+            <img src='/Images/auth/preplog.png' alt="Logo" style={{height:"89px",width:"190px"}} />
 
             <div className="welcome__sigin__text_container">
               <p className="Headline800">
