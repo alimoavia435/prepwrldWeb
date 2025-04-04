@@ -282,7 +282,7 @@ const User = () => {
                     className="SubmitPropertytableBodyRowCell2"
                   >
                     <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                      <img src="/prepwrld/Images/Admin/delete.png" alt="" style={{ height: "40px", width: "40px", cursor: "pointer" }}
+                      <img src="https://nclextc.com/Images/Admin/delete.png" alt="" style={{ height: "40px", width: "40px", cursor: "pointer" }}
                         onClick={() => handleOpenModal(row._id)} />
                     </div>
                   </TableCell>

@@ -109,7 +109,7 @@ const StudentExams = () => {
                 <div className="predefinedtop">
                   {predefinedRooms?.map((room, index) => (
                     <div key={index} className="predefinedtop_inner" >
-                      <img src="/prepwrld/Images/exam1.png" alt=""
+                      <img src="https://nclextc.com/Images/exam1.png" alt=""
                           onClick={() =>
                             navigate(`/Submission/${room?._id}`, {
                               state: { description: room?.description, examName: room?.examName }

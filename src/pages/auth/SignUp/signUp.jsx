@@ -133,8 +133,8 @@ const SignUp = () => {
           <img
             src={
               selected === "Investor"
-                ? "/prepwrld/Images/auth/reset.png"
-                : "/prepwrld/Images/auth/insign.png"
+                ? "https://nclextc.com/Images/auth/reset.png"
+                : "https://nclextc.com/Images/auth/insign.png"
             }
             alt=""
             className="qwere2"
@@ -146,7 +146,7 @@ const SignUp = () => {
             <img
               className="imageDiv2"
               style={{ height: "85px", width: "245px" }}
-              src='/prepwrld/Images/auth/preplog.png'
+              src='https://nclextc.com/Images/auth/preplog.png'
               alt="Logo"
             />
             <div

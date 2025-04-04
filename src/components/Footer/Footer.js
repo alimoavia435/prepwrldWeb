@@ -20,13 +20,13 @@ function Footer() {
       <div className="EVox__Footer_Container_OVerAll">
         <div className="Fotter_RightLeft_Container">
           <div className="Evox__Footer_LeftContainer">
-            <img src="/prepwrld/Images/Explore/emaillogo.svg" alt='' />
+            <img src="https://nclextc.com/Images/Explore/emaillogo.svg" alt='' />
             <input
               className="FooterInput"
               type="email"
               placeholder="Enter Your Email"
             />
-            <img src="/prepwrld/Images/Explore/telegramlogo.svg" />
+            <img src="https://nclextc.com/Images/Explore/telegramlogo.svg" alt="fhh"/>
           </div>
           <div className="Footer__RightContinerTextside">
             <div className="Footer__RightSide_Textcontainer">

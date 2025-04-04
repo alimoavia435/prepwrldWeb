@@ -263,7 +263,7 @@ const SubjectDetail = () => {
                                     >
                                         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                                             <img 
-                                                src="/prepwrld/Images/SubmitProperty/deleteIcon.svg" 
+                                                src="https://nclextc.com/Images/SubmitProperty/deleteIcon.svg" 
                                                 alt="Delete" 
                                                 style={{ height: "20px", width: "20px", cursor: "pointer" }}
                                                 onClick={() => handleOpenDeleteModal(row)} 

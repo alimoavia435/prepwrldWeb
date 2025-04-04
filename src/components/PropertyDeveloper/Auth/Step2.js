@@ -107,7 +107,7 @@ function PropertyAuthStep2({ formData, handleInputChange }) {
               </p>
               {/* Custom upload icon */}
               <img
-                src="/prepwrld/Images/Investor/uploadicon.svg"
+                src="https://nclextc.com/Images/Investor/uploadicon.svg"
                 alt="Upload Icon"
                 onClick={() => fileInputRef.current.click()} // Trigger the hidden input's click event
                 style={{ cursor: "pointer" }}

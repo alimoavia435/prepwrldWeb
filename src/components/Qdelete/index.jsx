@@ -22,10 +22,10 @@ export default function DeleteModal({ open, setOpen, deleteCurrentItem, itemId }
         <Box className='modal-box-style' style={{background:"#ffffff"}}>
           <div className="delete-modal-header">
             <IconButton color="primary" sx={{ position: "absolute", top: "2%", right: "2%" }} onClick={handleClose}>
-              <img src="/prepwrld/Images/Admin/close.svg" alt="cancel" style={{ width: "30px", height: "30px" }} />
+              <img src="https://nclextc.com/Images/Admin/close.svg" alt="cancel" style={{ width: "30px", height: "30px" }} />
             </IconButton>
           </div>
-          <img src='/prepwrld/Images/delete.png'  style={{height:"70px", width:"70px"}}alt="ww"/>
+          <img src='https://nclextc.com/Images/delete.png'  style={{height:"70px", width:"70px"}}alt="ww"/>
           <div className='delete-modal-body'>
             <h1 style={{ fontFamily: 'Urbanist-Bold', color: '#000000', fontSize: '30px', fontWeight: '800', fontStyle: 'italic', margin: "0px" }}>
               Delete Question

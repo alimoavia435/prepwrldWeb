@@ -111,7 +111,7 @@ const App = () => {
           </Route>
         </>
 
-        <Route path="/prepwrld" element={<SignIn />} />
+        <Route path="/" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/verifyaccount/:email" element={<VerifyAccount />} />
         <Route path="/resetPasswordVerify" element={<ResetVerifyAccount />} />

@@ -226,7 +226,7 @@ const CustomExams = () => {
                       <Dropdown style={{ position: 'relative' }}>
                         <Dropdown.Toggle
                           as="img"
-                          src="/prepwrld/Images/Dashboard/dots.png"
+                          src="https://nclextc.com/Images/Dashboard/dots.png"
                           style={{ height: "20px", width: "20px", position: "absolute", top: "-6px", right: "-74px", cursor: 'pointer' }}
                           alt="..."
                         />
@@ -267,7 +267,7 @@ const CustomExams = () => {
                         </Dropdown.Menu>
                       </Dropdown>
                       <img 
-                        src="/prepwrld/Images/exam1.png" 
+                        src="https://nclextc.com/Images/exam1.png" 
                         alt=""
                         onClick={() => navigate(`/Questions/${room?._id}`, {
                           state: {
@@ -322,7 +322,7 @@ const CustomExams = () => {
         <Modal.Body>
           <>
             <img
-              src="/prepwrld/Images/Dashboard/open-folder.png"
+              src="https://nclextc.com/Images/Dashboard/open-folder.png"
               alt="Placeholder"
               className="mb-3"
             />
@@ -455,7 +455,7 @@ const CustomExams = () => {
         <Modal.Body>
           <>
             <img
-              src="/prepwrld/Images/Dashboard/open-folder.png"
+              src="https://nclextc.com/Images/Dashboard/open-folder.png"
               alt="Placeholder"
               className="mb-3"
             />

@@ -142,8 +142,8 @@ function NotificationInvestorComponent() {
         >
           <img
             src=
-           {hasUnreadNotifications ? "/prepwrld/Images/Dashboard/Notification.svg":
-            "/prepwrld/Images/Dashboard/readnotify.svg"}
+           {hasUnreadNotifications ? "https://nclextc.com/Images/Dashboard/Notification.svg":
+            "/https://nclextc.com/Images/Dashboard/readnotify.svg"}
             alt="Notification Icon"
             className="notification-icon"
           />
@@ -187,7 +187,7 @@ function NotificationInvestorComponent() {
                               <>Marked as read</>
                             ) : (
                               <img
-                                src="/prepwrld/Images/notification/markIcon.svg"
+                                src="https://nclextc.com/Images/notification/markIcon.svg"
                                 alt="Unread Icon"
                                 className="mark-read-icon"
                               />
@@ -238,7 +238,7 @@ function NotificationInvestorComponent() {
                               <>Marked as read</>
                             ) : (
                               <img
-                                src="/prepwrld/Images/notification/markIcon.svg"
+                                src="https://nclextc.com/Images/notification/markIcon.svg"
                                 alt="Unread Icon"
                                 className="mark-read-icon"
                               />

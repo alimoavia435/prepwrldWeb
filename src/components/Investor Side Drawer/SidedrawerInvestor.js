@@ -357,7 +357,7 @@ export default function SidedrawerInvestor({ children, showSidebar, PageName }) 
     // "/Images/Dashboard/ProjectIcon.svg",
     // "/Images/Dashboard/PropertySubmission.svg",
     // "/Images/Dashboard/profile-2user (1).svg",
-    "/prepwrld/Images/exam1.png",
+    "https://nclextc.com/Images/exam1.png",
     // "Images/Dashboard/updates.svg"
 
   ];
@@ -373,7 +373,7 @@ export default function SidedrawerInvestor({ children, showSidebar, PageName }) 
     // "/Images/Dashboard/ProjectIconBlue.svg",
     // "/Images/Dashboard/ProjectIconBlue.svg",
     // "/Images/Dashboard/profile-2user.svg",
-    "/prepwrld/Images/exam1.png",
+    "https://nclextc.com/Images/exam1.png",
     // "/Images/Dashboard/blueUpdates.svg",
     // "/Images/Dashboard/UserIconBlue.svg",
 
@@ -553,7 +553,7 @@ export default function SidedrawerInvestor({ children, showSidebar, PageName }) 
                                         color={"black"}
                                     /> */}
                   <img
-                    src="/prepwrld/Images/Dashboard/sideBarIcon22.svg"
+                    src="https://nclextc.com/Images/Dashboard/sideBarIcon22.svg"
                     style={{
                       position: "relative",
                       zIndex: 999,
@@ -605,7 +605,7 @@ export default function SidedrawerInvestor({ children, showSidebar, PageName }) 
                             src={
                               profileImage
                                 ? profileImage
-                                : "/prepwrld/Images/Dashboard/Profile.svg"
+                                : "https://nclextc.com/Images/Dashboard/Profile.svg"
                             }
                             sx={{ width: 48, height: 48 }}
                             className="avatar-img"
@@ -668,7 +668,7 @@ export default function SidedrawerInvestor({ children, showSidebar, PageName }) 
                     <DrawerHeader style={{ background: "aliceblue" }}>
 
                       <img
-                        src="/prepwrld/Images/auth/preplog.png"
+                        src="https://nclextc.com/Images/auth/preplog.png"
                         className="logo__container1"
                         alt="Logo"
                       />
@@ -684,7 +684,7 @@ export default function SidedrawerInvestor({ children, showSidebar, PageName }) 
                       >
                         {theme.direction === "ltr" ? (
                           <img
-                            src="/prepwrld/Images/Dashboard/sideBarIcon1.svg"
+                            src="https://nclextc.com/Images/Dashboard/sideBarIcon1.svg"
                             className="toggle2"
                             alt=""
                           />
@@ -692,7 +692,7 @@ export default function SidedrawerInvestor({ children, showSidebar, PageName }) 
                           // <ChevronLeftIcon style={{ color: "#000000" }} />
                           // <ChevronRightIcon style={{ color: "#000000" }} />
                           <img
-                            src="/prepwrld/Images/Dashboard/sideBarIcon22.svg"
+                            src="https://nclextc.com/Images/Dashboard/sideBarIcon22.svg"
                             className="toggle"
                             alt=""
                           />
@@ -771,7 +771,7 @@ export default function SidedrawerInvestor({ children, showSidebar, PageName }) 
                     className="Logout-div"
                   >
                     <img
-                      src="/prepwrld/Images/Dashboard/LogoutNew.svg"
+                      src="https://nclextc.com/Images/Dashboard/LogoutNew.svg"
                       className="icon-size"
                       alt="Logout-icon"
                     />
@@ -806,7 +806,7 @@ export default function SidedrawerInvestor({ children, showSidebar, PageName }) 
                 <div>
                   <DrawerHeader style={{ background: "aliceblue" }}>
                     <img
-                      src="/prepwrld/Images/auth/preplog.png"
+                      src="https://nclextc.com/Images/auth/preplog.png"
                       className="logo__container1"
                       alt="Logo"
                     />
@@ -821,13 +821,13 @@ export default function SidedrawerInvestor({ children, showSidebar, PageName }) 
                     >
                       {theme.direction === "ltr" ? (
                         <img
-                          src="/prepwrld/Images/Dashboard/sideBarIcon1.svg"
+                          src="https://nclextc.com/Images/Dashboard/sideBarIcon1.svg"
                           className="toggle2"
                           alt=""
                         />
                       ) : (
                         <img
-                          src="/prepwrld/Images/Dashboard/sideBarIcon22.svg"
+                          src="https://nclextc.com/Images/Dashboard/sideBarIcon22.svg"
                           className="toggle"
                           alt=""
                         />
@@ -904,7 +904,7 @@ export default function SidedrawerInvestor({ children, showSidebar, PageName }) 
                   className="Logout-div"
                 >
                   <img
-                    src="/prepwrld/Images/Dashboard/LogoutNew.svg"
+                    src="https://nclextc.com/Images/Dashboard/LogoutNew.svg"
                     className="icon-size"
                     alt="Logout-icon"
                   />

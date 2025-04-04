@@ -63,7 +63,7 @@ function NotificationInvestorDetail() {
           />
           <img
             style={{ height: "20px", width: "20px" }}
-            src="/prepwrld/Images/notification/searchIcon.svg"
+            src="https://nclextc.com/Images/notification/searchIcon.svg"
             alt="search"
           />
         </div>
@@ -113,7 +113,7 @@ function NotificationInvestorDetail() {
                     <>Marked as read</>
                   ) : (
                     <img
-                      src="/prepwrld/Images/notification/markIcon.svg"
+                      src="https://nclextc.com/Images/notification/markIcon.svg"
                       alt="Unread Icon"
                       className="mark-read-icon"
                     />
