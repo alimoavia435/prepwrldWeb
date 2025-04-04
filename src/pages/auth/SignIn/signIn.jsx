@@ -3,7 +3,7 @@ import investorImage from "../../../assets/image-bg.png";
 import investorImage2 from "../../../assets/investor-bg2.png";
 import propertyDeveloperImage from "../../../assets/PropertyDeveloperbg.png";
 import Vector from "../../../assets/Vector.svg";
-
+import preplog from '../../../preplog.png'
 import google from "../../../assets/flat-color-icons_google.svg";
 import imageeye from "../../../assets/imageeye.svg";
 import eyeSlash from "../../../assets/eye-slash.svg";
@@ -159,7 +159,7 @@ const SignIn = () => {
 
         <div className="signIn__div__main">
           <div className="SignIn-div2">
-            <img src='/Images/auth/preplog.png' alt="Logo" style={{height:"89px",width:"190px"}} />
+            <img src={preplog} alt="Logo" style={{height:"89px",width:"190px"}} />
 
             <div className="welcome__sigin__text_container">
               <p className="Headline800">
