@@ -139,7 +139,7 @@ const RoomPage = () => {
                 {predefinedRooms.length === 0 ? (
                   <div className="empty-state">
                     <img
-                      src="/Images/Dashboard/open-folder.png"
+                      src="/prepwrld/Images/Dashboard/open-folder.png"
                       alt="No classes"
                       style={{ width: "100px", marginBottom: "20px" }}
                     />
@@ -155,7 +155,7 @@ const RoomPage = () => {
                         <Dropdown style={{ position: "relative" }}>
                           <Dropdown.Toggle
                             as="img"
-                            src="/Images/Dashboard/dots.png"
+                            src="/prepwrld/Images/Dashboard/dots.png"
                             style={{
                               height: "20px",
                               width: "20px",
@@ -185,7 +185,7 @@ const RoomPage = () => {
                           </Dropdown.Menu>
                         </Dropdown>
                         <img
-                          src="/Images/Dashboard/open-folder.png"
+                          src="/prepwrld/Images/Dashboard/open-folder.png"
                           alt=""
                           onClick={() =>
                             navigate(`/SubjectDetail/${room?._id}`)
@@ -227,7 +227,7 @@ const RoomPage = () => {
           <Modal.Body>
             <>
               <img
-                src="/Images/Dashboard/open-folder.png"
+                src="/prepwrld/Images/Dashboard/open-folder.png"
                 alt="Placeholder"
                 className="mb-3"
                 style={{ width: "60px", height: "60px" }}
@@ -288,7 +288,7 @@ const RoomPage = () => {
           <Modal.Body>
             <>
               <img
-                src="/Images/Dashboard/open-folder.png"
+                src="/prepwrld/Images/Dashboard/open-folder.png"
                 alt="Placeholder"
                 className="mb-3"
                 style={{ width: "60px", height: "60px" }}

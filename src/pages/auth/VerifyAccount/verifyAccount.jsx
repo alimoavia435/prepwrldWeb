@@ -123,7 +123,7 @@ const VerifyAccount = () => {
             We craft the<br />
             future dwelling
           </p>
-          <img src={"/Images/Investor/verifyImg.png"} alt="" className="qwere2" />
+          <img src={"/prepwrld/Images/Investor/verifyImg.png"} alt="" className="qwere2" />
         </div>
         <div className="verify__div__main">
           <div className="Verify-Account-Div2">

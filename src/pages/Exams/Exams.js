@@ -174,7 +174,7 @@ const Exams = () => {
                       <Dropdown style={{ position: 'relative' }}>
                         <Dropdown.Toggle
                           as="img"
-                          src="/Images/Dashboard/dots.png"
+                          src="/prepwrld/Images/Dashboard/dots.png"
                           style={{ height: "20px", width: "20px", position: "absolute", top: "-6px", right: "-74px", cursor: 'pointer' }}
                           alt="..."
                         />
@@ -215,7 +215,7 @@ const Exams = () => {
                         </Dropdown.Menu>
                       </Dropdown>
                       <img 
-                        src="/Images/exam1.png" 
+                        src="/prepwrld/Images/exam1.png" 
                         alt=""
                         onClick={() => navigate(`/GenerateTest/${room?._id}`, {
                           state: {
@@ -259,7 +259,7 @@ const Exams = () => {
           <Modal.Body>
             <>
               <img
-                src="/Images/Dashboard/open-folder.png"
+                src="/prepwrld/Images/Dashboard/open-folder.png"
                 alt="Placeholder"
                 className="mb-3"
               />
@@ -299,7 +299,7 @@ const Exams = () => {
         <Modal.Body>
           <>
             <img
-              src="/Images/Dashboard/open-folder.png"
+              src="/prepwrld/Images/Dashboard/open-folder.png"
               alt="Placeholder"
               className="mb-3"
               style={{ width: "60px", height: "60px" }}

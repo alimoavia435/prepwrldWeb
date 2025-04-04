@@ -367,11 +367,11 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
 
   const dashicons = [
     // "/Images/Dashboard/PropertySubmission.svg",
-    "/Images/Dashboard/ProjectIcon.svg",
-    "/Images/exam1.png",
-    "/Images/exam1.png",
-    "Images/Dashboard/updates.svg",
-    "/Images/Dashboard/ProjectIcon.svg",
+    "/prepwrld/Images/Dashboard/ProjectIcon.svg",
+    "/prepwrld/Images/exam1.png",
+    "/prepwrld/Images/exam1.png",
+    "/prepwrld/Images/Dashboard/updates.svg",
+    "/prepwrld/Images/Dashboard/ProjectIcon.svg",
     // "Images/Dashboard/profileIcon.svg",
     // "Images/Dashboard/updates.svg",
     // "/Images/Dashboard/support.svg",
@@ -382,17 +382,17 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
   ];
   const activeDashicons = [
     // "/Images/Dashboard/UserIconBlue.svg",
-    "/Images/Dashboard/ProjectIconBlue.svg",
+    "/prepwrld/Images/Dashboard/ProjectIconBlue.svg",
     // "/Images/Dashboard/blueProfile.svg",
 
     // "/Images/Dashboard/blue-Support.svg",
 
     // "/Images/Dashboard/ProjectIconBlue.svg",
     // "/Images/Dashboard/profile-2user.svg",
-    "/Images/exam1.png",
-    "/Images/exam1.png",
-    "/Images/Dashboard/blueUpdates.svg",
-    "/Images/Dashboard/ProjectIconBlue.svg",
+    "/prepwrld/Images/exam1.png",
+    "/prepwrld/Images/exam1.png",
+    "/prepwrld/Images/Dashboard/blueUpdates.svg",
+    "/prepwrld/Images/Dashboard/ProjectIconBlue.svg",
     // "/Images/Dashboard/UserIconBlue.svg",
   ];
   const OthermenuItems = [{}, {}];
@@ -567,7 +567,7 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
                                         color={"black"}
                                     /> */}
                   <img
-                    src="/Images/Dashboard/sideBarIcon22.svg"
+                    src="/prepwrld/Images/Dashboard/sideBarIcon22.svg"
                     style={{
                       position: "relative",
                       zIndex: 999,
@@ -620,7 +620,7 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
                             src={
                               profileImage
                                 ? profileImage
-                                : "/Images/Dashboard/Profile.svg"
+                                : "/prepwrld/Images/Dashboard/Profile.svg"
                             }
                             sx={{ width: 48, height: 48 }}
                             className="avatar-img"
@@ -682,7 +682,7 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
                   <div>
                     <DrawerHeader style={{ background: "aliceblue" }}>
                       <img
-                        src="/Images/auth/preplog.png"
+                        src="/prepwrld/Images/auth/preplog.png"
                         className="logo__container1"
                         alt="Logo"
                       />
@@ -698,7 +698,7 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
                       >
                         {theme.direction === "ltr" ? (
                           <img
-                            src="/Images/Dashboard/sideBarIcon1.svg"
+                            src="/prepwrld/Images/Dashboard/sideBarIcon1.svg"
                             className="toggle2"
                             alt=""
                           />
@@ -706,7 +706,7 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
                           // <ChevronLeftIcon style={{ color: "#000000" }} />
                           // <ChevronRightIcon style={{ color: "#000000" }} />
                           <img
-                            src="/Images/Dashboard/sideBarIcon22.svg"
+                            src="/prepwrld/Images/Dashboard/sideBarIcon22.svg"
                             className="toggle"
                             alt=""
                           />
@@ -785,7 +785,7 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
                     className="Logout-div"
                   >
                     <img
-                      src="/Images/Dashboard/LogoutNew.svg"
+                      src="/prepwrld/Images/Dashboard/LogoutNew.svg"
                       className="icon-size"
                       alt="Logout-icon"
                     />
@@ -820,7 +820,7 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
                 <div>
                   <DrawerHeader style={{ background: "aliceblue" }}>
                     <img
-                      src="/Images/auth/preplog.png"
+                      src="/prepwrld/Images/auth/preplog.png"
                       className="logo__container1"
                       alt="Logo"
                     />
@@ -835,13 +835,13 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
                     >
                       {theme.direction === "ltr" ? (
                         <img
-                          src="/Images/Dashboard/sideBarIcon1.svg"
+                          src="/prepwrld/Images/Dashboard/sideBarIcon1.svg"
                           className="toggle2"
                           alt=""
                         />
                       ) : (
                         <img
-                          src="/Images/Dashboard/sideBarIcon22.svg"
+                          src="/prepwrld/Images/Dashboard/sideBarIcon22.svg"
                           className="toggle"
                           alt=""
                         />
@@ -918,7 +918,7 @@ export default function SideDrawer({ children, showSidebar, PageName }) {
                   className="Logout-div"
                 >
                   <img
-                    src="/Images/Dashboard/LogoutNew.svg"
+                    src="/prepwrld/Images/Dashboard/LogoutNew.svg"
                     className="icon-size"
                     alt="Logout-icon"
                   />

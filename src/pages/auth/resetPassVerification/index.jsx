@@ -142,7 +142,7 @@ const ResetVerifyAccount = () => {
             future dwelling
           </p>
           <img
-            src={"/Images/Investor/verifyImg.png"}
+            src={"/prepwrld/Images/Investor/verifyImg.png"}
             alt=""
             className="qwere2"
           />

@@ -145,8 +145,8 @@ function ResponsiveAppBar() {
             <Box>
               <img
                 className="logo__image__header"
-                src="/Images/Explore/navbarlogo.svg"
-                alt="image"
+                src="/prepwrld/Images/Explore/navbarlogo.svg"
+                alt="igmage"
               />
             </Box>
             <Box
@@ -198,7 +198,7 @@ function ResponsiveAppBar() {
             ) : (
               !isSmallScreen && (
                 <button className="ProfileButton" onClick={handleOpenNavMenu}>
-                  <img src="/Images/Evox/UserIcon.svg" alt="Profile" />
+                  <img src="/prepwrld/Images/Evox/UserIcon.svg" alt="Profile" />
                 </button>
               )
             )}
@@ -226,7 +226,7 @@ function ResponsiveAppBar() {
                 {!isSmallScreen ? (
                   // Profile button with menu for big screens
                   <button className="ProfileButton" onClick={handleOpenNavMenu}>
-                    <img src="/Images/Evox/UserIcon.svg" alt="Profile" />
+                    <img src="/prepwrld/Images/Evox/UserIcon.svg" alt="Profile" />
                   </button>
                 ) : (
                   // Profile button with menu for small screens (already implemented)
@@ -256,7 +256,7 @@ function ResponsiveAppBar() {
                           color: "#000000"
                         }}
                       >
-                        <img src="/Images/Evox/Enter.svg" alt="enter arrow" />
+                        <img src="/prepwrld/Images/Evox/Enter.svg" alt="enter arrow" />
                         Dashboard
                       </Typography>
                     </MenuItem>
@@ -273,7 +273,7 @@ function ResponsiveAppBar() {
                         }}
                       >
                         <img
-                          src="/Images/Evox/Exit.svg"
+                          src="/prepwrld/Images/Evox/Exit.svg"
                           alt="exit arrow"
                           width={20}
                           height={20}
@@ -311,7 +311,7 @@ function ResponsiveAppBar() {
                         lineHeight: "1.5",
                         color: "#000000"
                       }}>
-                      <img src="/Images/Evox/Enter.svg" alt="enter arrow" />{" "}
+                      <img src="/prepwrld/Images/Evox/Enter.svg" alt="enter arrow" />{" "}
                       Dashboard
                     </Typography>
                   </MenuItem>
@@ -327,7 +327,7 @@ function ResponsiveAppBar() {
                       }}
                     >
                       <img
-                        src="/Images/Evox/Exit.svg"
+                        src="/prepwrld/Images/Evox/Exit.svg"
                         alt="exit arrow"
                         width={20}
                         height={20}
@@ -392,13 +392,13 @@ function ResponsiveAppBar() {
                   }}
                 >
                   <img
-                    src="/Images/Explore/navbarlogoBlue.svg"
+                    src="/prepwrld/Images/Explore/navbarlogoBlue.svg"
                     alt="logo"
                     width="53px"
                     height="57px"
                   />
                   <img
-                    src="/Images/Evox/Close.svg"
+                    src="/prepwrld/Images/Evox/Close.svg"
                     alt="exit"
                     onClick={() => setIsDrawerOpen(false)}
                   />

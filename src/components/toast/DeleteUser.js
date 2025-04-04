@@ -22,7 +22,7 @@ const DeleteUserModal = ({ show, handleClose }) => {
             <div className="close__image_container" onClick={handleClose}>
               <img
                
-                src="/Images/Modal/close.svg"
+                src="/prepwrld/Images/Modal/close.svg"
                 alt="Close"
               />
             </div>
@@ -32,8 +32,8 @@ const DeleteUserModal = ({ show, handleClose }) => {
             <div className="delete__task__modal__heading_container">
             <img className="logo__modal__image"
              
-              src="/Images/Modal/logo.svg"
-              alt="image"
+              src="/prepwrld/Images/Modal/logo.svg"
+              alt="imddage"
             />
             <p className="delete__task_text">
             Delete User

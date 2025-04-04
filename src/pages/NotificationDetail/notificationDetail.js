@@ -54,7 +54,7 @@ function NotificationDetail() {
           />
           <img
             style={{ height: "20px", width: "20px" }}
-            src="/Images/notification/searchIcon.svg"
+            src="/prepwrld/notification/searchIcon.svg"
             alt="search"
           />
         </div>
@@ -103,7 +103,7 @@ function NotificationDetail() {
                     <>Marked as read</>
                   ) : (
                     <img
-                      src="/Images/notification/markIcon.svg"
+                      src="/prepwrld/Images/notification/markIcon.svg"
                       alt="Unread Icon"
                       className="mark-read-icon"
                     />

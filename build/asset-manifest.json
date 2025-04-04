@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/prepwrld/static/css/main.24c95483.css",
-    "main.js": "/prepwrld/static/js/main.8e2086bb.js",
+    "main.js": "/prepwrld/static/js/main.3293bdfd.js",
     "static/js/453.2c4853ea.chunk.js": "/prepwrld/static/js/453.2c4853ea.chunk.js",
     "static/media/signUpImage.svg": "/prepwrld/static/media/signUpImage.49c7194cbbbde74b87b951183de1ad8c.svg",
     "static/media/verifyAccountImage.svg": "/prepwrld/static/media/verifyAccountImage.964d3da8b3e25092e246b3f910525db9.svg",
@@ -15,6 +15,7 @@
     "static/media/Poppins-Medium.ttf": "/prepwrld/static/media/Poppins-Medium.673ed42382ab264e0bf5.ttf",
     "static/media/Poppins-SemiBold.ttf": "/prepwrld/static/media/Poppins-SemiBold.ac8d04b620e54be9b0f0.ttf",
     "static/media/Poppins-Bold.ttf": "/prepwrld/static/media/Poppins-Bold.cdb29a5d7ccf57ff05a3.ttf",
+    "static/media/preplog.png": "/prepwrld/static/media/preplog.5a47d441f5b68a42042b.png",
     "static/media/Satoshi-Regular.otf": "/prepwrld/static/media/Satoshi-Regular.811ccb0b5af1892a71df.otf",
     "static/media/Urbanist-Medium.ttf": "/prepwrld/static/media/Urbanist-Medium.5f9e53103764bd328f6c.ttf",
     "static/media/Urbanist-SemiBold.ttf": "/prepwrld/static/media/Urbanist-SemiBold.0d136c84d89999f5b263.ttf",
@@ -29,11 +30,11 @@
     "static/media/imageeye.svg": "/prepwrld/static/media/imageeye.2d5b9c81f6b79e43880a561d470d24b4.svg",
     "static/media/origin.svg": "/prepwrld/static/media/origin.c674a2d85decf3d778a66d8a55eba3a4.svg",
     "main.24c95483.css.map": "/prepwrld/static/css/main.24c95483.css.map",
-    "main.8e2086bb.js.map": "/prepwrld/static/js/main.8e2086bb.js.map",
+    "main.3293bdfd.js.map": "/prepwrld/static/js/main.3293bdfd.js.map",
     "453.2c4853ea.chunk.js.map": "/prepwrld/static/js/453.2c4853ea.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.24c95483.css",
-    "static/js/main.8e2086bb.js"
+    "static/js/main.3293bdfd.js"
   ]
 }

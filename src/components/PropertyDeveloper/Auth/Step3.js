@@ -135,7 +135,7 @@ function PropertyAuthStep3({ formData, handleInputChange }) {
                 )}
               </p>
               <img
-                src="/Images/Investor/uploadicongray.svg"
+                src="/prepwrld/Images/Investor/uploadicongray.svg"
                 alt="Upload Icon"
                 onClick={() => handleIconClick(businessLicenseRef)}
                 style={{ cursor: "pointer" }}
@@ -160,7 +160,7 @@ function PropertyAuthStep3({ formData, handleInputChange }) {
                 )}
               </p>
               <img
-                src="/Images/Investor/uploadicongray.svg"
+                src="/prepwrld/Images/Investor/uploadicongray.svg"
                 alt="Upload Icon"
                 onClick={() => handleIconClick(ultimateBeneficalOwnerRef)}
                 style={{ cursor: "pointer" }}

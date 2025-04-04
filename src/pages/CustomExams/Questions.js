@@ -314,7 +314,7 @@ const Questions = () => {
               />
               <img
                 style={{ height: "20px", width: "20px" }}
-                src="/Images/search.svg"
+                src="/prepwrld/Images/search.svg"
                 alt="search"
               />
             </div>
@@ -488,7 +488,7 @@ const Questions = () => {
                           }}
                         >
                           <img
-                            src="/Images/Admin/delete.png"
+                            src="/prepwrld/Images/Admin/delete.png"
                             alt=""
                             style={{
                               height: "40px",

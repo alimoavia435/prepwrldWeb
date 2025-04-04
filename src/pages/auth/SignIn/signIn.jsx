@@ -149,8 +149,8 @@ const SignIn = () => {
           <img
             src={
               selected === "Teacher"
-                ? "/Images/auth/insign.png"
-                : "/Images/auth/devbg1.png"
+                ? "/prepwrld/Images/auth/insign.png"
+                : "/prepwrld/Images/auth/devbg1.png"
             }
             alt=""
             className="qwere2"
@@ -315,13 +315,13 @@ const SignIn = () => {
                 <div className="ordiv">
                   <img
                     className="divider-image"
-                    src="/Images/Investor/divider.svg"
+                    src="/prepwrld/Images/Investor/divider.svg"
                     alt="divider"
                   />
                   <p className="or-p">Or</p>
                   <img
                     className="divider-image"
-                    src="/Images/Investor/divider.svg"
+                    src="/prepwrld/Images/Investor/divider.svg"
                     alt="divider"
                   />
                 </div>

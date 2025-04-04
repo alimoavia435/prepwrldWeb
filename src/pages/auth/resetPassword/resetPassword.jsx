@@ -77,7 +77,7 @@ const ResetPassword = () => {
             future dwelling
           </p>
           <img
-            src={"/Images/Investor/resetinvBg.png"}
+            src={"/prepwrld/Images/Investor/resetinvBg.png"}
             alt=""
             className="qwere2"
           />
